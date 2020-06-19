@@ -1,0 +1,81 @@
+/* ====== STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES ======= */
+
+/* ====== CHAQUE PAGE A SON STYLE DÉDIÉ DANS UN CSS SÉPARÉ  ======= */
+
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+
+html {
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+}
+
+/* ================================== */
+
+body {
+   padding: 0 0 0 0;
+   margin: 0;
+   font-family: 'Kodchasan', sans-serif;
+   font-weight: 400;
+   color: rgb(255, 255, 255);
+}
+
+h1, h2, h3, h4, h5, h6 {
+   text-transform: uppercase;
+   text-align: center;
+   font-weight: 500;
+}
+
+h5, h6 {
+   font-weight: 400;
+}
+
+/* ====== CONTENEUR GÉNÉRAL (ENTRE LA NAVBAR ET LE FOOTER) ======= */
+
+.contenu {
+   margin: 0;
+   padding: 20px;
+   min-height: calc(100vh - 210px);
+   /* Ajuster les px si le footer flotte trop haut */
+}
+
+/* ====== LIENS ET ICONES======= */
+
+a {
+   color: #e0e0e0;
+}
+
+a {
+   text-decoration: none;
+}
+
+a:hover {
+   color: #ffffff;
+}
+
+a:hover i {
+   /* color: #FF4900; */
+}
+
+i {
+   border-radius: 3px;
+   padding: 3px;
+   /* color: #a62f00; */
+   /* color: #FF4900; */
+}
+
+@media screen and (max-width: 870px) {
+   /* div servant uniquement à assombrir l'affichage lors de l'ouverture du menu burger */
+   #body2 {
+      display: block;
+      visibility: hidden;
+      z-index: 49;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      -webkit-transition: background-color .3s ease;
+      -moz-transition: background-color .3s ease;
+      -o-transition: background-color .3s ease;
+   }
+}

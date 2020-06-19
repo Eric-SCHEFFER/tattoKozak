@@ -1,0 +1,250 @@
+/* ====== STYLE SPÉCIFIQUE À LA NAVBAR ======= */
+
+/* ====== VERSION GRANDS ICONES (ADAPTER LA TAILLE DES FONTAMWESOME DANS LE HTML ======= */
+
+/* ====== POUR L'ACTIVER, RENOMMER CETTE PAGE navbar.css ======= */
+
+/* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
+
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   position: relative;
+   width: 100%;
+   height: 90px;
+   overflow: hidden;
+   background: inherit;
+   z-index: 50;
+   /* border-bottom: solid 1px #AE0012; */
+}
+
+/* ====== NAVBAR TRANSPARENTE, FLOUE, AVEC OPACITÉ ===== */
+
+.navbar::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: inherit;
+   box-shadow: inset 0 0 2000px rgba(0, 0, 0, .5);
+   z-index: -1;
+   filter: blur(10px);
+   /* margin: -20px; */
+}
+
+/* ====== LOGO ======= */
+
+.logo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.logo a {
+   color: #FFFFFF;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   /* border: 1px solid blue; */
+   font-size: 2.1em;
+}
+
+.imageLogo {
+   width: 45px;
+   margin: 0 20px 0 25px;
+}
+
+.imageLogo img {
+   width: 100%;
+}
+
+/* ====== MENU ET LIENS ======= */
+
+.menu {
+   z-index: 52;
+   list-style-type: none;
+   display: flex;
+   width: auto;
+   padding: 0;
+   justify-content: space-between;
+   align-items: center;
+   margin: 10px 10px 10px 10px;
+   /* border: 1px solid blue; */
+}
+
+.lienMenu {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   text-decoration: none;
+   /* border: 1px solid blue; */
+   height: 100%;
+}
+
+.menu li {
+   margin: 0 2vw 0 2vw;
+}
+
+.menu i {}
+
+h5 {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   margin: 0;
+   width: 70px;
+   font-size: .8em;
+}
+
+.lienMenu:hover h5 {
+   color: white;
+}
+
+/* Surcharge le style du lien quand il est actif */
+.active {
+   color: white;
+   font-weight: 900;
+}
+
+/* On masque le burger quand on est en grand écran */
+
+#burger {
+   display: none;
+}
+
+.menuBurger {
+   display: none;
+}
+
+/* ====== ICONES ======= */
+
+.icon-accueil::before,
+.icon-realisations::before,
+.icon-faq::before,
+.icon-contact::before,
+.icon-inscription::before,
+.icon-deconnexion::before {
+   margin-bottom: 0px;
+   font-family: "Font Awesome 5 Free";
+   font-size: 1.7em;
+   font-weight: 900;
+   /* border: solid 1px #a62f00; */
+   width: 44px; /* Changer ces valeurs de manière synchrone */
+   height: 32px; /* Changer ces valeurs de manière synchrone */
+   padding: 12px 0 0 0;
+   /* color: #a62f00; */
+   /* background-color: #a62f00; */
+   /* background-color: #4b4b4b; */
+   border-radius: 50%;
+}
+
+.icon-accueil::before {
+   content: "\f015";
+}
+
+.icon-realisations::before {
+   content: "\f5ac";
+}
+
+.icon-faq::before {
+   content: "\f129";
+}
+
+.icon-contact::before {
+   content: "\f674";
+}
+
+.icon-inscription::before {
+   content: "\f234";
+}
+
+.icon-deconnexion::before {
+   content: "\f13e";
+}
+
+/* ====== PETITS ÉCRANS ======= */
+
+@media screen and (max-width: 870px) {
+   /* ===== NAVBAR / MENU BURGER==== */
+   .menu {
+      /* On masque le style du menu dédié aux grands écrans */
+      display: none;
+   }
+   .logo {
+      margin: 0 100px 0 0;
+   }
+
+   #burger {
+      z-index: 10000;
+      display: block;
+      position: fixed;
+      right: 24px;
+      top: 18px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: hsla(0, 0%, 0%, 0.3);
+      border-radius: 50%;
+   }
+
+   #burgerBarre1, #burgerBarre2, #burgerBarre3 {
+      height: 3px;
+      width: 30px;
+      background-color: white;
+      position: absolute;
+      /* box-shadow: 2px 2px 2px rgb(0, 0, 0); */
+      border-radius: 4px;
+      transition-duration: .3s;
+      transition-timing-function: ease;
+      left: 10px;
+   }
+
+   #burgerBarre1 {
+      top: 14px;
+      transition-property: transform, top;
+   }
+
+   #burgerBarre2 {
+      top: 23px;
+      transition-property: left;
+   }
+
+   #burgerBarre3 {
+      top: 32px;
+      transition-property: transform, top;
+   }
+ 
+   .menuBurger {
+      position: fixed;
+      left: -150px;
+      transition-property: left;
+      transition-timing-function: ease;
+      transition-duration: .3s;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      list-style-type: none;
+      width: 150px;
+      height: 100vh;
+      background-color: rgb(48, 48, 48);
+      /* box-shadow: 6px 1px 12px rgb(56, 56, 56); */
+      padding: 0;
+      margin: 0;
+   }
+   .menuBurger a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+   .menuBurger li {
+      width: 100%;
+   }
+   .menuBurger h5 {
+      margin-top: 10px;
+   }
+}

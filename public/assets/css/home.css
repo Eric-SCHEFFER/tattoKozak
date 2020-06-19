@@ -1,0 +1,33 @@
+/* ====== STYLE SPÉCIFIQUE À LA PAGE HOME ======= */
+
+/* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
+
+body {
+   background-image: url("/assets/images/fille_tatouee_de_dos_nb.jpg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   background-position: 40%;
+}
+
+#slogan {
+   position: relative;
+   color: #ffffff;
+   font-size: 3em;
+   text-align: center;
+   text-shadow: 4px 4px 7px rgb(0, 0, 0);
+}
+
+#slogan p::before, #slogan p::after {
+   content: "\"";
+}
+
+
+/* ====== PETITS ÉCRANS ======= */
+
+@media screen and (max-width: 870px) {
+   #slogan {
+      font-size: 1.8em;
+      top: 10px;
+   }
+}

@@ -1,0 +1,23 @@
+/* ====== STYLE SPÉCIFIQUE À TOUT CE QUI TOUCHE AUX BOUTONS, INPUTS, CHAMPS ======= */
+
+/* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
+
+
+
+/* ===== BOUTON UTILISÉ POUR LES CARTES D'APERÇUS ===== */
+
+.bouton1 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 2px 2px 8px #4d4d4d;
+   margin: 0 7px 6px 10px;
+   width: 90px;
+   height: 30px;
+   border-radius: 6px;
+   background-color: #a62f00;
+   font-weight: bold;
+   text-shadow: 2px 2px 3px rgb(0, 0, 0);
+
+}
+

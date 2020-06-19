@@ -1,0 +1,93 @@
+/* ====== STYLE SPÉCIFIQUE À LA NAVBAR ======= */
+
+/* ====== VERSION PETITS ICONES (ADAPTER LA TAILLE DES FONTAMWESOME DANS LE HTML ======= */
+
+/* ====== POUR L'ACTIVER, RENOMMER CETTE PAGE navbar.css ======= */
+
+/* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
+
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   position: relative;
+   width: 100%;
+   height: 90px;
+   overflow: hidden;
+   background: inherit;
+   z-index: 1;
+   /* border-bottom: solid 1px #AE0012; */
+}
+
+/* ====== NAVBAR TRANSPARENTE, FLOUE, AVEC OPACITÉ ===== */
+
+.navbar::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: inherit;
+   box-shadow: inset 0 0 2000px rgba(0, 0, 0, .5);
+   z-index: -1;
+   filter: blur(10px);
+   /* margin: -20px; */
+}
+
+/* ====== LOGO ======= */
+
+.logo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* margin: 4px 10px 4px 20px; */
+}
+
+.logo a {
+   color: #FFFFFF;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   /* border: 1px solid blue; */
+   font-size: 2.1em;
+}
+
+.imageLogo {
+   width: 45px;
+   margin: 0 20px 0 25px;
+}
+
+.imageLogo img {
+   width: 100%;
+}
+
+/* ====== MENU ET LIENS ======= */
+
+.menu {
+   list-style-type: none;
+   display: flex;
+   padding: 0;
+   justify-content: space-between;
+   align-items: center;
+   margin: 4px 100px 4px 10px;
+   /* border: 1px solid blue; */
+}
+
+.menu a {
+   display: flex;
+   justify-content: center;
+   align-items: baseline;
+   text-decoration: none;
+}
+
+.menu li {
+   margin: 0 3vw 0 3vw;
+}
+
+.menu i {
+   margin-right: 7px;
+}
+
+.menu a:hover h5 {
+   color: white;
+}

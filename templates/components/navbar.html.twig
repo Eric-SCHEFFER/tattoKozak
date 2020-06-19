@@ -1,0 +1,70 @@
+{% block stylesheets %}{% endblock %}
+
+<div id="nav" class="navbar">
+	<div class="logo">
+		<a href="{{ path('home') }}">
+			<div class="blocImagelogo">
+				<div class="imageLogo">
+					<img src="{{ asset('assets/images/logoTatooRouge.png') }}" alt="logo">
+				</div>
+			</div>
+			Tattoo Kozak
+		</a>
+	</div>
+
+
+	<ul id="menuId" class="menu">
+		<li>
+			<a class="lienMenu" href="{{ path('home') }}">
+				<h5
+				class="icon-accueil
+				{% if
+			 		menu_courant is defined and menu_courant == 'home'
+				%}
+						active
+				{% endif %}
+				">Accueil
+				</h5>
+			</a>
+		</li>
+		<li>
+			<a class="lienMenu" href="{{ path('realisations') }}">
+				<h5
+				class="icon-realisations
+				{% if
+			 		menu_courant is defined and menu_courant == 'realisations'
+				%}
+						active
+				{% endif %}
+				">Réalisations
+				</h5>
+			</a>
+		</li>
+		<li>
+			<a class="lienMenu" href="{{ path('home') }}">
+				<h5 class="icon-faq">Faq</h5>
+			</a>
+		</li>
+		<li>
+			<a class="lienMenu" href="{{ path('home') }}">
+				<h5 class="icon-contact">Contact</h5>
+			</a>
+		</li>
+		<li>
+			<a class="lienMenu" href="{{ path('home') }}">
+				<h5 class="icon-inscription">Inscription</h5>
+			</a>
+		</li>
+		<li>
+			<a class="lienMenu" href="{{ path('home') }}">
+				<h5 class="icon-deconnexion">Déconnexion</h5>
+			</a>
+		</li>
+	</ul>
+	<div id="burger">
+		<div id="burgerBarre1"></div>
+		<div id="burgerBarre2"></div>
+		<div id="burgerBarre3"></div>
+	</div>
+
+</div>
