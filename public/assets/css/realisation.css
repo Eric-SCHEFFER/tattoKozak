@@ -1,0 +1,14 @@
+/* ====== STYLE SPÉCIFIQUE À LA PAGE REALISATION ======= */
+
+/* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
+
+body {
+   background-image: url("/assets/images/background.jpg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+}
+
+.test1 {
+   background-color: lawngreen;
+}
