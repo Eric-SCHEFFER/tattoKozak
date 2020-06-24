@@ -104,7 +104,7 @@ h5 {
    color: white;
 }
 
-/* Surcharge le style du lien quand il est actif */
+/* Stylise le lien courant dans le menu */
 .active {
    color: white;
    font-weight: 900;

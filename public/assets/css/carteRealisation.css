@@ -3,83 +3,37 @@
 /* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
 
 .container-realisation {
-   /* border: solid blue 1px; */
    display: flex;
    justify-content: center;
-   width: 100%;
-   padding: 8px 0 8px 0;
 }
 
 .realisation {
-   /* border: solid green 1px; */
    background-color: rgb(255, 255, 255);
    color: black;
-   width: 1200px;
+   max-width: 700px;
    border-radius: 6px;
-   padding: 15px 0 0 15px;
-}
-
-.bloc1 {
-   /* border: solid rgb(97, 99, 0) 1px; */
+   padding: 0px;
    display: flex;
-   flex-wrap: nowrap;
-   justify-content: space-between;
+   flex-direction: column;
 }
 
 .realisation-image {
-   /* margin: auto; */
-   /* border: solid rgb(128, 0, 117) 1px; */
-   /* max-height: 400px; */
    max-height: 400px;
-   max-width: 650px;
 }
 
 .realisation-image img {
    width: 100%;
    height: 100%;
    object-fit: cover;
-   border-radius: 6px;
+   border-radius: 6px 6px 0px 0px;
 }
 
 .blocTextes {
-   /* border: solid rgb(128, 0, 117) 1px; */
-   /* max-width: 500px; */
-   max-height: 400px;
-   overflow-y: scroll;
-   padding: 0 6px 0 30px;
-   margin-right: 4px;
-   align-self: end;
-   border-radius: 6px;
-   flex-basis: 700px;
-}
-
-
-.realisation-titre {
-   min-height: 30px;
-   /* border: solid rgb(0, 19, 128) 1px; */
-}
-
-.realisation-hook {
-   min-height: 60px;
-   /* border: solid rgb(0, 19, 128) 1px; */
-}
-
-.realisation-resume {
-   /* min-height: 70px; */
-   /* border: solid rgb(0, 19, 128) 1px; */
+   padding: 16px;
 }
 
 .realisation-details {
-   /* border: solid rgb(0, 19, 128) 1px; */
-}
-
-.realisation-details {
-   /* border: solid rgb(128, 77, 0) 1px; */
    color: rgb(92, 92, 92);
-}
-
-.realisation-details p {
-   margin-bottom: 0;
 }
 
 .gris {

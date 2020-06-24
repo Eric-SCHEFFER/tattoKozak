@@ -6,16 +6,16 @@
 {% block title %}Réalisation
 {% endblock %}
 {% block content %}
-	<h1>Réalisation</h1>
+
 	{%
 
 		set realisations = [
 		{
-			titre: "Aigle dans le dos",
+			titre: "L'aigle des carpates",
 			image: "assets/images/viktor-juric-8p5NJcy8Wr4-unsplash.jpg",
 			hook: "L'aigle à repris son envol",
 			resume: "Il était un petit navire",
-			details: "Le L. avant impression. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
+			details: "Le L. avant impression. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
 			dateDebut: "01/04/2020",
 			dateFin: "14/04/2020"
 		},
@@ -39,43 +39,35 @@
 		}
 		]
 	%}
-
+	<h1>{{ realisations[0].titre }}</h1>
 
 	<div class="container-realisation">
+
 		<div class="realisation">
-			<div class="bloc1">
 
-				<div class="realisation-image">
-					<img src={{ realisations[2].image }}>
-				</div>
-
-
-				<div class="blocTextes">
-					<div class="realisation-titre">
-						<h3>{{ realisations[0].titre }}</h3>
-					</div>
-					<div class="realisation-hook">
-						<h4 class="accroche">{{ realisations[0].hook }}</h4>
-					</div>
-					<div class="realisation-resume">
-						<p><span class="gris">Résumé:</span> {{ realisations[0].resume }}</p>
-					</div>
-					<div class="realisation-details">
-						<p><span class="gris">Détails:</span> {{ realisations[0].details }}</p>
-					</div>
-				</div>
-
-
+			<div class="realisation-image">
+				<img src={{ realisations[0].image }}>
 			</div>
-			<p>
-			Le Lorem
-			</p>
-			<p>
-			Le Lorem
-			</p>
-			<p>
-			Le Lorem
-			</p>
+
+
+			<div class="blocTextes">
+
+				<div class="realisation-hook">
+					<h4 class="accroche">{{ realisations[0].hook }}</h4>
+				</div>
+				<div class="realisation-resume">
+					<p>
+						<div class="gris">Résumé:</div>
+						{{ realisations[0].resume }}</p>
+				</div>
+				<div class="realisation-details">
+					<p>
+						<div class="gris">Détails:</div>
+						{{ realisations[0].details }}</p>
+				</div>
+			</div>
+
+
 		</div>
 	</div>
 
