@@ -65,6 +65,7 @@ function closeMenuBurgerSuite() {
 // ====================== PROGRAMME PRINCIPAL =========================
 
 let oMenu = document.getElementById("menuId");
+let oLienMenu = document.getElementsByClassName("lienMenu");
 let oBurger = document.getElementById("burger");
 let oNavbar = document.getElementById("nav");
 let oburgerBarre1 = document.getElementById("burgerBarre1");
