@@ -16,6 +16,7 @@ class HomeController extends AbstractController
 
    public function homeLoad()
    {
+      
       return $this->render('tatoo-kozak/pages/home.html.twig', ['menu_courant' => 'home']);
    }
 }
