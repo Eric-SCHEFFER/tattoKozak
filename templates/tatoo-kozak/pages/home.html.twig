@@ -8,7 +8,8 @@
 
 {% block content %}
     <div id="slogan">
-        <p>l'art dans la peau</p>
+	<!-- On peut recupérer notre slogan, car c'est dans le controlleur qu'on a accédé à la bdd -->
+       {{ slogan.texte }}
     </div>
 
     {% set realisations = [
