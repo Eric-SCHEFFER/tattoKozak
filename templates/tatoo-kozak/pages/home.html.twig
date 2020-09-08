@@ -1,18 +1,21 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/carteApercuRealisation.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/carteApercuRealisation.css') }}">
+
 
 {% endblock %}
 
-{% block body %}
-    <div id="slogan">
-	<!-- On peut recupérer notre slogan, car c'est dans le controlleur qu'on a accédé à la bdd -->
-       {{ slogan.texte }}
-    </div>
 
-    {% set realisations = [
+{% block body %}
+	<div
+		id="slogan">
+		<!-- On peut recupérer notre slogan, car c'est dans le controlleur qu'on a accédé à la bdd -->
+		{{ slogan.texte }}
+	</div>
+
+	{% set realisations = [
         {
             titre: "L'aigle des carpates",
             image: "assets/images/viktor-juric-8p5NJcy8Wr4-unsplash.jpg",
@@ -39,28 +42,28 @@
         }
     ] %}
 
-    <div class="container-apercuRealisations">
+	<div class="container-apercuRealisations">
 
-        {% for realisation in realisations %}
-            <div class="apercuRealisation">
-                <div class="apercuRealisation-image">
-                    <a href=""><img src={{ realisation.image }}></a>
+		{% for realisation in realisations %}
+			<div class="apercuRealisation">
+				<div class="apercuRealisation-image">
+					<a href=""><img src={{ realisation.image }}></a>
 
-                </div>
-                <div class="apercuRealisation-titre">
-                    <h3>{{ realisation.titre }}</h3>
-                </div>
-                <div class="apercuRealisation-hook">
-                    <h4 class="accroche">{{ realisation.hook }}</h4>
-                </div>
-                <div class="apercuRealisation-description">
-                    <p>{{ realisation.description }}</p>
-                    <a class="bouton1" href="">Voir</a>
-                </div>
-            </div>
+				</div>
+				<div class="apercuRealisation-titre">
+					<h3>{{ realisation.titre }}</h3>
+				</div>
+				<div class="apercuRealisation-hook">
+					<h4 class="accroche">{{ realisation.hook }}</h4>
+				</div>
+				<div class="apercuRealisation-description">
+					<p>{{ realisation.description }}</p>
+					<a class="bouton1" href="">Voir</a>
+				</div>
+			</div>
 
 
-        {% endfor %}
-    </div>
+		{% endfor %}
+	</div>
 
 {% endblock %}
