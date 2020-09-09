@@ -12,7 +12,7 @@
 	<div
 		id="slogan">
 		<!-- On peut recupérer notre slogan, car c'est dans le controlleur qu'on a accédé à la bdd -->
-		{{ slogan.texte }}
+		{{ slogan[0].texte }}
 	</div>
 
 	{% set realisations = [
