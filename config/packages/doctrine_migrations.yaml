@@ -1,5 +1,16 @@
+
+# Vieux: Supprimé par moi (eric),le 2020-09-09, suite aux erreurs rencontrées après un composer update.
+# Source: https://github.com/doctrine/DoctrineMigrationsBundle/blob/master/UPGRADE.md
+# doctrine_migrations:
+#     dir_name: '%kernel.project_dir%/src/Migrations'
+#     # namespace is arbitrary but should be different from App\Migrations
+#     # as migrations classes should NOT be autoloaded
+#     namespace: DoctrineMigrations
+
+
+
+# Modifié par moi (eric),le 2020-09-09, suite aux erreurs rencontrées après un composer update.
+# Source: https://github.com/doctrine/DoctrineMigrationsBundle/blob/master/UPGRADE.md
 doctrine_migrations:
-    dir_name: '%kernel.project_dir%/src/Migrations'
-    # namespace is arbitrary but should be different from App\Migrations
-    # as migrations classes should NOT be autoloaded
-    namespace: DoctrineMigrations
+    migrations_paths:
+        'DoctrineMigrations': '%kernel.project_dir%/src/Migrations'
