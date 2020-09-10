@@ -19,6 +19,22 @@ class RealisationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Realisations::class);
     }
 
+
+
+    // On récupère les 3 dernères réalisations
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('r.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
     // /**
     //  * @return Realisations[] Returns an array of Realisations objects
     //  */
