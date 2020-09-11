@@ -9,7 +9,7 @@
 
 
 {% block body %}
-	{# {{ dump(realisations) }}; #}
+	{{ dump(last3Realisations) }};
 	<div
 		id="slogan">
 		<!-- On peut recupérer notre slogan, car c'est dans le controlleur qu'on a accédé à la bdd -->
@@ -19,7 +19,7 @@
 
 	<div class="container-apercuRealisations">
 
-		{% for realisation in realisations %}
+		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
 					<a href=""><img src={{ realisation.image }}></a>

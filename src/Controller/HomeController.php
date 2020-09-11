@@ -4,11 +4,18 @@ namespace App\Controller;
 
 use App\Entity\Realisations;
 use App\Entity\Slogan;
+use App\Repository\RealisationsRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+   private $realisationsRepository;
+
+   public function __construct(RealisationsRepository $realisationsRepository)
+   {
+      $this->realisationsRepository = $realisationsRepository;
+   }
 
 
    /**
@@ -23,11 +30,13 @@ class HomeController extends AbstractController
 
       // On récupère les 3 dernières réalisations.
       // Ecrire une methode directement dans le repos
+      $last3Realisations = $this->realisationsRepository->find3Last();
       
 
 
 
-
+      // dump($last3Realisations);
+     
       // dd($realisations);
 
 
@@ -35,7 +44,7 @@ class HomeController extends AbstractController
       return $this->render('tatoo-kozak/pages/home.html.twig', [
          'menu_courant' => 'home',
          'slogan' => $slogan,
-         // 'realisations' => $realisations
+         'last3Realisations' => $last3Realisations
       ]);
    }
 }

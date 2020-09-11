@@ -22,13 +22,11 @@ class RealisationsRepository extends ServiceEntityRepository
 
 
     // On récupère les 3 dernères réalisations
-    public function findByExampleField($value)
+    public function find3Last()
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('r.id', 'DESC')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult();
     }
