@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Realisations;
 use App\Entity\Slogan;
 use App\Repository\RealisationsRepository;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,15 +27,14 @@ class HomeController extends AbstractController
       // On recupere le slogan depuis le SloganRepository avec la methode find (voir les autres: findAll, findOneBy, etc...)
       $slogan = $this->getDoctrine()->getRepository(Slogan::class)->findBy(array(), array('id' => 'ASC'), 1, 0);
 
-      // On récupère les 3 dernières réalisations.
-      // Ecrire une methode directement dans le repos
+      // On récupère les 3 dernières réalisations avec une methode directement dans le repos
       $last3Realisations = $this->realisationsRepository->find3Last();
-      
 
 
 
-      // dump($last3Realisations);
-     
+
+      dump($last3Realisations);
+
       // dd($realisations);
 
 

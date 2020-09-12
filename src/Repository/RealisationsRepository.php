@@ -21,7 +21,7 @@ class RealisationsRepository extends ServiceEntityRepository
 
 
 
-    // On récupère les 3 dernères réalisations
+    // Coder la fonction pour rechercher dans la bdd les 3 dernières réalisations (table réalisations), avec la première image liée à chaque réalisation (table images)
     public function find3Last()
     {
         return $this->createQueryBuilder('r')
