@@ -21,16 +21,45 @@ class RealisationsRepository extends ServiceEntityRepository
 
 
 
-    // Coder la fonction pour rechercher dans la bdd les 3 dernières réalisations (table réalisations), avec la première image liée à chaque réalisation (table images)
-    public function find3Last()
+    // Coder la méthode pour rechercher dans la bdd les 3 dernières réalisations (table réalisations), avec la première image liée à chaque réalisation (table images)
+    public function findLast3Realisations()
     {
-        return $this->createQueryBuilder('r')
-            ->orderBy('r.id', 'DESC')
+        $query = $this->createQueryBuilder('realis');
+        $query = $query->select('realis')
+            ->innerJoin('realis.images', 'i')
+            ->where('i.realisations_id = :id')
+            ->setParameter('id', 'toto')
+            ->orderBy('realis.date_fin', 'DESC')
             ->setMaxResults(3)
             ->getQuery()
             ->getResult();
+        return $query;
+
+
+
+
+
+        // return $this->createQueryBuilder('realis')
+        // ->innerJoin('images', 'i')
+        // // ->where('i.id = :images.realisations_id_id')
+        // ->orderBy('realis.date_fin', 'DESC')
+        // ->setMaxResults(3)
+        // ->getQuery()
+        // ->getResult();
     }
 
+
+    // public function findPostByCategory($categoryId)
+    // {
+    //     $query = $this->createQueryBuilder('p');
+    //     $query = $query->select('p')
+    //         ->innerJoin('p.categoryPost', 'c')
+    //         ->where('c.id = :categoryId')
+    //         ->setParameter('categoryId', $categoryId)
+    //         ->getQuery()
+    //         ->getResult();
+    //     return $query;
+    // }
 
 
     // /**

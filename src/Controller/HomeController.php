@@ -28,14 +28,14 @@ class HomeController extends AbstractController
       $slogan = $this->getDoctrine()->getRepository(Slogan::class)->findBy(array(), array('id' => 'ASC'), 1, 0);
 
       // On récupère les 3 dernières réalisations avec une methode directement dans le repos
-      $last3Realisations = $this->realisationsRepository->find3Last();
+      $last3Realisations = $this->realisationsRepository->findLast3Realisations();
 
 
 
 
-      dump($last3Realisations);
+      // dump($last3Realisations);
 
-      // dd($realisations);
+      dd($last3Realisations);
 
 
       // On envoie à la vue les différentes variables, dont le slogan, dans un tableau 
