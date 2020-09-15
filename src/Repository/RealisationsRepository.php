@@ -22,45 +22,29 @@ class RealisationsRepository extends ServiceEntityRepository
 
 
     // Coder la méthode pour rechercher dans la bdd les 3 dernières réalisations (table réalisations), avec la première image liée à chaque réalisation (table images)
+
+
+    // Essai1 avec DQL de doctrine, mais ça me retourne un tableau vide.
+
     public function findLast3Realisations()
     {
-        $query = $this->createQueryBuilder('realis');
-        $query = $query->select('realis')
-            ->innerJoin('realis.images', 'i')
-            ->where('i.realisations_id = :id')
+        $query = $this->createQueryBuilder('r')
+            ->select('r')
+            ->join('r.images', 'i', 'WITH', 'i.realisations_id = :id')
+            // ->andwhere('i.realisations_id = :id')
+            // ->orderBy('r.date_fin', 'DESC')
             ->setParameter('id', 'toto')
-            ->orderBy('realis.date_fin', 'DESC')
-            ->setMaxResults(3)
+            // ->setMaxResults(3)
             ->getQuery()
             ->getResult();
-        return $query;
-
-
-
-
-
-        // return $this->createQueryBuilder('realis')
-        // ->innerJoin('images', 'i')
-        // // ->where('i.id = :images.realisations_id_id')
-        // ->orderBy('realis.date_fin', 'DESC')
-        // ->setMaxResults(3)
-        // ->getQuery()
-        // ->getResult();
+dd($query);
+        // return $query;
     }
 
 
-    // public function findPostByCategory($categoryId)
-    // {
-    //     $query = $this->createQueryBuilder('p');
-    //     $query = $query->select('p')
-    //         ->innerJoin('p.categoryPost', 'c')
-    //         ->where('c.id = :categoryId')
-    //         ->setParameter('categoryId', $categoryId)
-    //         ->getQuery()
-    //         ->getResult();
-    //     return $query;
-    // }
 
+
+    // ============ Exemples fournis par symfony ================
 
     // /**
     //  * @return Realisations[] Returns an array of Realisations objects
