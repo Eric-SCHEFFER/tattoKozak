@@ -24,22 +24,42 @@ class RealisationsRepository extends ServiceEntityRepository
     // Coder la méthode pour rechercher dans la bdd les 3 dernières réalisations (table réalisations), avec la première image liée à chaque réalisation (table images)
 
 
-    // Essai1 avec DQL de doctrine, mais ça me retourne un tableau vide.
+    // Essai avec DQL
 
     public function findLast3Realisations()
     {
-        $query = $this->createQueryBuilder('r')
-            ->select('r')
-            ->join('r.images', 'i', 'WITH', 'i.realisations_id = :id')
-            // ->andwhere('i.realisations_id = :id')
-            // ->orderBy('r.date_fin', 'DESC')
-            ->setParameter('id', 'toto')
-            // ->setMaxResults(3)
-            ->getQuery()
-            ->getResult();
-dd($query);
-        // return $query;
+        // Select simple
+        $dql = 'SELECT * FROM App\Entity\Realisations';
+        $query = $this->getEntityManager()->createQuery($dql);
+
+
+        // join
+        // $query = $em->createQuery("SELECT u FROM User u JOIN u.address a WHERE a.city = 'Berlin'");
+        // $users = $query->getResult();
+
+        
+        // dd($query);
+        return $query->execute();
     }
+
+
+
+    // Essai avec QueryBuilder, mais ça me retourne un tableau vide.
+
+    // public function findLast3Realisations()
+    // {
+    //     $query = $this->createQueryBuilder('r')
+    //         ->select('r')
+    //         ->join('r.images', 'i', 'WITH', 'i.realisations_id = :id')
+    //         // ->andwhere('i.realisations_id = :id')
+    //         // ->orderBy('r.date_fin', 'DESC')
+    //         ->setParameter('id', 'toto')
+    //         // ->setMaxResults(3)
+    //         ->getQuery()
+    //         ->getResult();
+    //     dd($query);
+    //     // return $query;
+    // }
 
 
 
