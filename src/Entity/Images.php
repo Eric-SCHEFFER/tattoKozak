@@ -17,11 +17,7 @@ class Images
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
-
+    
     /**
      * @ORM\Column(type="text")
      */
@@ -38,17 +34,7 @@ class Images
         return $this->id;
     }
 
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
+   
 
     public function getLien(): ?string
     {
