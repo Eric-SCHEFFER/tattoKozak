@@ -9,10 +9,11 @@
 
 
 {% block body %}
-	{# {{ dump(last3Realisations) }};
+	{{ dump(last3Realisations) }}
+
 	<div
 		id="slogan">
-		<!-- On récupère notre slogan, envoyé par le controlleur, qui l'a reçu depuis une méthode dans le repository corespondant -->
+		<!-- On récupère notre slogan, depuis le controlleur, avec la méthode find -->
 		{{ slogan[0].texte }}
 	</div>
 
@@ -22,7 +23,7 @@
 		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
-					<a href=""><img src={{ realisation.image }}></a>
+					<a href=""><img src={{ realisation.image_defaut }}></a>
 
 				</div>
 				<div class="apercuRealisation-titre">
@@ -39,6 +40,7 @@
 
 
 		{% endfor %}
-	</div> #}
+	</div>
+
 
 {% endblock %}

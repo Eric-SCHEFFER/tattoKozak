@@ -21,31 +21,21 @@ class RealisationsRepository extends ServiceEntityRepository
 
 
 
-    // Coder la méthode pour rechercher dans la bdd les 3 dernières réalisations (table réalisations), avec la première image liée à chaque réalisation (table images)
-
-
-    // Essai avec DQL
-
+    // Coder la méthode pour rechercher dans la bdd les 3 dernières réalisations (table réalisations)
+    // avec QueryBuilder.
     public function findLast3Realisations()
     {
-        // Select simple
-        $dql = 'SELECT * FROM App\Entity\Realisations';
-        $query = $this->getEntityManager()->createQuery($dql);
-
-
-        // join
-        // $query = $em->createQuery("SELECT u FROM User u JOIN u.address a WHERE a.city = 'Berlin'");
-        // $users = $query->getResult();
-
-        
-        // dd($query);
-        return $query->execute();
+        $query = $this->createQueryBuilder('r')
+            ->select('r')
+            ->orderBy('r.date_fin', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+        return $query;
     }
 
 
-
-    // Essai avec QueryBuilder, mais ça me retourne un tableau vide.
-
+    // Ancien test jointure. Mais ça ne fonctionne pas (me retourne un tableau vide)
     // public function findLast3Realisations()
     // {
     //     $query = $this->createQueryBuilder('r')

@@ -103,7 +103,6 @@ class AppFixtures extends Fixture
             ->setlien("assets/images/montgolfieres.jpg");
 
         $image7->setrealisationsid($realisation5)
-            ->setnom("harlem")
             ->setlien("assets/images/harlem.jpg");
 
 

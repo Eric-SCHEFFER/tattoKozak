@@ -34,9 +34,7 @@ class HomeController extends AbstractController
 
 
 
-      // dump($last3Realisations);
 
-      dd($last3Realisations);
 
 
       // On envoie à la vue les différentes variables, dont le slogan, dans un tableau 

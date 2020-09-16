@@ -52,7 +52,8 @@ class Realisations
     /**
      * @ORM\Column(type="text")
      */
-    private $image_defaut;
+    // J'ai mis en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
+    public $image_defaut;
 
     public function __construct()
     {
@@ -124,6 +125,18 @@ class Realisations
         return $this;
     }
 
+    public function getImageDefaut(): ?string
+    {
+        return $this->image_defaut;
+    }
+
+    public function setImageDefaut(string $image_defaut): self
+    {
+        $this->image_defaut = $image_defaut;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Images[]
      */
@@ -151,18 +164,6 @@ class Realisations
                 $image->setRealisationsId(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getImageDefaut(): ?string
-    {
-        return $this->image_defaut;
-    }
-
-    public function setImageDefaut(string $image_defaut): self
-    {
-        $this->image_defaut = $image_defaut;
 
         return $this;
     }
