@@ -49,6 +49,11 @@ class Realisations
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $image_defaut;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -146,6 +151,18 @@ class Realisations
                 $image->setRealisationsId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageDefaut(): ?string
+    {
+        return $this->image_defaut;
+    }
+
+    public function setImageDefaut(string $image_defaut): self
+    {
+        $this->image_defaut = $image_defaut;
 
         return $this;
     }
