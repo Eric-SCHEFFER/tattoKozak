@@ -3,30 +3,31 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/realisation.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/carteRealisation.css') }}">
 {% endblock %}
-{% block title %}Réalisation
+{% block title %}
+	{{ realisation.titre }}
 {% endblock %}
 {% block body %}
 
 
-	<h1>{{ realisations[0].titre }}</h1>
+	<h1>{{ realisation.titre }}</h1>
 
 	<div class="container-realisation">
 
 		<div class="realisation">
 
 			<div class="realisation-image">
-				<img src={{ realisations[0].image }}>
+				<img src={{ realisation.image_defaut }}>
 			</div>
 
 
 			<div class="blocTextes">
 
 				<div class="realisation-hook">
-					<h4 class="accroche">{{ realisations[0].hook }}</h4>
+					<h4 class="accroche">{{ realisation.hook }}</h4>
 				</div>
 				<div class="realisation-description">
 					<p>
-						{{ realisations[0].description }}</p>
+						{{ realisation.description }}</p>
 				</div>
 
 			</div>

@@ -19,7 +19,7 @@
 		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
-					<a href="{{ path('realisation') }}"><img src={{ realisation.image_defaut }}></a>
+					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src={{ realisation.image_defaut }}></a>
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>
@@ -29,7 +29,7 @@
 				</div>
 				<div class="apercuRealisation-description">
 					<p>{{ realisation.description }}</p>
-					<a class="bouton1" href="{{ path('realisation') }}">Voir</a>
+					<a class="bouton1" href="{{ path('realisation', {id: realisation.id}) }}">Voir</a>
 				</div>
 			</div>
 		{% endfor %}

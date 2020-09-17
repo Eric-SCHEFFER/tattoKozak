@@ -22,7 +22,7 @@ class AppFixtures extends Fixture
         $slogan->settexte("La peau dans l'art");
 
         $logo->settexte("Tattoo Kozak")
-            ->setimage("assets/images/logoTatooRouge.png");
+            ->setimage("/assets/images/logoTatooRouge.png");
 
         $manager->persist($slogan);
         $manager->persist($logo);
@@ -36,38 +36,38 @@ class AppFixtures extends Fixture
 
         $realisation1->settitre("la fille qui fume")
             ->sethook("Ben oui, une fille tatouée qui fume !")
-            ->setdescription("Description à la con 1 des fixtures, . Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
+            ->setdescription("Description à la con de la fille qui fume, . Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker. ")
             ->setdatedebut(\DateTime::createFromFormat('Y-m-d', '2020-04-01'))
             ->setdatefin(\DateTime::createFromFormat('Y-m-d', '2020-04-14'))
-            ->setImageDefaut("assets/images/fille_blonde_fume.jpg");
+            ->setImageDefaut("/assets/images/fille_blonde_fume.jpg");
 
         $realisation2->settitre("Super fille rose à lunettes")
             ->sethook("Le rose, dans tous ses états")
-            ->setdescription("Description à la con 2 des fixtures. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
+            ->setdescription("Description à la con de la fille à lunettes. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
             ->setdatedebut(\DateTime::createFromFormat('Y-m-d', '2020-05-05'))
             ->setdatefin(\DateTime::createFromFormat('Y-m-d', '2020-05-15'))
-            ->setImageDefaut("assets/images/fille_rose_lunettes.jpg");
+            ->setImageDefaut("/assets/images/fille_rose_lunettes.jpg");
 
         $realisation3->settitre("La plage vue d'en haut")
             ->sethook("Ça change de voir une plage d'en haut")
-            ->setdescription("Description à la con 3 des fixtures. Diantre, n'est-il pas ? est simplement du bla bla bla faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
+            ->setdescription("Description à la con de la plage vue d'en haut. Diantre, n'est-il pas ? est simplement du bla bla bla faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
             ->setdatedebut(\DateTime::createFromFormat('Y-m-d', '2020-06-11'))
             ->setdatefin(\DateTime::createFromFormat('Y-m-d', '2020-06-16'))
-            ->setImageDefaut("assets/images/plage_de_haut.jpg");
+            ->setImageDefaut("/assets/images/plage_de_haut.jpg");
 
         $realisation4->settitre("Super route")
             ->sethook("Choisi ta route")
-            ->setdescription("Description à la con 4 des fixtures. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
+            ->setdescription("Description à la con de la super route. Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
             ->setdatedebut(\DateTime::createFromFormat('Y-m-d', '2020-06-12'))
             ->setdatefin(\DateTime::createFromFormat('Y-m-d', '2020-06-17'))
-            ->setImageDefaut("assets/images/route.jpg");
+            ->setImageDefaut("/assets/images/route.jpg");
 
         $realisation5->settitre("Pont magnifique")
             ->sethook("Un pont plus loin")
-            ->setdescription("Description à la con 5 des fixtures. Diantre, n'est-il pas ? est simplement du bla bla bla faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
+            ->setdescription("Description à la con du magnifique pont. Diantre, n'est-il pas ? est simplement du bla bla bla faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker. Description à la con du magnifique pont. Diantre, n'est-il pas ? est simplement du bla bla bla faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.")
             ->setdatedebut(\DateTime::createFromFormat('Y-m-d', '2020-06-13'))
             ->setdatefin(\DateTime::createFromFormat('Y-m-d', '2020-06-18'))
-            ->setImageDefaut("assets/images/golden_gate.jpg");
+            ->setImageDefaut("/assets/images/golden_gate.jpg");
 
         $manager->persist($realisation1);
         $manager->persist($realisation2);
@@ -85,25 +85,25 @@ class AppFixtures extends Fixture
         $image7 = new Images();
 
         $image1->setrealisationsid($realisation1)
-            ->setlien("assets/images/fille_rousse_bibliotheque.jpg");
+            ->setlien("/assets/images/fille_rousse_bibliotheque.jpg");
 
         $image2->setrealisationsid($realisation2)
-            ->setlien("assets/images/fille_tatouee_nb_lunettes_soleil.jpg");
+            ->setlien("/assets/images/fille_tatouee_nb_lunettes_soleil.jpg");
 
         $image3->setrealisationsid($realisation3)
-            ->setlien("assets/images/mec_assis_bordure_metal_nb.jpg");
+            ->setlien("/assets/images/mec_assis_bordure_metal_nb.jpg");
 
         $image4->setrealisationsid($realisation4)
-            ->setlien("assets/images/route.jpg");
+            ->setlien("/assets/images/route.jpg");
 
         $image5->setrealisationsid($realisation5)
-            ->setlien("assets/images/goldengate.jpg");
+            ->setlien("/assets/images/goldengate.jpg");
 
         $image6->setrealisationsid($realisation5)
-            ->setlien("assets/images/montgolfieres.jpg");
+            ->setlien("/assets/images/montgolfieres.jpg");
 
         $image7->setrealisationsid($realisation5)
-            ->setlien("assets/images/harlem.jpg");
+            ->setlien("/assets/images/harlem.jpg");
 
 
         $manager->persist($image1);

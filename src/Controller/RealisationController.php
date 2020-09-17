@@ -2,19 +2,26 @@
 
 namespace App\Controller;
 
+use App\Entity\Realisations;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 class RealisationController extends AbstractController
 {
 
 
    /**
-    * @Route("/{id}", name="realisation")
+    * @Route("/realisations/{id}", name="realisation")
     */
 
-   public function realisationLoad()
+   public function realisationLoad($id)
    {
-      return $this->render('tatoo-kozak/pages/realisation.html.twig');
+      $repo = $this->getDoctrine()->getRepository(Realisations::class);
+      $realisation = $repo->find($id);
+      return $this->render('tatoo-kozak/pages/realisation.html.twig', [
+         'realisation' => $realisation
+
+      ]);
    }
 }
