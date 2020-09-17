@@ -3,13 +3,10 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/carteApercuRealisation.css') }}">
-
-
 {% endblock %}
 
 
 {% block body %}
-	{{ dump(last3Realisations) }}
 
 	<div
 		id="slogan">
@@ -19,12 +16,10 @@
 
 
 	<div class="container-apercuRealisations">
-
 		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
-					<a href=""><img src={{ realisation.image_defaut }}></a>
-
+					<a href="{{ path('realisation') }}"><img src={{ realisation.image_defaut }}></a>
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>
@@ -34,13 +29,9 @@
 				</div>
 				<div class="apercuRealisation-description">
 					<p>{{ realisation.description }}</p>
-					<a class="bouton1" href="">Voir</a>
+					<a class="bouton1" href="{{ path('realisation') }}">Voir</a>
 				</div>
 			</div>
-
-
 		{% endfor %}
 	</div>
-
-
 {% endblock %}

@@ -10,9 +10,8 @@ class RealisationController extends AbstractController
 
 
    /**
-    * @Route("/realisation", name="realisation")
+    * @Route("/{id}", name="realisation")
     */
-
 
    public function realisationLoad()
    {

@@ -68,7 +68,7 @@
    background-color: white;
 }
 
-.apercuRealisation-description p, .apercuRealisation-hook h4 {
+.apercuRealisation-description p, .apercuRealisation-hook h4, .apercuRealisation-titre h3 {
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
