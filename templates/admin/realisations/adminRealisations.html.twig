@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> #}
+{% endblock %}
+
+{% block title %}
+	admin.html.twig
+{% endblock %}
+
+{% block body %}
+
+	{# {{ dump(realisations)}} #}
+
+	<h1>Gérer les réalisations</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for realisation in realisations %}
+				<tr>
+					<td>
+						{{ realisation.titre }}
+					</td>
+					<td>
+						<a href="{{ path('admin.realisations.edit', {id: realisation.id}) }}">Editer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+{% endblock %}
