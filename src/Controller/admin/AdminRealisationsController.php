@@ -30,7 +30,7 @@ class AdminRealisationsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="admin.realisation.edit")
+     * @Route("/admin/edit/{id}", name="admin.realisation.edit")
      */
     public function edit()
     {

@@ -53,8 +53,6 @@
    flex-direction: row;
    justify-content: baseline;
    flex-wrap: wrap;
-
-   
 }
 
 .blocMentionsNiv-2 {
@@ -86,4 +84,3 @@
 [tag~=pasDePipeOrange] a::before {
    content: "";
 }
-

@@ -219,6 +219,7 @@ h5 {
    }
  
    .menuBurger {
+      top: 0;
       position: fixed;
       left: -150px;
       transition-property: left;

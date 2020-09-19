@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-	{# <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> #}
-{% endblock %}
+{% block stylesheets %}{% endblock %}
+
 
 {% block title %}
 	admin.html.twig
@@ -28,7 +27,7 @@
 						{{ realisation.titre }}
 					</td>
 					<td>
-						<a href="{{ path('admin.realisations.edit', {id: realisation.id}) }}">Editer</a>
+						<a href="{{ path('admin.realisation.edit', {id: realisation.id}) }}">Editer</a>
 					</td>
 				</tr>
 			{% endfor %}
