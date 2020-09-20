@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/adminRealisations.css') }}">
+{% endblock %}
 
 
 {% block title %}
@@ -12,27 +14,28 @@
 	{# {{ dump(realisations)}} #}
 
 	<h1>Gérer les réalisations</h1>
+	<div class="conteneur_table">
 
-	<table>
-		<thead>
-			<tr>
-				<th>Titre</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for realisation in realisations %}
+		<table class="table_1">
+			<thead>
 				<tr>
-					<td>
-						{{ realisation.titre }}
-					</td>
-					<td>
-						<a href="{{ path('admin.realisation.edit', {id: realisation.id}) }}">Editer</a>
-					</td>
+					<th>Titre</th>
+					<th>Actions</th>
 				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-
+			</thead>
+			<tbody>
+				{% for realisation in realisations %}
+					<tr>
+						<td>
+							{{ realisation.titre }}
+						</td>
+						<td>
+							<a href="{{ path('admin.realisation.edit', {id: realisation.id}) }}">Editer</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 
 {% endblock %}

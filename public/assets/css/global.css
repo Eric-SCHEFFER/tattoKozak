@@ -3,22 +3,21 @@
 /* ====== CHAQUE PAGE A SON STYLE DÉDIÉ DANS UN CSS SÉPARÉ  ======= */
 
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+
 /* =========== SURCHARGE CERTAINS STYLES UTILISÉS PAR BOOTSTRAP POUR ÉVITER 2-3 BUGS D'AFFICHAGE =========== */
 
 *, ::after, ::before {
    box-sizing: initial;
 }
 
-
-
 /* ================================== */
+
 
 html {
    margin: 0;
    padding: 0;
 }
 
-/* ================================== */
 
 body {
    padding: 0 0px 0 0px;
@@ -59,8 +58,7 @@ h5, h6 {
 .contenu {
    margin: 0;
    padding: 0;
-   min-height: calc(100vh - 210px);
-   /* Ajuster les px si le footer flotte trop haut */
+   min-height: calc(100vh - 210px); /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrol vertical */
 }
 
 /* ====== LIENS ET ICONES======= */
