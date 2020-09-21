@@ -12,7 +12,7 @@ class RealisationController extends AbstractController
 
 
    /**
-    * @Route("/realisations/{id}", name="realisation")
+    * @Route("/realisation/{id}", name="realisation")
     */
 
    public function realisationLoad($id)

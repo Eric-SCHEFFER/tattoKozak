@@ -30,11 +30,14 @@ class AdminRealisationsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/edit/{id}", name="admin.realisation.edit")
+     * @Route("/admin/realisation/edit/{id}", name="admin.realisation.edit")
+     * @param Realisation $realisation
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit()
+    public function edit(Realisation $realisation)
     {
-
-
+        return $this->render('admin/realisations/edit.html.twig', [
+            'realisation' => $realisation
+        ]);
     }
 }
