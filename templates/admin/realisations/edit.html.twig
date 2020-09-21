@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+
+{% block title %}
+	edit.html.twig
+{% endblock %}
+
+{% block body %}
+	<h1>Édition une réalisation</h1>
+
+	{{ form_start(form) }}
+
+	{{ form_rest(form) }}
+	<button>Sauvegarder</button>
+	{{ form_end(form) }}
+
+
+{% endblock %}

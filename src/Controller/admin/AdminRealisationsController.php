@@ -2,6 +2,8 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\Realisations;
+use App\Form\RealisationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RealisationsRepository;
@@ -30,14 +32,18 @@ class AdminRealisationsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/realisation/edit/{id}", name="admin.realisation.edit")
-     * @param Realisation $realisation
+     * @Route("/admin/realisations/edit/{id}", name="admin.realisations.edit")
+     * @param Realisations $realisation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Realisation $realisation)
+    public function edit(Realisations $realisations)
     {
+        $form = $this->createForm(RealisationType::class, $realisations);
+        
+
         return $this->render('admin/realisations/edit.html.twig', [
-            'realisation' => $realisation
+            'realisation' => $realisations,
+            'form' => $form->createView()
         ]);
     }
 }
