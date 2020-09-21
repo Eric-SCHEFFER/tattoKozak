@@ -1,10 +1,19 @@
 .conteneur_table {
-   display: flex;
-   border: 1px solid blue;
+   margin: auto;
    max-width: 700px;
 }
 
 .table_1 {
-   border: 1px solid rgb(238, 238, 238);
-   align-items: center;
+   width: 99%;
 }
+
+.table_1 tbody tr:nth-child(2n + 1) {
+   background-color: rgba(144, 144, 144, 0.075);
+}
+
+.table_1, .table_1 th, .table_1 td {
+   border: 1px solid #ffffff;
+   border-collapse: collapse;
+   padding: 14px;
+}
+
