@@ -34,15 +34,7 @@ class Realisations
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date_debut;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date_fin;
 
     /**
      * @ORM\OneToMany(targetEntity=Images::class, mappedBy="realisations_id", orphanRemoval=true)
@@ -54,6 +46,13 @@ class Realisations
      */
     // J'ai mis en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
     public $image_defaut;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_creation;
+
+
 
     public function __construct()
     {
@@ -101,29 +100,7 @@ class Realisations
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
-    {
-        return $this->date_debut;
-    }
 
-    public function setDateDebut(\DateTimeInterface $date_debut): self
-    {
-        $this->date_debut = $date_debut;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->date_fin;
-    }
-
-    public function setDateFin(\DateTimeInterface $date_fin): self
-    {
-        $this->date_fin = $date_fin;
-
-        return $this;
-    }
 
     public function getImageDefaut(): ?string
     {
@@ -164,6 +141,18 @@ class Realisations
                 $image->setRealisationsId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->date_creation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $date_creation): self
+    {
+        $this->date_creation = $date_creation;
 
         return $this;
     }

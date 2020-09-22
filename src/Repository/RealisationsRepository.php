@@ -27,7 +27,7 @@ class RealisationsRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('r')
             ->select('r')
-            ->orderBy('r.date_fin', 'DESC')
+            ->orderBy('r.date_creation', 'DESC')
             ->setMaxResults(3)
             ->getQuery()
             ->getResult();

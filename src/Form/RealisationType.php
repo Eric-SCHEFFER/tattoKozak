@@ -15,8 +15,7 @@ class RealisationType extends AbstractType
             ->add('titre')
             ->add('hook')
             ->add('description')
-            ->add('date_debut')
-            ->add('date_fin')
+            ->add('date_creation')
             ->add('image_defaut')
         ;
     }
