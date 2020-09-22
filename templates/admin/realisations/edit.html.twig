@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/edit.css') }}">
+{% endblock %}
 
 
 {% block title %}
@@ -11,8 +13,12 @@
 	<h1>Édition une réalisation</h1>
 
 	{{ form_start(form) }}
+	<div class="champ">
+		{{ form_row(form.titre, {'attr:' {'class':"test"}}) }}
 
-	{{ form_rest(form) }}
+	</div>
+
+
 	<button>Sauvegarder</button>
 	{{ form_end(form) }}
 

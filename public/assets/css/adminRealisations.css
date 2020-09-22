@@ -17,3 +17,27 @@
    padding: 14px;
 }
 
+.bleu {
+   color: #469fff;
+}
+
+.bleu:hover {
+color: #73b7ff;
+}
+
+.rouge {
+   color: #dc3545;
+}
+ .rouge:hover {
+color: #f14758;
+ }
+
+ .table_1 td a i {
+    margin: 0 10px 0 10px;
+ }
+
+ @media screen and (max-width: 870px) {
+   .table_1 td a i {
+      margin: 10px;
+   }
+ }
