@@ -1,26 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/edit.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/edit.css') }}">
 {% endblock %}
 
 
 {% block title %}
-	edit.html.twig
+edit.html.twig
 {% endblock %}
 
 {% block body %}
-	<h1>Édition une réalisation</h1>
-
-	{{ form_start(form) }}
-	<div class="champ">
-		{{ form_row(form.titre, {'attr:' {'class':"test"}}) }}
-
-	</div>
-
-
-	<button>Sauvegarder</button>
-	{{ form_end(form) }}
-
-
+<h1>Éditer une réalisation</h1>
+{{ include ('admin/realisations/_form.html.twig', {form: form, button: 'Editer'}) }}
 {% endblock %}

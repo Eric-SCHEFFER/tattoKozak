@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+
+{% block title %}
+nouvelle.html.twig
+{% endblock %}
+
+{% block body %}
+<h1>Nouvelle réalisation</h1>
+{{ include ('admin/realisations/_form.html.twig', {form: form, button: 'Créer'}) }}
+{% endblock %}

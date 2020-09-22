@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+
+<div class="champ">
+    {{ form_row(form.titre) }}
+</div>
+{{ form_widget(form) }}
+
+<button>{{ button|default('Enregistrer') }}</button>
+{{ form_end(form) }}
