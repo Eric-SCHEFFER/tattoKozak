@@ -81,11 +81,13 @@ class AdminRealisationsController extends AbstractController
      * @param Realisations $realisation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delete(Realisations $realisations)
+    public function delete(Realisations $realisations, Request $request)
     {
-        //$this->em->remove($realisations);
-        //$this->em->flush();
-        return new HttpFoundationResponse('Suppression');
-        return $this->redirectToRoute('admin.realisation');
+        if ($this->isCsrfTokenValid('delete' . $realisations->getId(), $request->get('_token'))) {
+            //$this->em->remove($realisations);
+            //$this->em->flush();
+            return new HttpFoundationResponse('Suppression');
+        }
+        //return $this->redirectToRoute('admin.realisation');
     }
 }

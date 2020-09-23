@@ -1,51 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/adminRealisations.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/adminRealisations.css') }}">
 {% endblock %}
 
 
 {% block title %}
-	admin.html.twig
+admin.html.twig
 {% endblock %}
 
 {% block body %}
 
-	{# {{ dump(realisations)}} #}
+{# {{ dump(realisations)}} #}
 
-	<h1>Gérer les réalisations</h1>
-	<div class="conteneur_table">
+<h1>Gérer les réalisations</h1>
+<div class="conteneur_table">
 
-		<table class="table_1">
-			<thead>
-				<tr>
-					<th>Titre</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for realisation in realisations %}
-					<tr>
-						<td>
-							{{ realisation.titre }}
-						</td>
-						<td>
-							<a class="bleu" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}">
-								<i class="fas fa-edit fa-lg"></i>
-							</a>
-							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
-							<form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}">
-								<input type="hidden" name="_method" value="DELETE">
-								<button class="boutonSupprimerRealisation">
-									<i class="fas fa-trash-alt fa-lg"></i>
-								</button>
-							</form>
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		<a href="{{ path('admin.realisation.new') }}">Nouvelle réalisation</a>
-	</div>
+	<table class="table_1">
+		<thead>
+			<tr>
+				<th>Titre</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for realisation in realisations %}
+			<tr>
+				<td>
+					{{ realisation.titre }}
+				</td>
+				<td>
+					<a class="bleu" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}">
+						<i class="fas fa-edit fa-lg"></i>
+					</a>
+					{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
+					<form class="deleteForm" method="post"
+						action="{{ path('admin.realisations.delete', {id: realisation.id}) }}">
+						<input type="hidden" name="_method" value="DELETE">
+
+						<input type="hidden" name="_method" value="{{ csrf_token('delete' ~ realisation.id) }}">
+
+						<button class="boutonSupprimerRealisation">
+							<i class="fas fa-trash-alt fa-lg"></i>
+						</button>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{{ path('admin.realisation.new') }}">Nouvelle réalisation</a>
+</div>
 
 {% endblock %}
