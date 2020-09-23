@@ -1,3 +1,5 @@
+/* ================== TABLE ===================== */
+
 .conteneur_table {
    margin: auto;
    max-width: 700px;
@@ -17,27 +19,41 @@
    padding: 14px;
 }
 
+.table_1 td a i {
+   margin: 0 10px 0 10px;
+}
+
+/* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UNE RÉALISATION ======== */
+
+.deleteForm {
+   display: inline-block;
+}
+
+/* ========== POUR STYLER LES ICONES DE FONTAWESOME ET LES BOUTONS =========== */
+
 .bleu {
    color: #469fff;
 }
 
 .bleu:hover {
-color: #73b7ff;
+   color: #73b7ff;
 }
 
-.rouge {
-   color: #dc3545;
+.boutonSupprimerRealisation {
+   color: #ec1127;
+   cursor: pointer;
+   background-color: transparent;
+   border: transparent;
 }
- .rouge:hover {
-color: #f14758;
- }
 
- .table_1 td a i {
-    margin: 0 10px 0 10px;
- }
+.boutonSupprimerRealisation:hover {
+   color: #f05766;
+}
 
- @media screen and (max-width: 870px) {
+/* ============================ */
+
+@media screen and (max-width: 870px) {
    .table_1 td a i {
       margin: 10px;
    }
- }
+}

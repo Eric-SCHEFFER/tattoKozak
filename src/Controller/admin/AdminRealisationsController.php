@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RealisationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 class AdminRealisationsController extends AbstractController
 {
@@ -27,7 +28,7 @@ class AdminRealisationsController extends AbstractController
      */
     public function index()
     {
-        $realisations = $this->repository->findAll();
+        $realisations = $this->repository->findBy(array(), array('date_creation' => 'DESC'));
 
         return $this->render('admin/realisations/adminRealisations.html.twig', [
             'realisations' => $realisations
@@ -56,7 +57,7 @@ class AdminRealisationsController extends AbstractController
 
 
     /**
-     * @Route("/admin/realisations/edit/{id}", name="admin.realisations.edit")
+     * @Route("/admin/realisations/edit/{id}", name="admin.realisations.edit", methods="GET|POST")
      * @param Realisations $realisation
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -73,5 +74,18 @@ class AdminRealisationsController extends AbstractController
             'realisation' => $realisations,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/admin/realisations/edit/{id}", name="admin.realisations.delete", methods="DELETE")
+     * @param Realisations $realisation
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function delete(Realisations $realisations)
+    {
+        //$this->em->remove($realisations);
+        //$this->em->flush();
+        return new HttpFoundationResponse('Suppression');
+        return $this->redirectToRoute('admin.realisation');
     }
 }
