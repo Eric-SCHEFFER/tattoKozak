@@ -74,6 +74,20 @@
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
+/* =========== Message flash ================= */
+
+.messageFlash {
+   margin: auto;
+   padding: 8px;
+   background-color: rgb(129, 255, 211);
+   text-align: center;
+   border-radius: 6px;
+   max-width: 400px;
+   color: rgb(0, 0, 0);
+}
+
+
+
 /* ============================ */
 
 @media screen and (max-width: 362px) {}

@@ -47,6 +47,7 @@ class AdminRealisationsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($realisations);
             $this->em->flush();
+            $this->addFlash('succes', 'Réalisation crée avec succès');
             return $this->redirectToRoute('admin.realisation');
         }
         return $this->render('admin/realisations/nouvelle.html.twig', [
@@ -68,6 +69,7 @@ class AdminRealisationsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
+            $this->addFlash('succes', 'Réalisation mise à jour avec succès');
             return $this->redirectToRoute('admin.realisation');
         }
         return $this->render('admin/realisations/edit.html.twig', [
@@ -87,6 +89,7 @@ class AdminRealisationsController extends AbstractController
         // if ($this->isCsrfTokenValid('delete' . $realisations->getId(), $request->get('_token'))) {
         $this->em->remove($realisations);
         $this->em->flush();
+        $this->addFlash('succes', 'Réalisation supprimée avec succès');
         //return new HttpFoundationResponse('Suppression');
         // }
         return $this->redirectToRoute('admin.realisation');
