@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/realisations.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/carteApercuRealisation.css') }}">
 {% endblock %}
 
@@ -10,6 +10,24 @@
 
 {% block body %}
 	<h1>Réalisations</h1>
-
+	<div class="container-apercuRealisations">
+		{% for realisation in realisations %}
+			<div class="apercuRealisation">
+				<div class="apercuRealisation-image">
+					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src={{ realisation.image_defaut }}></a>
+				</div>
+				<div class="apercuRealisation-titre">
+					<h3>{{ realisation.titre }}</h3>
+				</div>
+				<div class="apercuRealisation-hook">
+					<h4 class="accroche">{{ realisation.hook }}</h4>
+				</div>
+				<div class="apercuRealisation-description">
+					<p>{{ realisation.description }}</p>
+					<a class="bouton1" href="{{ path('realisation', {id: realisation.id}) }}">Voir</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 
 {% endblock %}

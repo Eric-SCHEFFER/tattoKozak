@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RealisationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
+
 
 class AdminRealisationsController extends AbstractController
 {
@@ -83,11 +83,12 @@ class AdminRealisationsController extends AbstractController
      */
     public function delete(Realisations $realisations, Request $request)
     {
-        if ($this->isCsrfTokenValid('delete' . $realisations->getId(), $request->get('_token'))) {
-            //$this->em->remove($realisations);
-            //$this->em->flush();
-            return new HttpFoundationResponse('Suppression');
-        }
-        //return $this->redirectToRoute('admin.realisation');
+        // TODO: Vérif token pour sécuriser la suppression d'une réalisation (pour l'instant, marche pas, erreur "csrf token invalid method override")
+        // if ($this->isCsrfTokenValid('delete' . $realisations->getId(), $request->get('_token'))) {
+        $this->em->remove($realisations);
+        $this->em->flush();
+        //return new HttpFoundationResponse('Suppression');
+        // }
+        return $this->redirectToRoute('admin.realisation');
     }
 }
