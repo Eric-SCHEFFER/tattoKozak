@@ -69,7 +69,9 @@ class AdminRealisationsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            $this->addFlash('succes', 'Réalisation mise à jour avec succès');
+            dd($this);
+            // J'essaye de rajouter le titre de la réalisation dans le flashMessage
+            $this->addFlash('succes', '"' . $realisations->getTitre() . '"' . ' mis à jour avec succès');
             return $this->redirectToRoute('admin.realisation');
         }
         return $this->render('admin/realisations/edit.html.twig', [
@@ -89,7 +91,7 @@ class AdminRealisationsController extends AbstractController
         // if ($this->isCsrfTokenValid('delete' . $realisations->getId(), $request->get('_token'))) {
         $this->em->remove($realisations);
         $this->em->flush();
-        $this->addFlash('succes', 'Réalisation supprimée avec succès');
+        $this->addFlash('succes', '"' . $realisations->getTitre() . '"' . ' supprimé avec succès');
         //return new HttpFoundationResponse('Suppression');
         // }
         return $this->redirectToRoute('admin.realisation');
