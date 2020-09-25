@@ -69,7 +69,6 @@ class AdminRealisationsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            dd($this);
             // J'essaye de rajouter le titre de la réalisation dans le flashMessage
             $this->addFlash('succes', '"' . $realisations->getTitre() . '"' . ' mis à jour avec succès');
             return $this->redirectToRoute('admin.realisation');
