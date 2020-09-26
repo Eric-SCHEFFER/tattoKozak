@@ -1,0 +1,59 @@
+.container-form {
+   /* border: 1px yellow solid; */
+   display: flex;
+   justify-content: center;
+   margin: 0 8px 0 8px;
+}
+
+.form1 {
+   /* border: solid 1px blue; */
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   max-width: 700px;
+}
+
+.form1 .titre, .form1 .hook, .form1 .image, .form1 .description {
+   width: 95%;
+   font-family: 'Kodchasan', sans-serif;
+   margin: 0 0 20px 0;
+   height: 25px;
+   border-radius: 6px;
+   padding: 8px;
+   font-size: 1em;
+   color: rgb(78, 78, 78);
+}
+
+.form1 .description {
+   height: 100px;
+}
+
+.form1 button {
+   font-family: 'Kodchasan', sans-serif;
+   text-align: center;
+   border: unset;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* box-shadow: 2px 2px 8px #4d4d4d; */
+   height: 40px;
+   border-radius: 6px;
+   background-color: #2c70b8;
+   font-weight: bold;
+   /* text-shadow: 2px 2px 3px rgb(0, 0, 0); */
+   color: #e0e0e0;
+   font-size: 1.1em;
+   cursor: pointer;
+   margin-top: 20px;
+}
+
+
+
+.form1 button:hover {
+   color: rgb(255, 255, 255);
+}
+
+/* Surcharge le style de a qui est en blanc */
+.messageFlash a {
+   color: #265735;
+}

@@ -1,9 +1,28 @@
-{{ form_start(form) }}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/formulaireCrud.css') }}">
+{% endblock %}
 
-<div class="champ">
-    {{ form_row(form.titre) }}
+<div class="container-form">
+	<div class="">
+		{{ form_start(form, {'attr':{'class':'form1'}}) }}
+		<div class="champ">
+			{{ form_row(form.titre, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.hook, {'attr':{'class':'hook'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.date_creation, {'attr':{'class':'date'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.image_defaut, {'attr':{'class':'image'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.description, {'attr':{'class':'description'}}) }}
+		</div>
+
+
+		<button>{{ button|default('Enregistrer') }}</button>
+		{{ form_end(form) }}
+	</div>
 </div>
-{{ form_widget(form) }}
-
-<button>{{ button|default('Enregistrer') }}</button>
-{{ form_end(form) }}

@@ -14,9 +14,9 @@ class RealisationType extends AbstractType
         $builder
             ->add('titre')
             ->add('hook')
-            ->add('description')
             ->add('date_creation')
             ->add('image_defaut')
+            ->add('description')
         ;
     }
 
