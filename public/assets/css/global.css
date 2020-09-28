@@ -88,6 +88,10 @@ i {
    /* color: #FF4900; */
 }
 
+.barreAdmin {
+   background-color: rgb(0, 39, 112);
+}
+
 @media screen and (max-width: 870px) {
    /* div servant uniquement à assombrir l'affichage lors de l'ouverture du menu burger */
    #body2 {

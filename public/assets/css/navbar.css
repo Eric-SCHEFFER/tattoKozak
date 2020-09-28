@@ -78,7 +78,7 @@
    display: flex;
    flex-direction: column;
    justify-content: space-around;
-   align-items: center;
+   align-items: start;
    text-decoration: none;
    /* border: 1px solid blue; */
    height: 100%;
@@ -88,13 +88,13 @@
    margin: 0 2vw 0 2vw;
 }
 
-.menu i {}
 
-h5 {
+
+.menu h5 {
    display: flex;
    justify-content: center;
    flex-direction: column;
-   align-items: center;
+   align-items: start;
    margin: 0;
    width: 70px;
    font-size: .8em;
@@ -119,6 +119,32 @@ h5 {
 .menuBurger {
    display: none;
 }
+
+/* ====== BARRE ADMINISTRATION APPARAISSANT QUAND ON EST CONNECTÉ ======= */
+.barreAdmin {
+   border: solid rgb(252, 80, 0) 1px;
+   display: flex;
+   justify-content: flex-end;
+   flex-wrap: wrap;
+   
+
+   
+   background-color: rgb(0, 39, 112);
+}
+
+.barreAdmin ul {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0;
+   padding: 4px 0;
+   border: solid lawngreen 1px;
+   list-style-type: none;
+}
+
+.barreAdmin ul li {
+   margin: 0 8px;
+}
+
 
 /* ====== ICONES ======= */
 
@@ -230,7 +256,7 @@ h5 {
       align-items: center;
       flex-direction: column;
       list-style-type: none;
-      width: 150px;
+      width: 200px;
       height: 100vh;
       background-color: rgb(48, 48, 48);
       /* box-shadow: 6px 1px 12px rgb(56, 56, 56); */
@@ -240,12 +266,22 @@ h5 {
    .menuBurger a {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: start;
+      margin-left: 10px;
    }
    .menuBurger li {
       width: 100%;
    }
    .menuBurger h5 {
       margin-top: 10px;
+   }
+
+   .icon-accueil::before,
+   .icon-realisations::before,
+   .icon-faq::before,
+   .icon-contact::before,
+   .icon-inscription::before,
+   .icon-deconnexion::before {
+      padding-right: 10px;
    }
 }
