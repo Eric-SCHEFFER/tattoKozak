@@ -60,11 +60,7 @@
 				<h5 class="icon-inscription">Inscription</h5>
 			</a>
 		</li>
-		<li>
-			<a class="lienMenu" href="{{ path('home') }}">
-				<h5 class="icon-deconnexion">Déconnexion</h5>
-			</a>
-		</li>
+		
 	</ul>
 	<div id="burger">
 		<div id="burgerBarre1"></div>
@@ -79,11 +75,14 @@
 	{# On teste s'il y a un user de connecté, et si oui, on affiche une petite barre avec l'user et un bouton de déconnexion #}
 	{% if app.user %}
 	<ul>
+		
 		<li>
-			{{ app.user.username }}
+			<a href="{{ path('app_logout') }}">
+				<h5 class="icon-deconnexion">Déconnexion</h5>
+			</a>
 		</li>
-		<li>
-			<a href="{{ path('app_logout') }}">Déconnexion</a>
+		<li >
+			<h5 id = "userName" class="icon-user">{{ app.user.username }}</h5>
 		</li>
 	</ul>
 	{% endif %}
