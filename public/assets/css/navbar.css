@@ -10,7 +10,7 @@
    display: flex;
    justify-content: space-between;
    position: relative;
-   width: 98%;
+   /* width: 98%; */
    height: 90px;
    overflow: hidden;
    background: inherit;
@@ -115,61 +115,56 @@
    display: none;
 }
 
-/* ====== BARRE ADMINISTRATION APPARAISSANT QUAND ON EST CONNECTÉ ======= */
-.barreAdmin {
+/* ====== INFOS USER APPARAISSANT QUAND ON EST CONNECTÉ ======= */
+.infosUser {
    display: flex;
    justify-content: flex-end;
    flex-wrap: wrap;
 }
 
-
-
-.barreAdmin ul {
+.infosUser ul {
    display: flex;
    flex-wrap: wrap;
    align-items: center;
    justify-content: center;
-   margin: 0;
+   margin: 0 26px 0 0;
    padding: 4px 0;
    list-style-type: none;
    background-color: rgb(0, 0, 0);
    border-radius: 6px;
 }
 
-.barreAdmin ul li {
+.infosUser ul li {
    margin: 0 16px;
 }
 
 #userName {
-   color: rgb(255, 255, 0);
+   color: #00ccff;
 }
 
-.barreAdmin h5 {
+.infosUser h5 {
 font-size: .8em;
 margin:0;
 padding: 0;
 }
 
-.barreAdmin h5:hover {
+/* .infosUser h5:hover {
    color: white;
-}
+} */
 
-.icon-deconnexion::before {
-   content: "\f13e";
-}
-
-.icon-user::before {
-   content: "\f007";
-}
-
-.icon-deconnexion::before, .icon-user::before {
+.icon-deconnexion::before,
+.icon-user::before
+{
+   position: relative;
    font-family: "Font Awesome 5 Free";
-   font-size: 1.1em;
-   width: 32px;
-   font-weight: 600;
-   margin:0 4px 0 4px;
-   padding:0;
+   font-size: 1.4em;
+   font-weight: 900;
+   margin: 0 6px 0px 0px;
+   padding: 0;
+   bottom: 2px;
 }
+
+
 
 
 
@@ -179,12 +174,14 @@ padding: 0;
 .icon-realisations::before,
 .icon-faq::before,
 .icon-contact::before,
-.icon-inscription::before {
+.icon-inscription::before,
+.icon-admin::before
+{
    font-family: "Font Awesome 5 Free";
    font-size: 1.7em;
    font-weight: 900;
-   margin-left: 4px;
-   padding: 12px 0 0 0;
+   margin: 0 0 4px 2px;
+   padding: 0;
 }
 
 .icon-accueil::before {
@@ -203,11 +200,17 @@ padding: 0;
    content: "\f674";
 }
 
-.icon-inscription::before {
-   content: "\f234";
+.icon-admin::before {
+   content: "\f0ad";
 }
 
+.icon-deconnexion::before {
+   content: "\f13e";
+}
 
+.icon-user::before {
+   content: "\f007";
+}
 
 /* ====== PETITS ÉCRANS ======= */
 

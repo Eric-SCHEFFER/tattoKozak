@@ -27,7 +27,7 @@
 					{% if
 						menu_courant is defined and menu_courant == 'home'
 					%}
-							active
+						active
 					{% endif %}
 					">Accueil
 				</h5>
@@ -39,7 +39,7 @@
 					{% if
 						menu_courant is defined and menu_courant == 'realisations'
 					%}
-							active
+						active
 					{% endif %}
 					">Réalisations
 				</h5>
@@ -55,12 +55,14 @@
 				<h5 class="icon-contact">Contact</h5>
 			</a>
 		</li>
-		<li>
-			<a class="lienMenu" href="{{ path('home') }}">
-				<h5 class="icon-inscription">Inscription</h5>
-			</a>
-		</li>
-		
+		{# S'il y a un user de connecté, on affiche le ou les liens #}
+		{% if app.user %}
+			<li>
+				<a class="lienMenu" href="{{ path('admin') }}">
+					<h5 class="icon-admin">Admin</h5>
+				</a>
+			</li>
+		{% endif %}
 	</ul>
 	<div id="burger">
 		<div id="burgerBarre1"></div>
@@ -71,18 +73,17 @@
 </div>
 
 <div
-	class="barreAdmin">
-	{# On teste s'il y a un user de connecté, et si oui, on affiche une petite barre avec l'user et un bouton de déconnexion #}
+	class="infosUser">
+	{# S'il y a un user de connecté, on affiche son nom #}
 	{% if app.user %}
 	<ul>
-		
 		<li>
-			<a href="{{ path('app_logout') }}">
+			<a class="lienMenu" href="{{ path('app_logout') }}">
 				<h5 class="icon-deconnexion">Déconnexion</h5>
 			</a>
-		</li>
-		<li >
-			<h5 id = "userName" class="icon-user">{{ app.user.username }}</h5>
+		</li>	
+		<li id="userName">
+			<h5 class="icon-user">{{ app.user.username }}</h5>
 		</li>
 	</ul>
 	{% endif %}

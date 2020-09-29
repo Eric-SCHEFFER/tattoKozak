@@ -31,9 +31,8 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   align-self: flex-end;
    width: 100%;
-   width: 150px;
+   /* width: 150px; */
    /* box-shadow: 2px 2px 8px #4d4d4d; */
    height: 40px;
    border-radius: 6px;
@@ -43,7 +42,8 @@
    color: #e0e0e0;
    font-size: 1.1em;
    cursor: pointer;
-   margin-top: 20px;
+   margin: 20px 0 0 0;
+   padding: 0;
 }
 
 .form1 button:hover {
