@@ -24,7 +24,7 @@ class AdminRealisationsController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="admin.realisation")
+     * @Route("/admin/realisations", name="admin.realisation")
      */
     public function index()
     {
