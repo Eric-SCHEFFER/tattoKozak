@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
+{% endblock %}
+{% block title %}
+Contact
+{% endblock %}
+
+{% block body %}
+
+<h1>Contact</h1>
+
+{{ form(contactForm) }}
+
+{% endblock %}
