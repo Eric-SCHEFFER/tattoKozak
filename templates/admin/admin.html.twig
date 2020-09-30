@@ -11,23 +11,22 @@
 {% block body %}
 
 
-    <h1>Administrer mon site</h1>
-    <ul class="liste1">
-		<li>
-			<a class="" href="{{ path('admin.realisation') }}" title="Gérer les réalisations">Gérer les réalisations</a>
-		</li>
-		<li>
-			<a class="" href="{{ path('home') }}" title="Slogan">Slogan</a>
-		</li>
-		<li>
-			<a class="" href="{{ path('home') }}" title="Logo">Logo</a>
-		</li>
-		<li>
-			<a class="" href="{{ path('home') }}" title="Infos de contact">Infos de contact</a>
-		</li>
-	</ul>
-	
+	<h1>Administrer</h1>
 
-
-	
-{% endblock %}
+	<div class="container1">
+		<ul class="liste">
+			<li>
+				<div class="titre">Réalisations</div>
+				<a class="boutonGo" href="{{ path('admin.realisation') }}" title="Réalisations">Go</a>
+			</li>
+			<li>
+				<div class="titre">Slogan</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Slogan">Go</a>
+			</li>
+			<li>
+				<div class="titre">Infos de contact</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Infos de contact">Go</a>
+			</li>
+		</li>
+	</li>
+</ul></div>{% endblock %}

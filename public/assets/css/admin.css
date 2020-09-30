@@ -1,3 +1,39 @@
-.liste1 {
-    list-style-type: none;
+.container1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+.liste {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    width: 250px;
+}
+
+.liste li {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    height: 60px;
+    align-items: center;
+}
+
+.titre {
+    padding: 10px;
+    margin: 0;
+}
+
+.boutonGo {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 60px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: #2c70b8;
+    font-weight: bold;
+}
+
