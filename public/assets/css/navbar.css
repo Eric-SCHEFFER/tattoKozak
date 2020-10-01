@@ -102,11 +102,17 @@
 /* Stylise le lien courant dans le menu */
 .active {
    color: white;
-   font-weight: 900;
+}
+
+.active::after {
+   content: "|";
+   color: tomato;
+   position: relative;
+   margin-top: -18px;
+   margin-left: -5px;
 }
 
 /* On masque le burger quand on est en grand écran */
-
 #burger {
    display: none;
 }
@@ -115,7 +121,7 @@
    display: none;
 }
 
-/* ====== INFOS USER APPARAISSANT QUAND ON EST CONNECTÉ ======= */
+/* ====== NOM USER APPARAISSANT QUAND ON EST CONNECTÉ ======= */
 .infosUser {
    display: flex;
    justify-content: flex-end;
@@ -222,6 +228,12 @@ padding: 0;
    }
    .logo {
       margin: 0 100px 0 0;
+   }
+
+   /* On supprime la pipe du lien actif, car elle serait mal affichée dans le menu lattéral */
+   .active::after {
+      content: "";
+      margin: 0;
    }
 
    #burger {

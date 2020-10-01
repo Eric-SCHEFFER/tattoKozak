@@ -17,9 +17,13 @@
 
 
 	<div class="conteneur_table">
+
+
 		{% for message in app.flashes('succes') %}
-			<div class="messageFlash">
-				{{ message }}
+			<div class="conteneurMessageFlash">
+				<div class="messageFlash">
+					{{ message }}
+				</div>
 			</div>
 		{% endfor %}
 
@@ -58,5 +62,4 @@
 		</table>
 
 	</div>
-
 {% endblock %}

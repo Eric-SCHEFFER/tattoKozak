@@ -1,15 +1,47 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/formulaireContact.css') }}">
 {% endblock %}
 {% block title %}
-Contact
+	Nous contacter
 {% endblock %}
 
 {% block body %}
 
-<h1>Contact</h1>
+	<h1>Nous contacter</h1>
 
-{{ form(contactForm) }}
+	<div class="container-form">
+		{{ form_start(contactForm, {'attr':{'class':'form1'}}) }}
+
+		<div class="ligne">
+			<div class="champ">
+				{{ form_row(contactForm.prenom, {'attr':{'class':''}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(contactForm.nom, {'attr':{'class':''}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(contactForm.tel, {'attr':{'class':''}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(contactForm.email, {'attr':{'class':''}}) }}
+			</div>
+		</div>
+
+		<div class="ligne">
+			<div class="champ">
+				{{ form_row(contactForm.objet, {'attr':{'class':''}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(contactForm.message, {'attr':{'class':''}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(contactForm.envoyer, {'attr':{'class':''}}) }}
+			</div>
+		</div>
+		
+		{{ form_end(contactForm) }}
+
+	</div>
 
 {% endblock %}
