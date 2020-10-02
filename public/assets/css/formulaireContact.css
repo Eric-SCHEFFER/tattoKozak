@@ -1,70 +1,65 @@
-.container-form {
+/* .container-form { */
    /* border: 1px yellow solid; */
-   display: flex;
-   justify-content: center;
-   margin: 10vh 8px 0 8px;
-}
+   /* display: flex; */
+   /* justify-content: center; */
+   /* margin: 10vh 8px 0 8px; */
+/* } */
 
 .form1 {
+   position: relative;
    border: solid 1px blue;
    display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   margin: 10vh 8px 0 8px;
+   /* flex-wrap: wrap; */
+   /* justify-content: center; */
+   margin: 20px 8px 8px 8px;
    flex-direction: column;
    align-items: center;
 }
 
-.ligne {
+/* .ligne {
    border: 1px red solid;
    display: flex;
    margin: 8px;
-   justify-content: center;
+   justify-content: flex-start;
    flex-wrap: wrap;
    width: 98%;
    max-width: 900px;
-}
+   height: 100px;
+} */
 
 .blocChamp {
    display: flex;
-   justify-content: center;
+   justify-content: flex-start;
    border: 1px rgb(9, 255, 0) solid;
    margin: 8px;
-   width: 100%;
-   max-width: 350px;
-}
-
-.blocChamp2 {
-   display: flex;
-   justify-content: center;
-   border: 1px rgb(247, 0, 255) solid;
-   margin: 8px;
-   width: 100%;
-   max-width: 600px;
+   width: 380px;
+   height: 70px;
 }
 
 .champ {
-   width: 300px;
+   background-color: red;
 }
 
-.champ2 {
-   width: 512px;
-}
-
-.form1 input, .form1 textarea {
-   display: flex;
+.form1 input {
    font-family: 'Kodchasan', sans-serif;
    margin: 0px;
-   height: 35px;
+   height: 25px;
    border-radius: 6px;
-   padding: 0;
+   padding: 8px;
    border: none;
    font-size: 1em;
    color: rgb(78, 78, 78);
 }
 
 .form1 textarea {
-   height: 350px;
+   font-family: 'Kodchasan', sans-serif;
+   margin: 0px;
+   height: 200px;
+   border-radius: 6px;
+   padding: 8px;
+   border: none;
+   font-size: 1em;
+   color: rgb(78, 78, 78);
 }
 
 .form1 button {
@@ -97,7 +92,6 @@
 } */
 
 @media screen and (max-width: 584px) {
-   .champ2 {
-      width: 100%;
+
    }
 }

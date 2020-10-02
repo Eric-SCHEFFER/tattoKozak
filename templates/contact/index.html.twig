@@ -9,46 +9,30 @@
 {% block body %}
 
 	<h1>Nous contacter</h1>
+	<div class="form1">
+		{{ form_start(contactForm, {'attr':{'class':''}}) }}
 
-	{{ form_start(contactForm, {'attr':{'class':'form1'}}) }}
-
-	<div class="ligne">
 		<div class="blocChamp">
 			{{ form_row(contactForm.prenom, {'attr':{'class':'champ'}}) }}
 		</div>
 		<div class="blocChamp">
 			{{ form_row(contactForm.nom, {'attr':{'class':'champ'}}) }}
 		</div>
-	</div>
-
-	<div class="ligne">
 		<div class="blocChamp">
 			{{ form_row(contactForm.tel, {'attr':{'class':'champ'}}) }}
 		</div>
 		<div class="blocChamp">
 			{{ form_row(contactForm.email, {'attr':{'class':'champ'}}) }}
 		</div>
-	</div>
-
-	<div class="ligne">
-		<div class="blocChamp2">
-			{{ form_row(contactForm.objet, {'attr':{'class':'champ2'}}) }}
+		<div class="blocChamp">
+			{{ form_row(contactForm.objet, {'attr':{'class':'champ'}}) }}
 		</div>
-	</div>
-
-	<div class="ligne">
-		<div class="blocChamp2">
-			{{ form_row(contactForm.message, {'attr':{'class':'champ2'}}) }}
+		<div class="blocChamp">
+			{{ form_row(contactForm.message, {'attr':{'class':'champ'}}) }}
 		</div>
-	</div>
-
-	<div class="ligne">
 		<div class="blocChamp">
 			{{ form_row(contactForm.envoyer, {'attr':{'class':'champ'}}) }}
 		</div>
+		{{ form_end(contactForm) }}
 	</div>
-
-	{{ form_end(contactForm) }}
-
-
 {% endblock %}
