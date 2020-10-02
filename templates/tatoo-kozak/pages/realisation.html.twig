@@ -1,30 +1,33 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/realisation.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/carteRealisation.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/realisation.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/carteRealisation.css') }}">
 {% endblock %}
 {% block title %}
-	{{ realisation.titre }}
+{{ realisation.titre }}
 {% endblock %}
 
 {% block body %}
-
-	<h1>{{ realisation.titre }}</h1>
-	<div class="container-realisation">
-		<div class="realisation">
-			<div class="realisation-image">
-				<img src={{ realisation.image_defaut }}>
+{{ dump(realisation) }}
+<h1>{{ realisation.titre }}</h1>
+<div class="container-realisation">
+	<div class="realisation">
+		<div class="realisation-image">
+			<img src={{ realisation.image_defaut }}>
+		</div>
+		<div class="blocTextes">
+			<div class="date">
+				{{ realisation.date_creation |date("d-m-Y") }}
 			</div>
-			<div class="blocTextes">
-				<div class="realisation-hook">
-					<h4 class="accroche">{{ realisation.hook }}</h4>
-				</div>
-				<div class="realisation-description">
-					<p>
-						{{ realisation.description }}</p>
-				</div>
+			<div class="realisation-hook">
+				<h4 class="accroche">{{ realisation.hook }}</h4>
+			</div>
+			<div class="realisation-description">
+				<p>
+					{{ realisation.description }}</p>
 			</div>
 		</div>
 	</div>
+</div>
 
 {% endblock %}

@@ -50,7 +50,8 @@ class Realisations
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_creation;
+    // J'ai aussi mis ici en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
+    public $date_creation;
 
 
 
