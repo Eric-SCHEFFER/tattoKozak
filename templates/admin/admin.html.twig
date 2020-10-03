@@ -17,16 +17,26 @@
 		<ul class="liste">
 			<li>
 				<div class="titre">Réalisations</div>
-				<a class="boutonGo" href="{{ path('admin.realisation') }}" title="Réalisations">Go</a>
+				<a class="boutonGo" href="{{ path('admin.realisation') }}" title="Ajouter, éditer, et supprimer des réalisations">Go</a>
 			</li>
 			<li>
-				<div class="titre">Slogan</div>
-				<a class="boutonGo" href="{{ path('home') }}" title="Slogan">Go</a>
+				<div class="titre">Slogan accueil</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Slogan d'accroche de la page d'accueil">Go</a>
 			</li>
 			<li>
-				<div class="titre">Infos de contact</div>
-				<a class="boutonGo" href="{{ path('home') }}" title="Infos de contact">Go</a>
+				<div class="titre">Texte de présentation</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Texte de présentation dans la page 'À propos'">Go</a>
 			</li>
-		</li>
-	</li>
-</ul></div>{% endblock %}
+		</ul>
+		<ul class="liste">
+			<li>
+				<div class="titre">Coordonnées</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Coordonnées de contact, et nom de l'entreprise">Go</a>
+			</li>
+			<li>
+				<div class="titre">Formulaire de contact</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Email de retour du formulaire de contact">Go</a>
+			</li>
+		</ul>
+	</div>
+{% endblock %}

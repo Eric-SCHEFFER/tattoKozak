@@ -1,17 +1,20 @@
 .container1 {
+    /* border: blue solid 1px; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .liste {
+    /* border: rgb(0, 255, 221) solid 1px; */
     list-style: none;
     padding: 0;
     margin: 10px;
-    width: 250px;
+    width: 320px;
 }
 
 .liste li {
+    /* border: rgb(255, 251, 0) solid 1px; */
     display: flex;
     justify-content: flex-end;
     padding: 0;
@@ -20,6 +23,7 @@
 }
 
 .titre {
+    /* border: rgb(255, 0, 0) solid 1px; */
     padding: 10px;
     margin: 0;
 }

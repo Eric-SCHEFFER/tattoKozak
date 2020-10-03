@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RealisationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+//use Gedmo\Sluggable\Util\Urlizer;
 
 
 class AdminRealisationsController extends AbstractController
@@ -68,8 +70,18 @@ class AdminRealisationsController extends AbstractController
         $form = $this->createForm(RealisationType::class, $realisations);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // On récupère le fichier image
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFiles = $form['imageFile']->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/assets/uploads';
+
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+
+
             $this->em->flush();
-            // J'essaye de rajouter le titre de la réalisation dans le flashMessage
+            // Je rajoute le titre de la réalisation dans le flashMessage
             $this->addFlash('succes', '"' . $realisations->getTitre() . '"' . ' mis à jour avec succès');
             return $this->redirectToRoute('admin.realisation');
         }

@@ -58,6 +58,7 @@ class Realisations
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->date_creation = new \DateTime('now');
     }
 
     public function getId(): ?int

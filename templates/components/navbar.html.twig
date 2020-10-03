@@ -43,11 +43,7 @@
 				</h5>
 			</a>
 		</li>
-		<li>
-			<a class="lienMenu" href="{{ path('home') }}">
-				<h5 class="icon-faq">Faq</h5>
-			</a>
-		</li>
+		
 		<li>
 			<a class="lienMenu" href="{{ path('contact') }}">
 				<h5 class="icon-contact
@@ -59,6 +55,13 @@
 				">Contact</h5>
 			</a>
 		</li>
+
+		<li>
+			<a class="lienMenu" href="{{ path('home') }}">
+				<h5 class="icon-faq">À propos</h5>
+			</a>
+		</li>
+
 		{# S'il y a un user de connecté, on affiche le ou les liens #}
 		{% if app.user %}
 		<li>

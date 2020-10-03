@@ -6,6 +6,7 @@ use App\Entity\Realisations;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class RealisationType extends AbstractType
 {
@@ -15,9 +16,10 @@ class RealisationType extends AbstractType
             ->add('titre')
             ->add('hook')
             ->add('date_creation')
-            ->add('image_defaut')
-            ->add('description')
-        ;
+            ->add('imageFile', FileType::class, [
+                'mapped' => false
+            ])
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver)
