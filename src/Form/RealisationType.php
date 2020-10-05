@@ -15,7 +15,7 @@ class RealisationType extends AbstractType
         $builder
             ->add('titre')
             ->add('hook')
-            ->add('date_creation')
+            ->add('updated_at')
             ->add('imageFile', FileType::class, [
                 'required' => false
             ])

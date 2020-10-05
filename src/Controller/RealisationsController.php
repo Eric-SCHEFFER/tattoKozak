@@ -22,7 +22,7 @@ class RealisationsController extends AbstractController
 
    public function realisationsLoad()
    {
-      $realisations = $this->repository->findBy(array(), array('date_creation' => 'DESC'));
+      $realisations = $this->repository->findBy(array(), array('updated_at' => 'DESC'));
 
 
       return $this->render('tatoo-kozak/pages/realisations.html.twig', [

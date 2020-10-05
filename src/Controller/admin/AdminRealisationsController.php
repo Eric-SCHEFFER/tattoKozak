@@ -30,7 +30,7 @@ class AdminRealisationsController extends AbstractController
      */
     public function index()
     {
-        $realisations = $this->repository->findBy(array(), array('date_creation' => 'DESC'));
+        $realisations = $this->repository->findBy(array(), array('updated_at' => 'DESC'));
 
         return $this->render('admin/realisations/adminRealisations.html.twig', [
             'realisations' => $realisations

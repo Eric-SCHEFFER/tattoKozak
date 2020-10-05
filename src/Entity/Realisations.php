@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -61,20 +62,26 @@ class Realisations
      * @ORM\Column(type="text")
      */
     // J'ai mis en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
-    public $image_defaut;
+    // public $image_defaut;
 
     /**
      * @ORM\Column(type="datetime")
      */
     // J'ai aussi mis ici en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
-    public $date_creation;
+    // public $date_creation;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    // J'ai mis en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
+    public $updated_at;
 
 
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
-        $this->date_creation = new \DateTime('now');
+        $this->updated_at = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -120,17 +127,17 @@ class Realisations
 
 
 
-    public function getImageDefaut(): ?string
-    {
-        return $this->image_defaut;
-    }
+    // public function getImageDefaut(): ?string
+    // {
+    //     return $this->image_defaut;
+    // }
 
-    public function setImageDefaut(string $image_defaut): self
-    {
-        $this->image_defaut = $image_defaut;
+    // public function setImageDefaut(string $image_defaut): self
+    // {
+    //     $this->image_defaut = $image_defaut;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection|Images[]
@@ -163,17 +170,17 @@ class Realisations
         return $this;
     }
 
-    public function getDateCreation(): ?\DateTimeInterface
-    {
-        return $this->date_creation;
-    }
+    // public function getDateCreation(): ?\DateTimeInterface
+    // {
+    //     return $this->date_creation;
+    // }
 
-    public function setDateCreation(\DateTimeInterface $date_creation): self
-    {
-        $this->date_creation = $date_creation;
+    // public function setDateCreation(\DateTimeInterface $date_creation): self
+    // {
+    //     $this->date_creation = $date_creation;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return null|string
@@ -208,6 +215,23 @@ class Realisations
     public function setImageFile(?File $imageFile): Realisations
     {
         $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
         return $this;
     }
 }
