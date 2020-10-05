@@ -17,7 +17,7 @@ class RealisationType extends AbstractType
             ->add('hook')
             ->add('date_creation')
             ->add('imageFile', FileType::class, [
-                'mapped' => false
+                'required' => false
             ])
             ->add('description');
     }

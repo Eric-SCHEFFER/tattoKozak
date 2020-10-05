@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RealisationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+//use Symfony\Component\HttpFoundation\File\UploadedFile;
 //use Gedmo\Sluggable\Util\Urlizer;
 
 
@@ -72,12 +72,7 @@ class AdminRealisationsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // On récupère le fichier image
-            /** @var UploadedFile $uploadedFile */
-            $uploadedFiles = $form['imageFile']->getData();
-            $destination = $this->getParameter('kernel.project_dir').'/public/assets/uploads';
-
-            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-            $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+            
 
 
             $this->em->flush();
