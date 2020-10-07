@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block body %}
+{# {{ dump(realisations) }} #}
 	<h1>Réalisations</h1>
 	<div class="container-apercuRealisations">
 		{% for realisation in realisations %}
@@ -19,7 +20,7 @@
 				<div class="apercuRealisation-image">
 					{# <a href="{{ path('realisation', {id: realisation.id}) }}"><img src={{ realisation.image_defaut }}></a> #}
 					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="/assets/images/realisations/{{ realisation.filename }}"></a>
-
+					
 				</div>
 			{% endif %}
 

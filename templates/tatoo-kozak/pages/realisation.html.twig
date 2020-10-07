@@ -9,11 +9,13 @@
 
 {% block body %}
 {# {{ dump(realisation) }} #}
+
 <h1>{{ realisation.titre }}</h1>
 <div class="container-realisation">
 	<div class="realisation">
 		<div class="realisation-image">
-			<img src="/assets/images/realisations/{{ realisation.filename }}">
+			<img src="{{ asset('/assets/images/realisations/' ~ realisation.filename) }}">
+			{# <img src="{{ asset(realisation.images[2]) }}"> #}
 		</div>
 		<div class="blocTextes">
 			<div class="date">
