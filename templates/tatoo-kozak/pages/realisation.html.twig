@@ -8,14 +8,16 @@
 {% endblock %}
 
 {% block body %}
-{# {{ dump(realisation) }} #}
+{{ dump(images[0].lien) }}
 
 <h1>{{ realisation.titre }}</h1>
+
+{# Prochaine étape: réaliser une boucle récupérant toutes les images associées à cette réalisation, pour les mettre dans un carousel #}
 <div class="container-realisation">
 	<div class="realisation">
 		<div class="realisation-image">
-			<img src="{{ asset('/assets/images/realisations/' ~ realisation.filename) }}">
-			{# <img src="{{ asset(realisation.images[2]) }}"> #}
+			{# <img src="{{ asset('/assets/images/realisations/' ~ realisation.filename) }}"> #}
+			<img src="{{ asset(images[2].lien) }}">
 		</div>
 		<div class="blocTextes">
 			<div class="date">

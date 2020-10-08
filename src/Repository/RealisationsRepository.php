@@ -21,7 +21,7 @@ class RealisationsRepository extends ServiceEntityRepository
 
 
 
-    // Coder la méthode pour rechercher dans la bdd les 3 dernières réalisations (table réalisations)
+    // Rechercher dans la bdd les 3 dernières réalisations (table réalisations)
     // avec QueryBuilder.
     public function findLast3Realisations()
     {
@@ -35,21 +35,21 @@ class RealisationsRepository extends ServiceEntityRepository
     }
 
 
-    // Ancien test jointure. Mais ça ne fonctionne pas (me retourne un tableau vide)
-    // public function findLast3Realisations()
-    // {
-    //     $query = $this->createQueryBuilder('r')
-    //         ->select('r')
-    //         ->join('r.images', 'i', 'WITH', 'i.realisations_id = :id')
-    //         // ->andwhere('i.realisations_id = :id')
-    //         // ->orderBy('r.date_fin', 'DESC')
-    //         ->setParameter('id', 'toto')
-    //         // ->setMaxResults(3)
-    //         ->getQuery()
-    //         ->getResult();
-    //     dd($query);
-    //     // return $query;
-    // }
+    // Test jointure. j'ai un tableau, mais je ne sais pas si c'est vraiment ce que ça doit retourner. En plus, je ne sais pas comment exploiter ce résultat
+    //  public function findLast3Realisations()
+    //  {
+    //      $query = $this->createQueryBuilder('r')
+    //          ->select('r')
+    //          ->join('r.images', 'i', 'i.realisations_id = :id')
+    //          // ->andwhere('i.realisations_id = :id')
+    //          // ->orderBy('r.date_fin', 'DESC')
+    //          //  ->setParameter('id', '4')
+    //          // ->setMaxResults(3)
+    //          ->getQuery()
+    //          ->getResult();
+    //      dd($query);
+    //      // return $query;
+    //  }
 
 
 
