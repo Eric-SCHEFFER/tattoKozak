@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-{{ dump(images[0].lien) }}
+{# {{ dump(images[0].lien) }} #}
 
 <h1>{{ realisation.titre }}</h1>
 
@@ -16,8 +16,10 @@
 <div class="container-realisation">
 	<div class="realisation">
 		<div class="realisation-image">
-			{# <img src="{{ asset('/assets/images/realisations/' ~ realisation.filename) }}"> #}
-			<img src="{{ asset(images[2].lien) }}">
+			<img src="{{ asset('/assets/uploads/images/realisations/' ~ realisation.filename) }}">
+
+			{# Test recup images de la table image (entity Images) #}
+			{# <img src="{{ asset(images[2].lien) }}"> #}
 		</div>
 		<div class="blocTextes">
 			<div class="date">

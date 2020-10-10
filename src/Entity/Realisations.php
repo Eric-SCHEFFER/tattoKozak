@@ -8,11 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=RealisationsRepository::class)
- * @Vich\Uploadable()
  */
 class Realisations
 {
@@ -30,11 +29,6 @@ class Realisations
     private $filename;
 
 
-    /**
-     * @var File|null
-     * @Vich\UploadableField(mapping="realisation_image", fileNameProperty="filename")
-     */
-    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -53,22 +47,17 @@ class Realisations
 
 
 
-    /**
-     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="realisations_id", orphanRemoval=true)
-     */
-    private $images;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    // J'ai mis en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
-    // public $image_defaut;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    // J'ai aussi mis ici en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
-    // public $date_creation;
+    // /**
+    //  * @ORM\OneToMany(targetEntity=Images::class, mappedBy="realisations_id", orphanRemoval=true)
+    //  */
+    // private $images;
+
+
+
+
+
 
     /**
      * @ORM\Column(type="datetime")
@@ -127,60 +116,42 @@ class Realisations
 
 
 
-    // public function getImageDefaut(): ?string
+
+    // Ajouté automatiquement. C'est dans le cas d'une relation avec la table Images, pour l'upload multiple par ex.
+    // /**
+    //  * @return Collection|Images[]
+    //  */
+    // public function getImages(): Collection
     // {
-    //     return $this->image_defaut;
+    //     return $this->images;
     // }
 
-    // public function setImageDefaut(string $image_defaut): self
+    // public function addImage(Images $image): self
     // {
-    //     $this->image_defaut = $image_defaut;
+    //     if (!$this->images->contains($image)) {
+    //         $this->images[] = $image;
+    //         $image->setRealisationsId($this);
+    //     }
 
     //     return $this;
     // }
 
-    /**
-     * @return Collection|Images[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Images $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setRealisationsId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getRealisationsId() === $this) {
-                $image->setRealisationsId(null);
-            }
-        }
-
-        return $this;
-    }
-
-    // public function getDateCreation(): ?\DateTimeInterface
+    // public function removeImage(Images $image): self
     // {
-    //     return $this->date_creation;
-    // }
-
-    // public function setDateCreation(\DateTimeInterface $date_creation): self
-    // {
-    //     $this->date_creation = $date_creation;
+    //     if ($this->images->contains($image)) {
+    //         $this->images->removeElement($image);
+    //         // set the owning side to null (unless already changed)
+    //         if ($image->getRealisationsId() === $this) {
+    //             $image->setRealisationsId(null);
+    //         }
+    //     }
 
     //     return $this;
     // }
+
+
+
+
 
     /**
      * @return null|string
@@ -200,29 +171,37 @@ class Realisations
         return $this;
     }
 
-    /**
-     * @return null|File
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param null|string $imageFile
-     * @return Realisations
-     */
-    public function setImageFile(?File $imageFile): Realisations
-    {
-        $this->imageFile = $imageFile;
-        if ($this->imageFile instanceof UploadedFile) {
-            $this->updated_at = new \DateTime('now');
-        }
 
 
-        return $this;
-    }
+    // /**
+    //  * @return null|File
+    //  */
+    // public function getImageFile(): ?File
+    // {
+    //     return $this->imageFile;
+    // }
 
+
+
+
+    // /**
+    //  * @param null|string $imageFile
+    //  * @return Realisations
+    //  */
+    // public function setImageFile(?File $imageFile): Realisations
+    // {
+    //     $this->imageFile = $imageFile;
+    //     if ($this->imageFile instanceof UploadedFile) {
+    //         $this->updated_at = new \DateTime('now');
+    //     }
+
+
+    //     return $this;
+    // }
+
+
+
+    
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updated_at;

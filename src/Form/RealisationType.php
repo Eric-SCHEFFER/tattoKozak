@@ -16,8 +16,14 @@ class RealisationType extends AbstractType
             ->add('titre')
             ->add('hook')
             ->add('updated_at')
+
+             // On ajoute le champ image dans le formulaire
+             // Il n'est pas lié à la base de données (mapped à false)
             ->add('imageFile', FileType::class, [
-                'required' => false
+                'required' => false,
+                'label' => false,
+                'mapped' => false
+
             ])
             ->add('description');
     }

@@ -47,6 +47,7 @@ class AdminRealisationsController extends AbstractController
         $form = $this->createForm(RealisationType::class, $realisations);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère l'image transmise
             $this->em->persist($realisations);
             $this->em->flush();
             $this->addFlash('succes', 'Réalisation crée avec succès');
