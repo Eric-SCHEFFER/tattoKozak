@@ -22,6 +22,7 @@ class RealisationType extends AbstractType
             ->add('imageFile', FileType::class, [
                 'required' => false,
                 'label' => false,
+                'multiple' => true,
                 'mapped' => false
 
             ])

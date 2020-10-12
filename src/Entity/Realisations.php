@@ -22,11 +22,11 @@ class Realisations
      */
     private $id;
 
-    /**
-     * @var string|null
-     * @ORM\Column(type="string", length=255)
-     */
-    private $filename;
+    // /**
+    //  * @var string|null
+    //  * @ORM\Column(type="string", length=255)
+    //  */
+    // private $filename;
 
 
 
@@ -49,10 +49,10 @@ class Realisations
 
 
 
-    // /**
-    //  * @ORM\OneToMany(targetEntity=Images::class, mappedBy="realisations_id", orphanRemoval=true)
-    //  */
-    // private $images;
+    /**
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="realisations_id", orphanRemoval=true, cascade={"persist"})
+     */
+    private $images;
 
 
 
@@ -118,58 +118,58 @@ class Realisations
 
 
     // Ajouté automatiquement. C'est dans le cas d'une relation avec la table Images, pour l'upload multiple par ex.
-    // /**
-    //  * @return Collection|Images[]
-    //  */
-    // public function getImages(): Collection
-    // {
-    //     return $this->images;
-    // }
-
-    // public function addImage(Images $image): self
-    // {
-    //     if (!$this->images->contains($image)) {
-    //         $this->images[] = $image;
-    //         $image->setRealisationsId($this);
-    //     }
-
-    //     return $this;
-    // }
-
-    // public function removeImage(Images $image): self
-    // {
-    //     if ($this->images->contains($image)) {
-    //         $this->images->removeElement($image);
-    //         // set the owning side to null (unless already changed)
-    //         if ($image->getRealisationsId() === $this) {
-    //             $image->setRealisationsId(null);
-    //         }
-    //     }
-
-    //     return $this;
-    // }
-
-
-
-
-
     /**
-     * @return null|string
+     * @return Collection|Images[]
      */
-    public function getFilename(): ?string
+    public function getImages(): Collection
     {
-        return $this->filename;
+        return $this->images;
     }
 
-    /**
-     * @param null|string $filename
-     * @return Realisations
-     */
-    public function setFilename(?string $filename): Realisations
+    public function addImage(Images $image): self
     {
-        $this->filename = $filename;
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setRealisationsId($this);
+        }
+
         return $this;
     }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getRealisationsId() === $this) {
+                $image->setRealisationsId(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
+
+    // /**
+    //  * @return null|string
+    //  */
+    // public function getFilename(): ?string
+    // {
+    //     return $this->filename;
+    // }
+
+    // /**
+    //  * @param null|string $filename
+    //  * @return Realisations
+    //  */
+    // public function setFilename(?string $filename): Realisations
+    // {
+    //     $this->filename = $filename;
+    //     return $this;
+    // }
 
 
 
@@ -201,7 +201,7 @@ class Realisations
 
 
 
-    
+
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updated_at;

@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		{% endfor %}
-{{ dump(realisations)}}
+{# {{ dump(realisations)}} #}
 		<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Créer</a>
 		<table class="table_1">
 
@@ -37,7 +37,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{# {% for realisation in realisations %}
+				{% for realisation in realisations %}
 					<tr>
 						<td>
 							{{ realisation.titre }}
@@ -45,19 +45,23 @@
 						<td>
 							<a class="bleu" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer">
 								<i class="fas fa-edit fa-2x"></i>
-							</a> #}
+							</a>
+
+
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
-							{# <form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
-								<input type="hidden" name="_method" value="DELETE"> #}
+							{# <form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')"> #}
+								{# <input type="hidden" name="_method" value="DELETE"> #}
 								{# TODO: Ajouter un token pour sécuriser la suppression d'une réalisation - (pour l'instant, marche pas, erreur "csrf token invalid method override") #}
 								{# <input type="hidden" name="_method" value="{{ csrf_token('delete' ~ realisation.id) }}"> #}
 
-									{# <button class="boutonSupprimerRealisation" title="Supprimer"> <i class="fas fa-trash-alt fa-2x"></i>
+
+
+									<button class="boutonSupprimerRealisation" title="Supprimer"> <i class="fas fa-trash-alt fa-2x"></i>
 								</button>
 							</form>
 						</td>
 					</tr>
-				{% endfor %} #}
+				{% endfor %}
 			</tbody>
 		</table>
 

@@ -22,13 +22,13 @@
 		<!-- On récupère notre slogan, depuis le controlleur, avec la méthode find -->
 		{{ slogan[0].texte }}
 	</div>
-
+{{ dump(realisations.lien[2]) }}
 
 	<div class="container-apercuRealisations">
 		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
-					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="/assets/uploads/images/realisations/{{ realisation.filename }}"></a>
+					{# <a href="{{ path('realisation', {id: realisation.id}) }}"><img src="/assets/uploads/imagesRealisations/{{ images.realisation_id }}"></a> #}
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>
