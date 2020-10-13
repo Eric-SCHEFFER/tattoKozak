@@ -3,7 +3,7 @@ window.onload = () => {
    let links = document.querySelectorAll("[data-delete]")
 
    // On boucle sur links
-   for (link of links) {
+   for (const link of links) {
       // On écoute le clic
       link.addEventListener("click", function (e) {
          // On désactive le lien
@@ -17,13 +17,13 @@ window.onload = () => {
                   "X-Requsted-With": "XMLHttpRequest",
                   "Content-Type": "application/json"
                },
-               body: JSON.stringify({ "_token": this.dataset._token })
+               body: JSON.stringify({ "_token": this.dataset.token })
             }).then(
                // On récupère la réponse en JSON
                response => response.json()
             ).then(data => {
                if (data.success)
-                  this.parentElement.remove
+                  this.parentElement.remove()
                else
                   alert(data.error)
             }).catch(e => alert(e))
