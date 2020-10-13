@@ -13,6 +13,8 @@
 			{{ form_row(form.hook, {'attr':{'class':'hook'}}) }}
 		</div>
 	</div>
+
+
 	<div class="ligne2">
 		<div class="champ">
 			{{ form_row(form.updated_at, {'attr':{'class':'date'}}) }}
@@ -26,7 +28,23 @@
 	</div>
 
 
+	<div>
+		{# On vérifie si la route est "admin.realisations.edit", et on affiche les images #}
+		{% if app.request.attributes.get('_route') == 'admin.realisations.edit' %}
+			<h2>Images</h2>
+			{% for image in realisation.images %}
+				<div>
+					<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}" alt="image" width="80">
+					<a href="{{ path('admin.realisations.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }} ">Supprimer
+					</a>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+
+
 	<button>{{ button|default('Enregistrer') }}</button>
 	{{ form_end(form) }}
 
 </div>
+
