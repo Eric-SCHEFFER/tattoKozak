@@ -105,7 +105,7 @@ class AdminRealisationsController extends AbstractController
                 // On génère un nouveau nom de fichier
                 $fichier = md5(uniqid()) . '.' . $image->guessExtension();
 
-                // On copie le fichier dans le dossier uplods
+                // On copie le fichier dans le dossier uplaods
                 $image->move(
                     $this->getParameter('dossier_images'),
                     $fichier
@@ -139,12 +139,12 @@ class AdminRealisationsController extends AbstractController
     public function delete(Realisations $realisation, Request $request)
     {
         // TODO: Vérif token pour sécuriser la suppression d'une réalisation (pour l'instant, marche pas, erreur "csrf token invalid method override")
-        // if ($this->isCsrfTokenValid('delete' . $realisations->getId(), $request->get('_token'))) {
-        $this->em->remove($realisation);
-        $this->em->flush();
-        $this->addFlash('succes', '"' . $realisation->getTitre() . '"' . ' supprimé avec succès');
-        //return new HttpFoundationResponse('Suppression');
-        // }
+        if ($this->isCsrfTokenValid('delete' . $realisation->getId(), $request->get('_token'))) {
+            $this->em->remove($realisation);
+            $this->em->flush();
+            $this->addFlash('succes', '"' . $realisation->getTitre() . '"' . ' supprimé avec succès');
+            //return new HttpFoundationResponse('Suppression');
+        }
         return $this->redirectToRoute('admin.realisation');
     }
 
