@@ -130,11 +130,12 @@ class AdminRealisationsController extends AbstractController
 
     // ======== SUPPRIMER RÉALISATION ========
     /**
-     * @Route("/admin/realisations/edit/{id}", name="admin.realisations.delete", methods={"DELETE"})
+     * @Route("/admin/realisations/edit/", name="admin.realisations.delete", methods={"DELETE"})
      * @param Realisations $realisation
+     * @ParamConverter("post", options={"id" = "post_id"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delete(Realisations $realisation, Images $image, Request $request)
+    public function delete(Images $image, Realisations $realisation, Request $request)
     {
         // Vérif token pour sécuriser la suppression d'une réalisation
         if ($this->isCsrfTokenValid('delete' . $realisation->getId(), $request->get('_token'))) {
@@ -144,7 +145,10 @@ class AdminRealisationsController extends AbstractController
 
             // Supprimer sur le disque toutes les images liées à la réalisation
             // 1: Faire une boucle (sur quoi ?) pour récupérer le nom de chaque image
-            dd($image);
+
+
+
+            dd($realisation, $this->deleteAllImagesFromRealisation($image, $realisation->getId()));
 
 
 
@@ -179,5 +183,13 @@ class AdminRealisationsController extends AbstractController
         } else {
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
+    }
+
+    private function deleteAllImagesFromRealisation($image, $idRealisation){
+        // Juste pour tester
+        $a = "coucou . $idRealisation";
+        // On recupère une image à supprimer
+        $nom = $image->getLien();
+        return $nom;
     }
 }
