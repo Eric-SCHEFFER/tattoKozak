@@ -30,34 +30,41 @@
    margin-left: 6px;
 }
 
-/* ========== POUR STYLER LES ICONES DE FONTAWESOME ET LES BOUTONS =========== */
+/* ====== ICONES FONTAWESOME ======= */
 
-
-.bleu {
-   color: #469fff;
-   margin: 8px;
+.iconeEditer::before,
+.iconeSupprimer::before {
+   font-family: "Font Awesome 5 Free";
+   font-size: 1.6em;
+   font-weight: 500;
+   margin: 0;
    padding: 0;
-   width: 0;
-   height: 0;
 }
 
-.bleu:hover {
+.iconeEditer::before {
    color: #73b7ff;
+   content: "\f044";
 }
 
-.boutonSupprimerRealisation {
+.iconeEditer {
+   margin: 8px 12px 8px 12px;
+}
+
+.iconeSupprimer::before {
    color: #ec1127;
+   content: "\f2ed";
    cursor: pointer;
    border: none;
-   margin: 8px;
-   margin-left: 15px;
-   padding: 0;
-   width: 0;
 }
 
-.boutonSupprimerRealisation:hover {
-   color: #f05766;
+.iconeSupprimer {
+   background-color: transparent;
+   margin: 12px 0 8px 0;
+   border: none;
 }
+
+
+/* ====== BOUTONS ======= */
 
 .boutonNouvelleRealisation {
    text-align: center;
@@ -73,8 +80,6 @@
    font-weight: bold;
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
-
-
 
 
 

@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 //use Gedmo\Sluggable\Util\Urlizer;
 
 
-// Test commentaire
 class AdminRealisationsController extends AbstractController
 {
     private $repository;
@@ -60,7 +59,7 @@ class AdminRealisationsController extends AbstractController
                 // On génère un nouveau nom de fichier
                 $fichier = md5(uniqid()) . '.' . $image->guessExtension();
 
-                // On copie le fichier dans le dossier uplods
+                // On copie le fichier dans le dossier uploads
                 $image->move(
                     $this->getParameter('dossier_images'),
                     $fichier
@@ -70,7 +69,6 @@ class AdminRealisationsController extends AbstractController
                 $img->setLien($fichier);
                 $realisation->addImage($img);
             }
-            // dd($realisation);
 
             $this->em->persist($realisation);
             $this->em->flush();
@@ -136,10 +134,20 @@ class AdminRealisationsController extends AbstractController
      * @param Realisations $realisation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delete(Realisations $realisation, Request $request)
+    public function delete(Realisations $realisation, Images $image, Request $request)
     {
-        // TODO: Vérif token pour sécuriser la suppression d'une réalisation (pour l'instant, marche pas, erreur "csrf token invalid method override")
+        // Vérif token pour sécuriser la suppression d'une réalisation
         if ($this->isCsrfTokenValid('delete' . $realisation->getId(), $request->get('_token'))) {
+
+
+
+
+            // Supprimer sur le disque toutes les images liées à la réalisation
+            // 1: Faire une boucle (sur quoi ?) pour récupérer le nom de chaque image
+            dd($image);
+
+
+
             $this->em->remove($realisation);
             $this->em->flush();
             $this->addFlash('succes', '"' . $realisation->getTitre() . '"' . ' supprimé avec succès');
@@ -158,7 +166,7 @@ class AdminRealisationsController extends AbstractController
         $data = json_decode($request->getContent(), true);
         // On vérifie si le token est valide
         if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
-            // On récupère le nom de l'image (le champ lien n'est peut-être pas bien nommé, tant pis !)
+            // On récupère le nom de l'image (le champ "lien" n'est peut-être pas un bon nom, j'en suis conscient)
             $nom = $image->getLien();
             // On supprime le fichier
             unlink($this->getParameter('dossier_images') . '/' . $nom);

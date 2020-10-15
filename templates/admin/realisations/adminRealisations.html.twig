@@ -12,53 +12,51 @@
 {% block body %}
 
 
-<h1>Gérer les réalisations</h1>
+	<h1>Gérer les réalisations</h1>
 
 
-<div class="conteneur_table">
+	<div class="conteneur_table">
 
 
-	{% for message in app.flashes('succes') %}
-		<div class="conteneurMessageFlash">
-			<div class="messageFlash">
-				{{ message }}
+		{% for message in app.flashes('succes') %}
+			<div class="conteneurMessageFlash">
+				<div class="messageFlash">
+					{{ message }}
+				</div>
 			</div>
-		</div>
-	{% endfor %}
-	{# {{ dump(realisations)}} #}
-	<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Créer</a>
+		{% endfor %}
+		{# {{ dump(realisations)}} #}
+		<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Créer</a>
 
-	<table class="table_1">
-		<thead>
-			<tr>
-				<th>Titre</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for realisation in realisations %}
+		<table class="table_1">
+			<thead>
 				<tr>
-					<td>
-						{{ realisation.titre }}
-					</td>
-					<td>
-						<a class="bleu" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer">
-							<i class="fas fa-edit fa-2x"></i>
-						</a>
-
-						{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
-						<form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
-							<input
-							type="hidden" name="_method" value="DELETE">
-							{# On vérifie si le token est valide #}
-							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ realisation.id) }}"/>
-							<button class="boutonSupprimerRealisation" title="Supprimer">
-								<i class="fas fa-trash-alt fa-2x"></i>
-							</button>
-						</td>
-					</td>
+					<th>Titre</th>
+					<th>Actions</th>
 				</tr>
-			</form>
-		</tbody>
-	</td>
-</tr>{% endfor %}</tbody></table></div>{% endblock %}
+			</thead>
+			<tbody>
+				{% for realisation in realisations %}
+					<tr>
+						<td>
+							{{ realisation.titre }}
+						</td>
+						<td>
+							<a class="iconeEditer" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer">
+							</a>
+							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
+							<form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
+								<input
+								type="hidden" name="_method" value="DELETE"/>
+								{# On vérifie si le token est valide #}
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ realisation.id) }}"/>
+								<button class="iconeSupprimer" title="Supprimer">
+								</button>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
