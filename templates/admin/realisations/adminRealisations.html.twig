@@ -26,6 +26,15 @@
 			</div>
 		{% endfor %}
 		{# {{ dump(realisations)}} #}
+
+		{# Div de test #}
+		<div>
+			{% for realisation in realisations %}
+				<a href="{{ path('admin.nom.test', {id: realisation.id}) }}">Test</a>
+			{% endfor %}
+		</div>
+
+
 		<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Créer</a>
 
 		<table class="table_1">
@@ -42,16 +51,14 @@
 							{{ realisation.titre }}
 						</td>
 						<td>
-							<a class="iconeEditer" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer">
-							</a>
+							<a class="iconeEditer" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer"></a>
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
 							<form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
 								<input
 								type="hidden" name="_method" value="DELETE"/>
 								{# On vérifie si le token est valide #}
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ realisation.id) }}"/>
-								<button class="iconeSupprimer" title="Supprimer">
-								</button>
+								<button class="iconeSupprimer" title="Supprimer"></button>
 							</form>
 						</td>
 					</tr>

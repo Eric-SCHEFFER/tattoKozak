@@ -130,12 +130,12 @@ class AdminRealisationsController extends AbstractController
 
     // ======== SUPPRIMER RÉALISATION ========
     /**
-     * @Route("/admin/realisations/edit/", name="admin.realisations.delete", methods={"DELETE"})
+     * @Route("/admin/realisations/edit/{id}", name="admin.realisations.delete", methods={"DELETE"})
      * @param Realisations $realisation
-     * @ParamConverter("post", options={"id" = "post_id"})
+     * @param Images $image
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function delete(Images $image, Realisations $realisation, Request $request)
+    public function delete(Realisations $realisation, Request $request)
     {
         // Vérif token pour sécuriser la suppression d'une réalisation
         if ($this->isCsrfTokenValid('delete' . $realisation->getId(), $request->get('_token'))) {
@@ -147,8 +147,7 @@ class AdminRealisationsController extends AbstractController
             // 1: Faire une boucle (sur quoi ?) pour récupérer le nom de chaque image
 
 
-
-            dd($realisation, $this->deleteAllImagesFromRealisation($image, $realisation->getId()));
+            // dd($realisation, "2e" . $this->deleteAllImagesFromRealisation($image, $realisation->getId()));
 
 
 
@@ -185,11 +184,28 @@ class AdminRealisationsController extends AbstractController
         }
     }
 
-    private function deleteAllImagesFromRealisation($image, $idRealisation){
+    private function deleteAllImagesFromRealisation($idRealisation)
+    {
         // Juste pour tester
         $a = "coucou . $idRealisation";
         // On recupère une image à supprimer
-        $nom = $image->getLien();
-        return $nom;
+        // $nom = $image->getLien();
+        // return $nom;
+    }
+
+    /**
+     * Route("/admin/route/test/{id}", name="admin.nom.test")
+     * @param Images $image
+     * 
+     */
+    public function test(Images $image)
+    {
+        dump($image);
+        return $this->redirectToRoute('admin.realisation');
+
+        // $v1 ="titi";
+        // return $this->render('admin/realisations/adminRealisations.html.twig');
+        //     'v1' => "toto",
+        // ]);
     }
 }
