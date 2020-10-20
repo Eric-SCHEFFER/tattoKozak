@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Images;
 use App\Entity\Realisations;
 use App\Form\RealisationType;
+use App\Repository\ImagesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RealisationsRepository;
@@ -18,11 +19,11 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminRealisationsController extends AbstractController
 {
     private $repository;
+    private $images;
 
-    public function __construct(RealisationsRepository $repository, EntityManagerInterface $em)
+    public function __construct(RealisationsRepository $repository, ImagesRepository $imagesRepository, EntityManagerInterface $em)
     {
-
-
+        $this->imagesRepository = $imagesRepository;
         $this->repository = $repository;
         $this->em = $em;
     }
@@ -132,7 +133,6 @@ class AdminRealisationsController extends AbstractController
     /**
      * @Route("/admin/realisations/edit/{id}", name="admin.realisations.delete", methods={"DELETE"})
      * @param Realisations $realisation
-     * @param Images $image
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delete(Realisations $realisation, Request $request)
@@ -140,17 +140,16 @@ class AdminRealisationsController extends AbstractController
         // Vérif token pour sécuriser la suppression d'une réalisation
         if ($this->isCsrfTokenValid('delete' . $realisation->getId(), $request->get('_token'))) {
 
-
-
-
-            // Supprimer sur le disque toutes les images liées à la réalisation
-            // 1: Faire une boucle (sur quoi ?) pour récupérer le nom de chaque image
-
-
-            // dd($realisation, "2e" . $this->deleteAllImagesFromRealisation($image, $realisation->getId()));
-
-
-
+            // Rechercher dans Images toutes les images de la réalisation en cours
+            $images = $this->getDoctrine()->getRepository(Images::class)->findBy(
+                ['realisations_id' => $realisation->getId()]
+            );
+            // On récupére dans une boucle le nom de chaque image, et on la supprime sur le disque
+            foreach ($images as $image) {
+                $nom = $image->getLien();
+                unlink($this->getParameter('dossier_images') . '/' . $nom);
+            }
+            // On supprime la réalisation, ainsi que toutes ses images (Option orphanRemoval) dans la base 
             $this->em->remove($realisation);
             $this->em->flush();
             $this->addFlash('succes', '"' . $realisation->getTitre() . '"' . ' supprimé avec succès');
@@ -182,30 +181,5 @@ class AdminRealisationsController extends AbstractController
         } else {
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
-    }
-
-    private function deleteAllImagesFromRealisation($idRealisation)
-    {
-        // Juste pour tester
-        $a = "coucou . $idRealisation";
-        // On recupère une image à supprimer
-        // $nom = $image->getLien();
-        // return $nom;
-    }
-
-    /**
-     * Route("/admin/route/test/{id}", name="admin.nom.test")
-     * @param Images $image
-     * 
-     */
-    public function test(Images $image)
-    {
-        dump($image);
-        return $this->redirectToRoute('admin.realisation');
-
-        // $v1 ="titi";
-        // return $this->render('admin/realisations/adminRealisations.html.twig');
-        //     'v1' => "toto",
-        // ]);
     }
 }

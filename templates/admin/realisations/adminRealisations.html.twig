@@ -27,12 +27,7 @@
 		{% endfor %}
 		{# {{ dump(realisations)}} #}
 
-		{# Div de test #}
-		<div>
-			{% for realisation in realisations %}
-				<a href="{{ path('admin.nom.test', {id: realisation.id}) }}">Test</a>
-			{% endfor %}
-		</div>
+	
 
 
 		<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Créer</a>

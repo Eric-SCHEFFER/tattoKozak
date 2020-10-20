@@ -19,10 +19,10 @@
 	<div
 		id="slogan">
 
-		<!-- On récupère notre slogan, depuis le controlleur, avec la méthode find -->
+		<!-- On affiche notre slogan, récupéré dans le controlleur avec la méthode find -->
 		{{ slogan[0].texte }}
 	</div>
-{{ dump(realisations.image) }}
+{# {{ dump(realisations.image) }} #}
 
 	<div class="container-apercuRealisations">
 		{% for realisation in last3Realisations %}

@@ -20,7 +20,7 @@ class HomeController extends AbstractController
     * @Route("/", name="home")
     */
 
-   public function homeLod()
+   public function homeLoad()
    {
       // On recupere le slogan depuis le SloganRepository avec la methode find (voir les autres: findAll, findOneBy, etc...)
       $slogan = $this->getDoctrine()->getRepository(Slogan::class)->findBy(array(), array('id' => 'ASC'), 1, 0);
