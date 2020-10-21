@@ -9,10 +9,11 @@
 {% endblock %}
 
 {% block body %}
-{{ dump(realisations) }}
 	<h1>Réalisations</h1>
 	<div class="container-apercuRealisations">
 		{% for realisation in realisations %}
+
+		{{ dump(realisation.images) }}
 			<div class="apercuRealisation">
 
 

@@ -27,7 +27,6 @@ class HomeController extends AbstractController
 
       // On récupère les 3 dernières réalisations avec une methode directement dans le repos
       $last3Realisations = $this->realisationsRepository->findLast3Realisations();
-
       // On envoie à la vue les différentes variables, dont le slogan, dans un tableau 
       return $this->render('tatoo-kozak/pages/home.html.twig', [
          'menu_courant' => 'home',

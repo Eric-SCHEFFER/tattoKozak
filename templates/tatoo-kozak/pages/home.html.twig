@@ -22,13 +22,16 @@
 		<!-- On affiche notre slogan, récupéré dans le controlleur avec la méthode find -->
 		{{ slogan[0].texte }}
 	</div>
-{# {{ dump(realisations.image) }} #}
 
 	<div class="container-apercuRealisations">
 		{% for realisation in last3Realisations %}
+
+
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
-					{# <a href="{{ path('realisation', {id: realisation.id}) }}"><img src="/assets/uploads/imagesRealisations/{{ images.realisation_id }}"></a> #}
+					{# ========= On affiche une image depuis l'Entity Images ========= #}
+					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="{{ 'assets/uploads/imagesRealisations/' ~ realisation.images[0].lien }}"></a>
+
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>
