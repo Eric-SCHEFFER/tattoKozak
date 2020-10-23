@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
 {% endblock %}
 
 
@@ -13,25 +14,27 @@
 
 	<h1>Administrer</h1>
 
+	{% for message in app.flashes('succes') %}
+		<div class="conteneurMessageFlash">
+			<div class="messageFlash">
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+
 	<div class="container1">
 		<ul class="liste">
 			<li>
-				<div class="titre">Réalisations</div>
+				<div class="titre">Logo et slogan</div>
+				<a class="boutonGo" href="{{ path('home') }}" title="Nom du logo - Slogan d'accroche de la page d'accueil">Go</a>
+			</li>
+			<li>
+				<div class="titre">Gérer les réalisations</div>
 				<a class="boutonGo" href="{{ path('admin.realisation') }}" title="Ajouter, éditer, et supprimer des réalisations">Go</a>
 			</li>
 			<li>
-				<div class="titre">Accueil</div>
-				<a class="boutonGo" href="{{ path('home') }}" title="Slogan d'accroche de la page d'accueil">Go</a>
-			</li>
-			<li>
-				<div class="titre">Présentation à propos</div>
-				<a class="boutonGo" href="{{ path('admin_apropos') }}" title="Texte de présentation dans la page 'À propos'">Go</a>
-			</li>
-		</ul>
-		<ul class="liste">
-			<li>
-				<div class="titre">Coordonnées</div>
-				<a class="boutonGo" href="{{ path('home') }}" title="Coordonnées de contact, nom de l'entreprise">Go</a>
+				<div class="titre">Coordonnées - À propos</div>
+				<a class="boutonGo" href="{{ path('admin_apropos') }}" title="Coordonnées de contact - Email de réception du formulaire - Texte de présentation de l'entreprise">Go</a>
 			</li>
 		</ul>
 	</div>
