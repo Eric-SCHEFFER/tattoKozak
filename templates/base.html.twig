@@ -12,25 +12,24 @@
 		<link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/navbar.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-		{% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"> {% block stylesheets %}{% endblock %}
 
-	</head>
+		</head>
 
 		<body id="bodyId">
-
-			<div id="body2">
-				
+			<div class="background">
+				<img src="{{ asset('/assets/images/tatouage_fille_tete_gros_plan.jpg') }}">
 			</div>
+
+			<div id="body2"></div>
 
 			{% include 'components/navbar.html.twig' %}
 
-			<div class="contenu">
-				{% block body %}{% endblock %}
-			</div>
+			<div class="contenu"> {% block body %}{% endblock %}
+				</div>
 
 				{% include 'components/footer.html.twig' %}
 				{% block javascripts %}{% endblock %}
 				<script src="{{ asset('assets/js/navbar.js') }}"></script>
-		</body>
-</html>
+			</body>
+		</html>
