@@ -22,24 +22,29 @@ body {
    margin: 0;
    font-weight: 400;
    color: rgb(255, 255, 255);
-   /* background-image: url("/assets/images/background.jpg"); */
-   /* background-repeat: no-repeat; */
-   /* background-attachment: fixed; */
-   /* background-size: cover; */
+   background-image: url("/assets/images/background_abstrait.jpg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
 }
 
-.background {
+/* ======== IMAGE BACKGROUND BUG/ON ======== */
+/* J'ai tenté un background avec une image dans la balise body du html (twig), pour pouvoir le gérer via la bdd, mais j'avais des bugs sur mobile.*/
+/* Je suis revenu à un background-image dans le css du body */
+/* .background {
    position: fixed;
-   
+   background-color: black;
    z-index: -10;
-}
+} */
 
-.background img {
+/* .background img {
    object-fit: cover;
    width: 100vw;
    height: 100vh;
    object-position: center;
-}
+   opacity: .7;
+} */
+/* ======== IMAGE BACKGROUND BUG/OFF ======== */
 
 h1 {
    font-size: 1.8em;
@@ -68,10 +73,11 @@ h5, h6 {
 /* ====== CONTENEUR GÉNÉRAL (ENTRE LA NAVBAR ET LE FOOTER) ======= */
 
 .contenu {
+   background-color: rgba(0, 0, 0, 0.4); /* Pour assombrir l'image de backround */
    margin: 0;
    padding: 0;
    min-height: calc(100vh - 210px);
-   /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrol vertical */
+   /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrolL vertical */
 }
 
 /* ====== LIENS ET ICONES======= */
