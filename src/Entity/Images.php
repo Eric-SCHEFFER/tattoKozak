@@ -17,12 +17,12 @@ class Images
      */
     private $id;
 
-    
+
     /**
      * @ORM\Column(type="text")
      */
     private $lien;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity=Realisations::class, inversedBy="images")
      * @ORM\JoinColumn(nullable=false)
@@ -34,7 +34,7 @@ class Images
         return $this->id;
     }
 
-   
+
 
     public function getLien(): ?string
     {
@@ -59,4 +59,10 @@ class Images
 
         return $this;
     }
+
+    // On rajoute cette méthode pour éviter l'erreur "Object of class could not be converted to string" dans la vue 
+    // public function __toString()
+    // {
+    //     return $this->lien;
+    // }
 }

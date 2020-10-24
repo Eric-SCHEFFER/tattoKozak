@@ -12,20 +12,12 @@
 	<h1>Réalisations</h1>
 	<div class="container-apercuRealisations">
 		{% for realisation in realisations %}
-
-		{{ dump(realisation.images) }}
 			<div class="apercuRealisation">
-
-
-			{# {% if realisation.filename %} #}
-				<div class="apercuRealisation-image">
-					{# <a href="{{ path('realisation', {id: realisation.id}) }}"><img src={{ realisation.image_defaut }}></a> #}
-					{# <a href="{{ path('realisation', {id: realisation.id}) }}"><img src="/assets/uploads/imagesRealisations/{{ realisations[0].images }}"></a> #}
-					
+				<div
+					class="apercuRealisation-image">
+					{# ========= On affiche la première image du tableau realisations ========= #}
+					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="{{ 'assets/uploads/imagesRealisations/' ~ realisation.images[0].lien }}"></a>
 				</div>
-			{# {% endif %} #}
-
-
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>
 				</div>

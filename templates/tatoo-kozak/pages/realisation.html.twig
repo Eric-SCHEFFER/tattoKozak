@@ -1,39 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('assets/css/realisation.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/carteRealisation.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/realisation.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/carteRealisation.css') }}">
 {% endblock %}
 {% block title %}
-{{ realisation.titre }}
+	{{ realisation.titre }}
 {% endblock %}
 
 {% block body %}
-{# {{ dump(images[0].lien) }} #}
+	{# {{ dump(images[0].lien) }} #}
 
-<h1>{{ realisation.titre }}</h1>
+	<h1>{{ realisation.titre }}</h1>
 
-{# Prochaine étape: réaliser une boucle récupérant toutes les images associées à cette réalisation, pour les mettre dans un carousel #}
-<div class="container-realisation">
-	<div class="realisation">
-		<div class="realisation-image">
-			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ realisation.filename) }}">
+	{# Prochaine étape: réaliser une boucle récupérant toutes les images associées à cette réalisation, pour les mettre dans un carousel #}
+	<div class="container-realisation">
+		<div class="realisation">
+			
+			<div class="realisation-image">
+				{# On récupère le nom de la première image du tableau images #}
+				{# 1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
+				{# <img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}"> #}
 
-			{# Test recup images de la table image (entity Images) #}
-			{# <img src="{{ asset(images[2].lien) }}"> #}
-		</div>
-		<div class="blocTextes">
-			<div class="date">
-				{{ realisation.updated_at |date("d-m-Y") }}
-			</div>
-			<div class="realisation-hook">
-				<h4 class="accroche">{{ realisation.hook }}</h4>
-			</div>
-			<div class="realisation-description">
-				<p>
-					{{ realisation.description }}</p>
+				{# 2e méthode: On affiche explicitement le nom du champ: images[0].lien  #}
+			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
+			
+			<div class="blocTextes">
+				<div class="date">
+					{{ realisation.updated_at |date("d-m-Y") }}
+				</div>
+				<div class="realisation-hook">
+					<h4 class="accroche">{{ realisation.hook }}</h4>
+				</div>
+				<div class="realisation-description">
+					<p>
+						{{ realisation.description }}</p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 {% endblock %}

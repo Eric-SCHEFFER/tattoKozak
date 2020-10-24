@@ -26,11 +26,11 @@ class RealisationController extends AbstractController
       $realisation = $repo->find($id);
 
       // On recherche les images de l'Entity Images, associées à chaque réalisation
-      $images = $ImagesRepository->findBy(['realisations_id'=>$realisation]);
+      $images = $ImagesRepository->findBy(['realisations_id' => $realisation]);
       // dd($images);
       return $this->render('tatoo-kozak/pages/realisation.html.twig', [
          'realisation' => $realisation,
-         'images'=> $images
+         'images' => $images
 
       ]);
    }
