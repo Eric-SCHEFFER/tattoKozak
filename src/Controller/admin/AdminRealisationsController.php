@@ -34,7 +34,6 @@ class AdminRealisationsController extends AbstractController
     public function index()
     {
         $realisations = $this->repository->findBy(array(), array('updated_at' => 'DESC'));
-
         return $this->render('admin/realisations/adminRealisations.html.twig', [
             'realisations' => $realisations
         ]);
@@ -104,11 +103,26 @@ class AdminRealisationsController extends AbstractController
                 // On génère un nouveau nom de fichier
                 $fichier = md5(uniqid()) . '.' . $image->guessExtension();
 
+
+
+                dd($this->getParameter('dossier_images') . "/" . $fichier);
+
+
                 // On copie le fichier dans le dossier uplaods
                 $image->move(
                     $this->getParameter('dossier_images'),
                     $fichier
                 );
+
+                // TODO: On créé une miniature du fichier image
+                $fichierMin = $this->creeMiniature($this->getParameter('dossier_images') . "/" . $fichier);
+
+
+
+                
+
+
+
                 // On stocke le nom de l'image dans la base de données
                 $img = new Images();
                 $img->setLien($fichier);
@@ -181,5 +195,12 @@ class AdminRealisationsController extends AbstractController
         } else {
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
+    }
+
+    // ======== Créé une miniature d'une image' =========
+    private function creeMiniature($image)
+    {
+        $message = "fonction miniature";
+        return $message;
     }
 }

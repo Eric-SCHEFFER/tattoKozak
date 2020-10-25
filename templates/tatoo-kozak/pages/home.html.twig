@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
 {% endblock %}
 
-
 {% block body %}
 	{# Ajsuter la position en css #}
 	{% for message in app.flashes('succes') %}
@@ -16,22 +15,20 @@
 			</div>
 		</div>
 	{% endfor %}
+
+	<!-- On affiche notre slogan, récupéré dans le controlleur avec la méthode find -->
+	<h1>{{ slogan[0].texte }}</h1>
+
 	<div
-		id="slogan">
-
-		<!-- On affiche notre slogan, récupéré dans le controlleur avec la méthode find -->
-		{{ slogan[0].texte }}
-	</div>
-
-	<div class="container-apercuRealisations">
+		class="container-apercuRealisations">
+		
+		{# On parcours le tableau et on affiche chaque réalisation dans une carte #}
 		{% for realisation in last3Realisations %}
-
-
 			<div class="apercuRealisation">
-				<div class="apercuRealisation-image">
+				<div
+					class="apercuRealisation-image">
 					{# ========= On affiche la première image du tableau last3Realisations ========= #}
 					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="{{ 'assets/uploads/imagesRealisations/' ~ realisation.images[0].lien }}"></a>
-
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>

@@ -2,33 +2,33 @@
 
 /* ====== LE STYLE COMMUN HÉRITÉ PAR TOUTES LES PAGES SE TROUVE DANS GLOBAL.CSS  ======= */
 
-body {
+/* body { */
    /* background-image: url("/assets/images/tatouage_fille_tete_gros_plan.jpg"); */
    /* background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
    background-position: 40%; */
-}
+/* } */
 
 
-#slogan {
+/* #slogan {
    position: relative;
    color: #ffffff;
    font-size: 3em;
    text-align: center;
    text-shadow: 4px 4px 7px rgb(0, 0, 0);
-}
+} */
 
-#slogan p::before, #slogan p::after {
+/* #slogan p::before, #slogan p::after {
    content: "\"";
-}
+} */
 
 
 /* ====== PETITS ÉCRANS ======= */
 
-@media screen and (max-width: 870px) {
+/* @media screen and (max-width: 870px) {
    #slogan {
       font-size: 1.8em;
       top: 10px;
    }
-}
+} */
