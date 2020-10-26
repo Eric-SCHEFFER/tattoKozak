@@ -105,21 +105,24 @@ class AdminRealisationsController extends AbstractController
 
 
 
-                dd($this->getParameter('dossier_images') . "/" . $fichier);
 
 
-                // On copie le fichier dans le dossier uplaods
-                $image->move(
-                    $this->getParameter('dossier_images'),
-                    $fichier
-                );
+
+                // On copie le fichier dans le dossier uploads
+                $dossierImages = $this->getParameter('dossier_images');
+                // $image->move(
+                //   $dossierImages,
+                //  $fichier
+                //);
 
                 // TODO: On créé une miniature du fichier image
-                $fichierMin = $this->creeMiniature($this->getParameter('dossier_images') . "/" . $fichier);
+                // $fichierMin = $this->creeMiniature($this->getParameter('dossier_images') . "/" . $fichier, 200);
+                $imageSource = $dossierImages . "/" . "985f8bafdf3bd42ce9e91de1836aa0d6.jpeg";
+                $imageCible = $dossierImages . "/" . "985f8bafdf3bd42ce9e91de1836aa0d6_min.jpeg";
+                $fichierMin = $this->creeMiniature($imageSource, $imageCible, 200);
 
+                dd($fichierMin);
 
-
-                
 
 
 
@@ -143,7 +146,7 @@ class AdminRealisationsController extends AbstractController
 
 
 
-    // ======== SUPPRIMER RÉALISATION ========
+    // ======== SUPPRIMER RÉALISATION ET SES IMAGES ========
     /**
      * @Route("/admin/realisations/edit/{id}", name="admin.realisations.delete", methods={"DELETE"})
      * @param Realisations $realisation
@@ -198,9 +201,32 @@ class AdminRealisationsController extends AbstractController
     }
 
     // ======== Créé une miniature d'une image' =========
-    private function creeMiniature($image)
+    // En entrée, le chemin complet d'un fichier image jpg ou png
+    private function creeMiniature($imageSource, $imageCible, $targetWidth)
     {
-        $message = "fonction miniature";
-        return $message;
+        // On recupère l'extension, et on minimise les caractères
+        $ext = strtolower(pathinfo($imageSource, PATHINFO_EXTENSION));
+        if ($ext == "jpg" || $ext == "jpeg") {
+            // On lance la fonction php de création de miniature jpg
+            $sourceSize = getimagesize($imageSource);
+            $sourceWidth = $sourceSize[0];
+            $sourceHeight = $sourceSize[1];
+            $targetHeight = ($targetWidth / $sourceWidth) * $sourceHeight;
+            $imgIn = imagecreatefromjpeg($imageSource);
+            $imgOut = imagecreatetruecolor($targetWidth, $targetHeight);
+            imagecopyresampled($imgOut, $imgIn, 0, 0, 0, 0, $targetWidth, $targetHeight, $sourceWidth, $sourceHeight);
+            imagejpeg($imgOut, $imageCible);
+            return $imageCible;
+
+
+
+            
+        } elseif ($ext == "png") {
+            // On lance la fonction php de création de miniature png
+            return "création de la miniature " . $ext;
+        } else {
+            // On retourne une erreur, car ce n'est ni une image jpg, ni png
+            return "Uniquement image jpg ou png";
+        }
     }
 }
