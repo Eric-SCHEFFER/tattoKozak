@@ -28,7 +28,7 @@
 				<div
 					class="apercuRealisation-image">
 					{# ========= On affiche la première image du tableau last3Realisations ========= #}
-					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="{{ 'assets/uploads/imagesRealisations/' ~ realisation.images[0].lien }}"></a>
+					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="{{ 'assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien }}"></a>
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>

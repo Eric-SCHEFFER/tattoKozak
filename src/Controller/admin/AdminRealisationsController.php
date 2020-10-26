@@ -57,19 +57,26 @@ class AdminRealisationsController extends AbstractController
             // On boucle sur les images
             foreach ($images as $image) {
                 // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+                $ext = $image->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $ext;
 
                 // On copie le fichier dans le dossier uploads
+                $dossierImages = $this->getParameter('dossier_images');
                 $image->move(
-                    $this->getParameter('dossier_images'),
+                    $dossierImages,
                     $fichier
                 );
+
+                // On créé une miniature du fichier image
+                $imageSource = $dossierImages . "/" . $fichier;
+                $imageCible = $dossierImages . "/min_" . $fichier;
+                $this->creeMiniature($imageSource, $imageCible, 270);
+
                 // On stocke le nom de l'image dans la base de données
                 $img = new Images();
                 $img->setLien($fichier);
                 $realisation->addImage($img);
             }
-
             $this->em->persist($realisation);
             $this->em->flush();
             $this->addFlash('succes', 'Réalisation crée avec succès');
@@ -80,8 +87,6 @@ class AdminRealisationsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-
 
 
     // ======== ÉDITER RÉALISATION ========
@@ -101,30 +106,20 @@ class AdminRealisationsController extends AbstractController
             // On boucle sur les images
             foreach ($images as $image) {
                 // On génère un nouveau nom de fichier
-                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
-
-
-
-
-
-
+                $ext = $image->guessExtension();
+                $fichier = md5(uniqid()) . '.' . $ext;
                 // On copie le fichier dans le dossier uploads
                 $dossierImages = $this->getParameter('dossier_images');
-                // $image->move(
-                //   $dossierImages,
-                //  $fichier
-                //);
+                $image->move(
+                    $dossierImages,
+                    $fichier
+                );
 
-                // TODO: On créé une miniature du fichier image
-                // $fichierMin = $this->creeMiniature($this->getParameter('dossier_images') . "/" . $fichier, 200);
-                $imageSource = $dossierImages . "/" . "985f8bafdf3bd42ce9e91de1836aa0d6.jpeg";
-                $imageCible = $dossierImages . "/" . "985f8bafdf3bd42ce9e91de1836aa0d6_min.jpeg";
-                $fichierMin = $this->creeMiniature($imageSource, $imageCible, 200);
-
-                dd($fichierMin);
-
-
-
+                
+                $imageSource = $dossierImages . "/" . $fichier;
+                $imageCible = $dossierImages . "/min_" . $fichier;
+                // On créé une miniature du fichier image. En  3e paramètre, la largeur souhaitée en px de la miniature
+                $this->creeMiniature($imageSource, $imageCible, 270);
 
                 // On stocke le nom de l'image dans la base de données
                 $img = new Images();
@@ -137,13 +132,13 @@ class AdminRealisationsController extends AbstractController
             $this->addFlash('succes', '"' . $realisation->getTitre() . '"' . ' mis à jour avec succès');
             return $this->redirectToRoute('admin.realisation');
         }
+
+        // TODO: Remplacer l'envoi de l'image  en taille d'origine, par sa miniature
         return $this->render('admin/realisations/edit.html.twig', [
             'realisation' => $realisation,
             'form' => $form->createView()
         ]);
     }
-
-
 
 
     // ======== SUPPRIMER RÉALISATION ET SES IMAGES ========
@@ -165,6 +160,8 @@ class AdminRealisationsController extends AbstractController
             foreach ($images as $image) {
                 $nom = $image->getLien();
                 unlink($this->getParameter('dossier_images') . '/' . $nom);
+                // On supprime également le fichier miniature
+                unlink($this->getParameter('dossier_images') . '/min_' . $nom);
             }
             // On supprime la réalisation, ainsi que toutes ses images (Option orphanRemoval) dans la base 
             $this->em->remove($realisation);
@@ -189,6 +186,8 @@ class AdminRealisationsController extends AbstractController
             $nom = $image->getLien();
             // On supprime le fichier
             unlink($this->getParameter('dossier_images') . '/' . $nom);
+            // On supprime également le fichier miniature
+            unlink($this->getParameter('dossier_images') . '/min_' . $nom);
             // On supprime le nom de l'image de la base de données
             $this->em->remove($image);
             $this->em->flush();
@@ -200,33 +199,33 @@ class AdminRealisationsController extends AbstractController
         }
     }
 
-    // ======== Créé une miniature d'une image' =========
+
+    // ======== CRÉÉ UNE MINIATURE D'UNE IMAGE =========
     // En entrée, le chemin complet d'un fichier image jpg ou png
     private function creeMiniature($imageSource, $imageCible, $targetWidth)
     {
         // On recupère l'extension, et on minimise les caractères
         $ext = strtolower(pathinfo($imageSource, PATHINFO_EXTENSION));
+        // On stocke dans des variables les noms des fonctions à lancer plus tard, selon l'extension de l'image
         if ($ext == "jpg" || $ext == "jpeg") {
-            // On lance la fonction php de création de miniature jpg
-            $sourceSize = getimagesize($imageSource);
-            $sourceWidth = $sourceSize[0];
-            $sourceHeight = $sourceSize[1];
-            $targetHeight = ($targetWidth / $sourceWidth) * $sourceHeight;
-            $imgIn = imagecreatefromjpeg($imageSource);
-            $imgOut = imagecreatetruecolor($targetWidth, $targetHeight);
-            imagecopyresampled($imgOut, $imgIn, 0, 0, 0, 0, $targetWidth, $targetHeight, $sourceWidth, $sourceHeight);
-            imagejpeg($imgOut, $imageCible);
-            return $imageCible;
-
-
-
-            
+            $imagecreatefrom = "imagecreatefromjpeg";
+            $imageFabrique = "imagejpeg";
         } elseif ($ext == "png") {
-            // On lance la fonction php de création de miniature png
-            return "création de la miniature " . $ext;
+            $imagecreatefrom = "imagecreatefrompng";
+            $imageFabrique = "imagepng";
         } else {
             // On retourne une erreur, car ce n'est ni une image jpg, ni png
             return "Uniquement image jpg ou png";
         }
+        // On lance les fonctions php de création de miniature
+        $sourceSize = getimagesize($imageSource);
+        $sourceWidth = $sourceSize[0];
+        $sourceHeight = $sourceSize[1];
+        $targetHeight = ($targetWidth / $sourceWidth) * $sourceHeight;
+        $imgIn = $imagecreatefrom($imageSource);
+        $imgOut = imagecreatetruecolor($targetWidth, $targetHeight);
+        imagecopyresampled($imgOut, $imgIn, 0, 0, 0, 0, $targetWidth, $targetHeight, $sourceWidth, $sourceHeight);
+        $imageFabrique($imgOut, $imageCible);
+        return $imageCible;
     }
 }
