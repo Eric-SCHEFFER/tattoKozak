@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/aPropos.css') }}">
 
-{% block title %}Hello AProposController!{% endblock %}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<h1>À Propos</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/site-2/tatoo-kozak/tattoKozak/src/Controller/AProposController.php'|file_link(0) }}">src/Controller/AProposController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/site-2/tatoo-kozak/tattoKozak/templates/a_propos/index.html.twig'|file_link(0) }}">templates/a_propos/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<div class="bloc1">
+		<div class="bloc2">
+			<h2>Qui sommes nous ?</h2>
+			<p>
+				{{ aPropos[0].getPresentationAPropos | nl2br }}
+			</p>
+		</div>
+		<div class="bloc2">
+			<h2>Nos coordonnées</h2>
+			{% set a = aPropos[0] %}
+			<div class="bloc3">
+				<div class="gras">{{ a.getNomEntreprise }}</div>
+				<div>{{ a.getAdresse }}</div>
+			</div>
+			<div class="bloc4">
+				<div class="bloc5">{{ a.getCodePostal }}</div>
+				<div class="bloc5">{{ a.getVille }}</div>
+			</div>
+			<div class="bloc3">
+				<div>Tel: {{ a.getTelephone }}</div>
+				<div>Email: {{ a.getEmailContact }}</div>
+				<div>Facebook: {{ a.getFacebook }}</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

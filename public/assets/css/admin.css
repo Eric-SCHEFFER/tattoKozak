@@ -3,10 +3,10 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgba(31, 31, 31, 0.726);
+    background-color: rgba(44, 44, 44, 0.8);
     max-width: 600px;
     margin: auto;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 .liste {

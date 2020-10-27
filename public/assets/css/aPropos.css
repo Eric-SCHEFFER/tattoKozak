@@ -1,0 +1,42 @@
+.bloc1 {
+   display: flex;
+   justify-content: center;
+}
+
+.bloc2 {
+   display: flex;
+   align-items: baseline;
+   flex-direction: column;
+   max-width: 800px;
+   margin: 20px 60px 20px 60px;
+   background-color: rgba(44, 44, 44, 0.8);
+   border-radius: 8px;
+   padding: 20px;
+}
+
+.bloc3 {
+   margin: 10px 0 10px 0;
+}
+
+.bloc4 {
+   margin: 10px 0 10px 0;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+.bloc5 {
+   margin-right: 10px;
+}
+
+.gras {
+   font-size: 1.3em;
+   font-weight: bold;
+}
+
+
+@media screen and (max-width: 708px) {
+   .bloc1 {
+      flex-wrap: wrap;
+   }
+}

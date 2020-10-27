@@ -67,9 +67,9 @@ class AdminRealisationsController extends AbstractController
                     $fichier
                 );
 
-                // On créé une miniature du fichier image
                 $imageSource = $dossierImages . "/" . $fichier;
                 $imageCible = $dossierImages . "/min_" . $fichier;
+                // On créé une miniature du fichier image. En 3e paramètre, la largeur souhaitée en px de la miniature
                 $this->creeMiniature($imageSource, $imageCible, 270);
 
                 // On stocke le nom de l'image dans la base de données
@@ -115,10 +115,9 @@ class AdminRealisationsController extends AbstractController
                     $fichier
                 );
 
-                
                 $imageSource = $dossierImages . "/" . $fichier;
                 $imageCible = $dossierImages . "/min_" . $fichier;
-                // On créé une miniature du fichier image. En  3e paramètre, la largeur souhaitée en px de la miniature
+                // On créé une miniature du fichier image. En 3e paramètre, la largeur souhaitée en px de la miniature
                 $this->creeMiniature($imageSource, $imageCible, 270);
 
                 // On stocke le nom de l'image dans la base de données
@@ -132,8 +131,6 @@ class AdminRealisationsController extends AbstractController
             $this->addFlash('succes', '"' . $realisation->getTitre() . '"' . ' mis à jour avec succès');
             return $this->redirectToRoute('admin.realisation');
         }
-
-        // TODO: Remplacer l'envoi de l'image  en taille d'origine, par sa miniature
         return $this->render('admin/realisations/edit.html.twig', [
             'realisation' => $realisation,
             'form' => $form->createView()
@@ -215,7 +212,7 @@ class AdminRealisationsController extends AbstractController
             $imageFabrique = "imagepng";
         } else {
             // On retourne une erreur, car ce n'est ni une image jpg, ni png
-            return "Uniquement image jpg ou png";
+            return "Image non valide (jpg ou png uniquement)";
         }
         // On lance les fonctions php de création de miniature
         $sourceSize = getimagesize($imageSource);
