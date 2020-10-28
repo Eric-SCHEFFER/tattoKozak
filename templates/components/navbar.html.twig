@@ -1,22 +1,16 @@
 {% block stylesheets %}{% endblock %}
-{# {{ dump (logo) }} #}
 <div id="nav" class="navbar">
 	<div class="logo">
 		<a href="{{ path('home') }}">
 			<div class="blocImagelogo">
 
-				{# On récupère depuis la bdd, le chemin du logo #}
 				<div class="imageLogo">
-
-					{# <img src="{{ logo[0].image }}" alt="logo"> #}
 					<img src="{{ asset('assets/images/logoTatooRouge.png') }}" alt="logo">
 				</div>
 			</div>
 			<p>Tattoo Kozak</p>
-
 		</a>
 	</div>
-
 
 	<ul id="menuId" class="menu">
 		<li>

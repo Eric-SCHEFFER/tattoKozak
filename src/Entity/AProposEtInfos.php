@@ -62,6 +62,16 @@ class AProposEtInfos
      */
     private $presentation_a_propos;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slogan;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $mentions_legales;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,4 +184,29 @@ class AProposEtInfos
 
         return $this;
     }
+
+    public function getSlogan(): ?string
+    {
+        return $this->slogan;
+    }
+
+    public function setSlogan(string $slogan): self
+    {
+        $this->slogan = $slogan;
+
+        return $this;
+    }
+
+    public function getMentionsLegales(): ?string
+    {
+        return $this->mentions_legales;
+    }
+
+    public function setMentionsLegales(?string $mentions_legales): self
+    {
+        $this->mentions_legales = $mentions_legales;
+
+        return $this;
+    }
+
 }

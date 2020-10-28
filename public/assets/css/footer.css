@@ -59,7 +59,7 @@
    font-size: .8em;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: baseline;
    padding: 0 4px 0 4px;
 }
 

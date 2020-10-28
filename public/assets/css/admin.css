@@ -1,12 +1,18 @@
+.container0 {
+    display: flex;
+    justify-content: center;
+}
+
 .container1 {
     /* border: blue solid 1px; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     background-color: rgba(44, 44, 44, 0.8);
-    max-width: 600px;
-    margin: auto;
+    max-width: 680px;
+    margin: auto 20px;
     border-radius: 8px;
+    
 }
 
 .liste {

@@ -19,6 +19,21 @@ class AProposEtInfosRepository extends ServiceEntityRepository
         parent::__construct($registry, AProposEtInfos::class);
     }
 
+
+    /**
+     * Retourne la valeur du champ en paramètres. Ne recherche que dans la première ligne de la table
+     */
+    public function findField($field)
+    {
+        $query = $this->createQueryBuilder('s')
+            ->select('s.' . $field)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+        return $query;
+    }
+
+    
     // /**
     //  * @return AProposEtInfos[] Returns an array of AProposEtInfos objects
     //  */

@@ -1,9 +1,10 @@
-.bloc1 {
+.blocPrincipal {
    display: flex;
    justify-content: center;
+   flex-wrap: wrap;
 }
 
-.bloc2 {
+.blocSecondaire {
    display: flex;
    align-items: baseline;
    flex-direction: column;
@@ -26,7 +27,7 @@
 }
 
 .bloc5 {
-   margin-right: 10px;
+   margin-right: 15px;
 }
 
 .gras {
@@ -34,9 +35,12 @@
    font-weight: bold;
 }
 
+.toUpper {
+   text-transform: uppercase;
+}
 
 @media screen and (max-width: 708px) {
-   .bloc1 {
+   .blocCoordonnees {
       flex-wrap: wrap;
    }
 }

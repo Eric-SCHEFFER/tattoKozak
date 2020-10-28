@@ -1,0 +1,13 @@
+.blocPrincipal {
+   display: flex;
+   justify-content: center;
+}
+
+
+.blocSecondaire {
+   max-width: 800px;
+   margin: 20px 60px 20px 60px;
+   background-color: rgba(44, 44, 44, 0.8);
+   border-radius: 8px;
+   padding: 20px;
+}

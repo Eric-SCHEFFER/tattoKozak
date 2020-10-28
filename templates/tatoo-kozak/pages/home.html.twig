@@ -16,12 +16,12 @@
 		</div>
 	{% endfor %}
 
-	<!-- On affiche notre slogan, récupéré dans le controlleur avec la méthode find -->
-	<h1>{{ slogan[0].texte }}</h1>
+	<!-- On affiche notre slogan -->
+	<h1>{{ slogan[0].slogan }}</h1>
 
 	<div
 		class="container-apercuRealisations">
-		
+
 		{# On parcours le tableau et on affiche chaque réalisation dans une carte #}
 		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">

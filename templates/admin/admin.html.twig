@@ -21,21 +21,26 @@
 			</div>
 		</div>
 	{% endfor %}
-
-	<div class="container1">
-		<ul class="liste">
-			<li>
-				<div class="titre">Logo et slogan</div>
-				<a class="boutonGo" href="{{ path('home') }}" title="Nom du logo - Slogan d'accroche de la page d'accueil">Go</a>
-			</li>
-			<li>
-				<div class="titre">Gérer les réalisations</div>
-				<a class="boutonGo" href="{{ path('admin.realisation') }}" title="Ajouter, éditer, et supprimer des réalisations">Go</a>
-			</li>
-			<li>
-				<div class="titre">Coordonnées - À propos</div>
-				<a class="boutonGo" href="{{ path('admin_apropos') }}" title="Coordonnées de contact - Email de réception du formulaire - Texte de présentation de l'entreprise">Go</a>
-			</li>
-		</ul>
+	<div class="container0">
+		<div class="container1">
+			<ul class="liste">
+				<li title="Slogan d'accroche de la page d'accueil">
+					<div class="titre">Slogan</div>
+					<a class="boutonGo" href="{{ path('home') }}">Go</a>
+				</li>
+				<li title="Ajouter, éditer, et supprimer des réalisations">
+					<div class="titre">Gérer les réalisations</div>
+					<a class="boutonGo" href="{{ path('admin.realisation') }}">Go</a>
+				</li>
+				<li title="Coordonnées de contact - Email de réception du formulaire - Texte de présentation de l'entreprise">
+					<div class="titre">Coordonnées - À propos</div>
+					<a class="boutonGo" href="{{ path('admin_apropos') }}">Go</a>
+				</li>
+				<li title="Mentions légales">
+					<div class="titre">Mentions légales</div>
+					<a class="boutonGo" href="{{ path('home') }}">Go</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 {% endblock %}

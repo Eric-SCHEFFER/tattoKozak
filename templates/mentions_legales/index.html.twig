@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/mentionsLegales.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1>Mentions Légales</h1>
+	<div class="blocPrincipal">
+		<div class="blocSecondaire">
+			<p>
+				{{ mentionsLegales[0].mentions_legales | nl2br }}
+			</p>
+		</div>
+	</div>
+{% endblock %}
