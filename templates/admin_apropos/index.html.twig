@@ -19,6 +19,9 @@
 		<div class="champ">
 			{{ form_row(form.adresse, {'attr':{'class':'titre'}}) }}
 		</div>
+		<div class="champ">
+			{{ form_row(form.complement_adresse, {'attr':{'class':'titre'}}) }}
+		</div>
 		<div class="ligne1">
 			<div class="champ">
 				{{ form_row(form.code_postal, {'attr':{'class':'titre'}}) }}
@@ -32,15 +35,23 @@
 				{{ form_row(form.telephone, {'attr':{'class':'titre'}}) }}
 			</div>
 			<div class="champ">
-				{{ form_row(form.email_contact, {'attr':{'class':'titre'}}) }}
+				{{ form_row(form.telephone2, {'attr':{'class':'titre'}}) }}
 			</div>
 		</div>
 		<div class="ligne1">
 			<div class="champ">
-				{{ form_row(form.email_envoi_formulaire, {'attr':{'class':'titre'}}) }}
+				{{ form_row(form.email_contact, {'attr':{'class':'titre'}}) }}
 			</div>
 			<div class="champ">
 				{{ form_row(form.facebook, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.autre, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.email_envoi_formulaire, {'attr':{'class':'titre'}}) }}
 			</div>
 		</div>
 		<div class="champ">

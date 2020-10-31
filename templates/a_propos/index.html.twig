@@ -11,9 +11,7 @@
 
 		<div class="blocSecondaire">
 			<h2>Qui sommes nous ?</h2>
-			<p>
-				{{ aPropos[0].getPresentationAPropos | nl2br }}
-			</p>
+			<p>{{ aPropos[0].getPresentationAPropos | nl2br }}</p>
 		</div>
 
 		{% set a = aPropos[0] %}
@@ -23,9 +21,13 @@
 			<div class="bloc3">
 				<div class="gras">{{ a.getNomEntreprise }}</div>
 			</div>
-			
+
 			<div class="bloc3">
 				<div>{{ a.getAdresse }}</div>
+			</div>
+
+			<div class="bloc3">
+				<div>{{ a.getComplementAdresse }}</div>
 			</div>
 
 			<div class="bloc4">
@@ -34,12 +36,11 @@
 			</div>
 
 			<div class="bloc3">
-				<div>Tel:
-					{{ a.getTelephone }}</div>
-				<div>Email:
-					{{ a.getEmailContact }}</div>
-				<div>Facebook:
-					{{ a.getFacebook }}</div>
+				<div>Tel: {{ a.getTelephone }}</div>
+				<div>Tel2: {{ a.getTelephone2 }}</div>
+				<div>Email: {{ a.getEmailContact }}</div>
+				<div>Facebook: {{ a.getFacebook }}</div>
+				<div>{{ a.autre }}</div>
 			</div>
 		</div>
 	</div>

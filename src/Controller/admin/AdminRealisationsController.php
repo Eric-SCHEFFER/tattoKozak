@@ -118,7 +118,7 @@ class AdminRealisationsController extends AbstractController
                 $imageSource = $dossierImages . "/" . $fichier;
                 $imageCible = $dossierImages . "/min_" . $fichier;
                 // On créé une miniature du fichier image. En 3e paramètre, la largeur souhaitée en px de la miniature
-                $this->creeMiniature($imageSource, $imageCible, 270);
+                $this->creeMiniature($imageSource, $imageCible, 290);
 
                 // On stocke le nom de l'image dans la base de données
                 $img = new Images();

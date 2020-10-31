@@ -14,9 +14,12 @@ class AProposType extends AbstractType
         $builder
             ->add('nom_entreprise')
             ->add('adresse')
+            ->add('complement_adresse')
             ->add('code_postal')
             ->add('ville')
             ->add('telephone')
+            ->add('telephone2')
+            ->add('autre')
             ->add('email_contact')
             ->add('email_envoi_formulaire')
             ->add('facebook')

@@ -72,6 +72,21 @@ class AProposEtInfos
      */
     private $mentions_legales;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $complement_adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $telephone_2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -205,6 +220,42 @@ class AProposEtInfos
     public function setMentionsLegales(?string $mentions_legales): self
     {
         $this->mentions_legales = $mentions_legales;
+
+        return $this;
+    }
+
+    public function getComplementAdresse(): ?string
+    {
+        return $this->complement_adresse;
+    }
+
+    public function setComplementAdresse(?string $complement_adresse): self
+    {
+        $this->complement_adresse = $complement_adresse;
+
+        return $this;
+    }
+
+    public function getTelephone2(): ?string
+    {
+        return $this->telephone_2;
+    }
+
+    public function setTelephone2(?string $telephone_2): self
+    {
+        $this->telephone_2 = $telephone_2;
+
+        return $this;
+    }
+
+    public function getAutre(): ?string
+    {
+        return $this->autre;
+    }
+
+    public function setAutre(?string $autre): self
+    {
+        $this->autre = $autre;
 
         return $this;
     }

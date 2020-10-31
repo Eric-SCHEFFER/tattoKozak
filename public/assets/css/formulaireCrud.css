@@ -24,10 +24,15 @@
    padding: 8px;
    font-size: 1em;
    color: rgb(78, 78, 78);
+   background-color: #ffffff;
 }
 
 .champ {
    margin: 0 20px 20px 20px;
+}
+
+.date {
+   font-size: 1.6em;
 }
 
 .form1 .description {
@@ -36,29 +41,40 @@
 }
 
 .images {
-   margin: 20px 20px 20px 20px;
    display: flex;
    justify-content: left;
 }
 
 .images img {
-   border-radius: 4px;
+   border-radius: 6px 6px 0 0;
    width: 80px;
+   height: 60px;
+   object-fit: cover;
+
 }
 
-.images h2 {
-   font-size: 1em;
-   font-weight: normal;
-   text-transform: capitalize;
+.form1 h3 {
+   text-align: left;
+   margin: 0 20px 0 20px;
+}
+
+.blocVignettes {
+   display: flex;
+   flex-wrap: wrap;
+   margin-left: 10px;
+
 }
 
 .vignette {
    display: flex;
+   position: relative;
    flex-direction: column;
    margin: 10px;
+   bottom: 12px;
 }
 
 .ligne1 {
+   margin: 20px 0 40px 0;
    display: flex;
    justify-content: left;
    flex-wrap: wrap;
@@ -97,12 +113,15 @@
 }
 
 .form1 .petitBouton {
+   position: relative;
    height: 25px;
    width: 80px;
    font-size: .8em;
    font-weight: normal;
    margin-top: 8px;
    background-color: #ec1127;
+   bottom: 8px;
+   border-radius: 0 0 6px 6px;
 
 }
 

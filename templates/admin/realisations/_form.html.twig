@@ -10,25 +10,28 @@
 			{{ form_row(form.titre, {'attr':{'class':'titre'}}) }}
 		</div>
 		<div class="champ">
-			{{ form_row(form.hook, {'attr':{'class':'hook'}}) }}
+			{{ form_row(form.hook, {'attr':{'class':'titre'}}) }}
 		</div>
 	</div>
+
+	<h3>Images</h3>
 	<div class="images">
-		<h2>Images</h2>
+
 		<div class="ligne1">
 			<div class="champ">
 				{{ form_row(form.imageFile, {'attr':{'class':'image'}}) }}
 			</div>
 			{# On vérifie si la route est "admin.realisations.edit", et on affiche les images #}
 			{% if app.request.attributes.get('_route') == 'admin.realisations.edit' %}
-
-				{% for image in realisation.images %}
-					<div class="vignette">
-						<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ 'min_' ~ image.lien) }}" alt="image">
-						<a class="bouton petitBouton" href="{{ path('admin.realisations.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
-						</a>
-					</div>
-				{% endfor %}
+				<div class="blocVignettes">
+					{% for image in realisation.images %}
+						<div class="vignette">
+							<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ 'min_' ~ image.lien) }}" alt="image">
+							<a class="bouton petitBouton" href="{{ path('admin.realisations.image.delete', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer
+							</a>
+						</div>
+					{% endfor %}
+				</div>
 			{% endif %}
 		</div>
 	</div>
