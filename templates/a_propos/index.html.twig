@@ -19,7 +19,7 @@
 			<h2>Nos coordonnées</h2>
 
 			<div class="bloc3">
-				<div class="gras">{{ a.getNomEntreprise }}</div>
+				<div class="gras toUpper">{{ a.getNomEntreprise }}</div>
 			</div>
 
 			<div class="bloc3">
@@ -38,7 +38,7 @@
 			<div class="bloc3">
 				<div>Tel: {{ a.getTelephone }}</div>
 				<div>Tel2: {{ a.getTelephone2 }}</div>
-				<div>Email: {{ a.getEmailContact }}</div>
+				<div>Email: <a href="mailto:{{ a.getEmailContact }}">{{ a.getEmailContact }}</a></div>
 				<div>Facebook: {{ a.getFacebook }}</div>
 				<div>{{ a.autre }}</div>
 			</div>
