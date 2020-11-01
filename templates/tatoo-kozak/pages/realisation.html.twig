@@ -8,22 +8,43 @@
 {% endblock %}
 
 {% block body %}
-	{# {{ dump(images[0].lien) }} #}
+
 
 	<h1>{{ realisation.titre }}</h1>
 
 	{# Prochaine étape: réaliser une boucle récupérant toutes les images associées à cette réalisation, pour les mettre dans un carousel #}
 	<div class="container-realisation">
 		<div class="realisation">
-			
-			<div class="realisation-image">
-				{# On récupère le nom de la première image du tableau images #}
-				{# 1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
-				{# <img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}"> #}
+			{#
+									Pour afficher une image, 2 méthodes:
+									1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
+									<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}">
+						
+									2e méthode: On affiche explicitement le nom du champ: images[0].lien
+									<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
+									#}
 
-				{# 2e méthode: On affiche explicitement le nom du champ: images[0].lien  #}
-			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
-			
+			{# On boucle pour chercher nos images #}
+				{% for image in images %}
+					<div class="realisation-image"> <img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
+				</div>
+
+
+			{% endfor %}
+
+			{# Les boutons précédent et suivant #}
+			<div class="boutonsNav">
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+			{% set n = 0 %}
+			<div class="rondsIndicateurs">
+				{% for image in images %}
+					{% set n = n + 1 %}
+					<div class="dot" onclick={{ 'currentSlide( ~ n ~ ]' }}></div>
+				{% endfor %}
+			</div>
+
 			<div class="blocTextes">
 				<div class="date">
 					{{ realisation.updated_at |date("d-m-Y") }}
@@ -33,10 +54,14 @@
 				</div>
 				<div class="realisation-description">
 					<p>
-						{{ realisation.description | nl2br }}</p>
+						{{ realisation.description | nl2br }}
+					</p>
 				</div>
 			</div>
+
 		</div>
 	</div>
-
+	{% block javascript %}
+		<script src="{{ asset('assets/js/slideShow.js') }}"></script>
+	{% endblock %}
 {% endblock %}

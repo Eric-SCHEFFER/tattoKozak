@@ -20,6 +20,7 @@
 
 .realisation-image {
    max-height: 600px;
+   display: none;
 }
 
 .realisation-image img {
@@ -31,6 +32,9 @@
 
 .blocTextes {
    padding: 16px;
+   border: rgb(255, 0, 0) solid 1px;
+   position: relative;
+   bottom: 50px;
 }
 
 .realisation-description {
@@ -40,3 +44,65 @@
 .date {
    color: rgb(100, 100, 100);
 }
+
+.boutonsNav {
+   display: flex;
+   position: relative;
+   bottom: 160px;
+   height: auto;
+   justify-content: space-between;
+   border: turquoise 1px solid;
+}
+
+/* Les boutons précédent et suivant */
+
+
+
+.prev, .next {
+   position: relative;
+   cursor: pointer;
+   bottom: 0;
+   width: 40px;
+   border-radius: 8px;
+   padding: 15px 0 15px 24px;
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   transition: 0.6s ease;
+   user-select: none;
+   background-color: rgba(119, 119, 119, 0.5);
+}
+
+.next {
+   position: relative;
+}
+
+.prev:hover, .next:hover {
+   background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.rondsIndicateurs {
+   display: flex;
+   position: relative;
+   justify-content: center;
+   flex-wrap: wrap;
+   bottom: 50px;
+}
+
+.dot {
+   position: relative;
+   cursor: pointer;
+   height: 15px;
+   width: 15px;
+   margin: 0 5px 0 5px;
+   background-color: #bbb;
+   border-radius: 50%;
+   display: block;
+   transition: background-color 0.6s ease;
+ }
+
+
+ .actif, .dot:hover {
+   background-color: #717171;
+ }
