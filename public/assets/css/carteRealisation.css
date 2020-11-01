@@ -11,7 +11,7 @@
 .realisation {
    background-color: rgb(255, 255, 255);
    color: black;
-   max-width: 800px;
+   max-width: 1000px;
    border-radius: 6px;
    padding: 0px;
    display: flex;
@@ -19,8 +19,9 @@
 }
 
 .realisation-image {
-   max-height: 600px;
    display: none;
+   max-height: 600px;
+
 }
 
 .realisation-image img {
@@ -32,9 +33,8 @@
 
 .blocTextes {
    padding: 16px;
-   border: rgb(255, 0, 0) solid 1px;
    position: relative;
-   bottom: 50px;
+   bottom: 40px;
 }
 
 .realisation-description {
@@ -51,13 +51,9 @@
    bottom: 160px;
    height: auto;
    justify-content: space-between;
-   border: turquoise 1px solid;
 }
 
 /* Les boutons précédent et suivant */
-
-
-
 .prev, .next {
    position: relative;
    cursor: pointer;
@@ -81,28 +77,36 @@
    background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-.rondsIndicateurs {
+.blocBullets {
    display: flex;
    position: relative;
    justify-content: center;
    flex-wrap: wrap;
-   bottom: 50px;
+   bottom: 45px;
 }
 
-.dot {
+.bullet {
    position: relative;
    cursor: pointer;
-   height: 15px;
-   width: 15px;
-   margin: 0 5px 0 5px;
-   background-color: #bbb;
+   height: 24px;
+   width: 24px;
+   font-size: .8em;
+   margin: 0 5px 5px 5px;
    border-radius: 50%;
    display: block;
-   transition: background-color 0.6s ease;
- }
+   background-color: rgb(134, 134, 134);
+   color: rgb(255, 255, 255);
+   /* transition: background-color 0.6s ease; */
+}
 
+.bullet p {
+   position: relative;
+   margin: 0;
+   padding: 0;
+   text-align: center;
+   top: 3px;
+}
 
- .actif, .dot:hover {
-   background-color: #717171;
- }
+.actif, .bullet:hover {
+   background-color: #000000;
+}

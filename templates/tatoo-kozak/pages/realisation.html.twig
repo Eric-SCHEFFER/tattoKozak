@@ -9,27 +9,23 @@
 
 {% block body %}
 
-
 	<h1>{{ realisation.titre }}</h1>
 
-	{# Prochaine étape: réaliser une boucle récupérant toutes les images associées à cette réalisation, pour les mettre dans un carousel #}
 	<div class="container-realisation">
 		<div class="realisation">
 			{#
-									Pour afficher une image, 2 méthodes:
-									1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
-									<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}">
-						
-									2e méthode: On affiche explicitement le nom du champ: images[0].lien
-									<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
-									#}
+			Pour afficher une image, 2 méthodes:
+			1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
+			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}">
 
-			{# On boucle pour chercher nos images #}
-				{% for image in images %}
-					<div class="realisation-image"> <img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
+			2e méthode: On affiche explicitement le nom du champ: images[0].lien
+			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
+			#}
+
+			{# Carousel #}
+			{% for image in images %}
+				<div class="realisation-image"> <img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
 				</div>
-
-
 			{% endfor %}
 
 			{# Les boutons précédent et suivant #}
@@ -38,10 +34,12 @@
 				<a class="next" onclick="plusSlides(1)">&#10095;</a>
 			</div>
 			{% set n = 0 %}
-			<div class="rondsIndicateurs">
+			<div class="blocBullets">
 				{% for image in images %}
 					{% set n = n + 1 %}
-					<div class="dot" onclick={{ 'currentSlide( ~ n ~ ]' }}></div>
+					<div class="bullet" onclick="currentSlide({{ n }})">
+						<p>{{ n }}</p>
+					</div>
 				{% endfor %}
 			</div>
 
