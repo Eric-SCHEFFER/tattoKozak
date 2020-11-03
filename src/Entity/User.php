@@ -72,6 +72,7 @@ class User implements UserInterface
 
         //return array_unique($roles);
 
+        // Dans notre cas, on n'a qu'un seul role, c'est l'admin
         return ['ROLE_ADMIN'];
     }
 
