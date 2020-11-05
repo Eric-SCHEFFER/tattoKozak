@@ -7,8 +7,9 @@
 }
 
 .blocChamp {
+   border: chartreuse solid 1px;
    position: relative;
-   width: 600px;
+   max-width: 600px;
    display: flex;
    justify-content: flex-end;
    margin: 18px auto;
@@ -17,7 +18,7 @@
 
 .blocChamp2 {
    position: relative;
-   width: 600px;
+   max-width: 600px;
    display: flex;
    justify-content: flex-start;
    margin: 18px auto;
@@ -25,9 +26,11 @@
 }
 
 .champ {
-   display: flex;
-   width: 585px;
-   min-width: 2px;
+   /* border: blueviolet solid 1px; */
+   background-color: crimson;
+   /* display: flex; */
+   /* width: 585px; */
+   /* min-width: 2px; */
    
 }
 
@@ -83,8 +86,8 @@
    color: #265735;
 } */
 
-@media screen and (max-width: 680px) {
+/* @media screen and (max-width: 680px) {
    .blocChamp, .blocChamp2, .champ {
 width: 93%;
    }
-}
+} */

@@ -1,18 +1,26 @@
+.container0 {
+   position: relative;
+   padding: 0 12px 0 12px;
+}
+
 .container-form {
-   /* border: 1px yellow solid; */
+   position: relative;
+   border-radius: 8px;
+   background-color: rgba(44, 44, 44, 0.8);
    display: flex;
    justify-content: center;
-   margin: 10vh 8px 0 8px;
+   max-width: 500px;
+   margin: auto;
+   padding: 15px 8px 10px 8px;
 }
 
 .form1 {
-   /* border: solid 1px blue; */
    display: flex;
    justify-content: center;
    flex-direction: column;
    width: 100%;
    max-width: 400px;
- }
+}
 
 .form1 input, .input {
    font-family: 'Kodchasan', sans-serif;
@@ -50,7 +58,12 @@
    color: rgb(255, 255, 255);
 }
 
+.form1 p {
+   text-align: center;
+}
+
 /* Surcharge le style de a qui est en blanc */
+
 .messageFlash a {
    color: #265735;
 }
