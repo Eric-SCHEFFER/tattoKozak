@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/formulaireLogin.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+{% endblock %}
+
+{% block title %}
+	Changer mot de passe
+{% endblock %}
+
+{% block body %}
+	<h1>Modification du mot de passe de {{ app.user.email }}</h1>
+	{% for message in app.flashes('error') %}
+		<div class="conteneurMessageFlash">
+			<div class="messageFlash messageFlash-alert">
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+	<div class="container0">
+		<div class="container-form">
+			<form class="form1" method="post">
+
+
+				<label for="inputPassword">Mot de passe actuel</label>
+				<input type="password" name="actuPassword" id="actuPassword" class="" required>
+				<label for="inputPassword">Nouveau mot de passe</label>
+				<input type="password" name="newPassword" id="newPassword" class="" required>
+				<label for="inputPassword">Confirmer le nouveau mot de passe</label>
+				<input type="password" name="newPasswordConfirm" id="newPasswordConfirm" class="" required>
+
+				<button type="submit">
+					ENVOYER
+				</button>
+
+			</form>
+		</div>
+	</div>
+{% endblock %}
