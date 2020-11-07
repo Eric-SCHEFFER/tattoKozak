@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block title %}
-	Changer mot de passe
+Modifier le mot de passe de {{ app.user.email }}
 {% endblock %}
 
 {% block body %}
-	<h1>Modification du mot de passe de {{ app.user.email }}</h1>
+	<h1>Modifier le mot de passe de {{ app.user.email }}</h1>
 	{% for message in app.flashes('error') %}
 		<div class="conteneurMessageFlash">
 			<div class="messageFlash messageFlash-alert">
