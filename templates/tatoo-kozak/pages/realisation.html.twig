@@ -23,10 +23,19 @@
 			#}
 
 			{# Carousel #}
-			{% for image in images %}
-				<div class="realisation-image"> <img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
-				</div>
-			{% endfor %}
+			
+			
+				{% if images is empty%}
+					<div class="realisation-image">
+						<img src="{{ asset('/assets/images/imageDefaut.jpg') }}">
+					</div>
+				{% else %}
+					{% for image in images %}
+						<div class="realisation-image">
+							<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
+						</div>
+					{% endfor %}
+				{% endif %}	
 
 			{# Les boutons précédent et suivant #}
 			<div class="boutonsNav">

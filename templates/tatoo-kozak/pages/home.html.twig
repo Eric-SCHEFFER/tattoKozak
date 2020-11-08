@@ -25,10 +25,19 @@
 		{# On parcours le tableau et on affiche chaque réalisation dans une carte #}
 		{% for realisation in last3Realisations %}
 			<div class="apercuRealisation">
-				<div
-					class="apercuRealisation-image">
-					{# ========= On affiche la première image du tableau last3Realisations ========= #}
-					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="{{ '/assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien }}"></a>
+				<div class="apercuRealisation-image">
+					<a
+						href="{{ path('realisation', {id: realisation.id}) }}">
+
+						{# ========= On affiche la première image du tableau last3Realisations ========= #}
+						{# Si la clé du tableau correspondant à l'image existe, on affiche l'image #}
+						{% if realisation.images[0].lien is defined %}
+							<img src="{{ '/assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien }}">
+						{# Sinon, on affiche l'image par défaut #}
+						{% else %}
+							<img src="{{ '/assets/images/min_imageDefaut.jpg' }}">
+						{% endif %}
+					</a>
 				</div>
 				<div class="apercuRealisation-titre">
 					<h3>{{ realisation.titre }}</h3>
