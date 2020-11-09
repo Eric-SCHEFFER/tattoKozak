@@ -22,20 +22,20 @@
 			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
 			#}
 
-			{# Carousel #}
-			
-			
-				{% if images is empty%}
+			{# ============== CAROUSEL ============= #}
+			{# Si le tableau des images est vide, on affiche l'image par défaut de remplacement #}
+			{% if images is empty%}
+				<div class="realisation-image">
+					<img src="{{ asset('/assets/images/imageDefaut.jpg') }}">
+				</div>
+			{# Sinon, on affiche les images du tableau #}
+			{% else %}
+				{% for image in images %}
 					<div class="realisation-image">
-						<img src="{{ asset('/assets/images/imageDefaut.jpg') }}">
+						<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
 					</div>
-				{% else %}
-					{% for image in images %}
-						<div class="realisation-image">
-							<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
-						</div>
-					{% endfor %}
-				{% endif %}	
+				{% endfor %}
+			{% endif %}	
 
 			{# Les boutons précédent et suivant #}
 			<div class="boutonsNav">

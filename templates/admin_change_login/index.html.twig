@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/changelogin.css') }}">
+{% endblock %}
+
+{% block title %}
+Modifier l'email utilisé pour s'identifier
+{% endblock %}
+
+{% block body %}
+    <h2>Modifier l'email utilisé pour s'identifier</h2>
+    
+
+	{% for message in app.flashes('error') %}
+		<div class="conteneurMessageFlash">
+			<div class="messageFlash messageFlash-alert">
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+	<div class="container0">
+        <p>Entrez le nouvel email à utiliser.</p>
+        <p>Une demande de confirmation va y être envoyée.</p>
+		<div class="container-form">
+			<form class="form1" method="post">
+
+
+				<label for="email">Nouvel email</label>
+				<input type="email" name="email" id="email" class="" required>
+				
+				<button type="submit">
+					ENVOYER
+				</button>
+
+			</form>
+		</div>
+	</div>
+{% endblock %}

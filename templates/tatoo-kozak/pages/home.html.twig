@@ -6,6 +6,10 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
 {% endblock %}
 
+{% block title %}
+	Tattoo Kozak: {{ slogan[0].slogan }}
+{% endblock %}
+
 {% block body %}
 	{# Ajsuter la position en css #}
 	{% for message in app.flashes('succes') %}

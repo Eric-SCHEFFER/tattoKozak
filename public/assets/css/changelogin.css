@@ -1,0 +1,71 @@
+.container0 {
+   position: relative;
+   padding: 0;
+   max-width: 500px;
+   margin: auto;
+}
+
+.container-form {
+   position: relative;
+   border-radius: 8px;
+   background-color: rgba(44, 44, 44, 0.8);
+   display: flex;
+   justify-content: center;
+   max-width: 500px;
+   margin: auto;
+   padding: 15px 8px 10px 8px;
+}
+
+.form1 {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 100%;
+   max-width: 400px;
+}
+
+.form1 input, .input {
+   font-family: 'Kodchasan', sans-serif;
+   margin: 0 0 20px 0;
+   height: 25px;
+   border-radius: 6px;
+   padding: 8px;
+   font-size: 1em;
+   color: rgb(78, 78, 78);
+}
+
+.form1 button {
+   font-family: 'Kodchasan', sans-serif;
+   text-align: center;
+   border: unset;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   /* width: 150px; */
+   /* box-shadow: 2px 2px 8px #4d4d4d; */
+   min-height: 40px;
+   border-radius: 6px;
+   background-color: #2c70b8;
+   font-weight: bold;
+   /* text-shadow: 2px 2px 3px rgb(0, 0, 0); */
+   color: #e0e0e0;
+   font-size: 1.1em;
+   cursor: pointer;
+   margin: 20px 0 0 0;
+   padding: 3px 0 3px 0;
+}
+
+.form1 button:hover {
+   color: rgb(255, 255, 255);
+}
+
+.form1 p {
+   text-align: center;
+}
+
+/* Surcharge le style de a qui est en blanc */
+
+.messageFlash a {
+   color: #265735;
+}
