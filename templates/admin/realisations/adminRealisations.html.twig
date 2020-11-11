@@ -62,7 +62,7 @@
 							<form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
 								<input
 								type="hidden" name="_method" value="DELETE"/>
-								{# On vérifie si le token est valide #}
+								{# On créé un token #}
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ realisation.id) }}"/>
 								<button class="iconeSupprimer" title="Supprimer"></button>
 							</form>

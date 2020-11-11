@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+{% endblock %}
+
+{# On arrive ici depuis la page admin_change_login/index.html.twig, dès que l'on a cliqué sur envoyé, et qu'il n'y a pas d'erreurs,  #}
+
+{% block title %}
+	Notification envoi email
+{% endblock %}
+
+{% block body %}
+	<h2>Notification envoi email</h2>
+	<p>Nous venons de vous envoyer un lien de validation à l'adresse {{ emailCandidat }}</p>
+	<p></p>
+
+{% endblock %}

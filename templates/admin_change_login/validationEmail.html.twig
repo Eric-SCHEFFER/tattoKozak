@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+{% endblock %}
+
+{# On arrive ici en cliquant sur le lien de validation du changement de l'email de connexion, reçu par email #}
+
+{% block title %}
+Validation email
+{% endblock %}
+
+{% block body %}
+    <h2>Validation email</h2>
+	 <p>Vous avez demandé à modifier votre email de connexion. Veuillez cliquer sur le lien ci-dessous pour valider votre adresse email:</p>
+	 <p><a href="{{ absolute_url(path('validation_email' {'token': token})) }} "></a></p>
+
+	
+	
+{% endblock %}

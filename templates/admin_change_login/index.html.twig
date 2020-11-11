@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block title %}
-Modifier l'email utilisé pour s'identifier
+Modifier l'email connexion
 {% endblock %}
 
 {% block body %}
-    <h2>Modifier l'email utilisé pour s'identifier</h2>
+    <h2>Modifier l'email de connexion {{ app.user.email }}</h2>
     
 
 	{% for message in app.flashes('error') %}
@@ -20,14 +20,17 @@ Modifier l'email utilisé pour s'identifier
 		</div>
 	{% endfor %}
 	<div class="container0">
-        <p>Entrez le nouvel email à utiliser.</p>
-        <p>Une demande de confirmation va y être envoyée.</p>
+        <p>Veuillez compléter les champs.</p>
+        <p>Un lien de validation va vous être envoyé.</p>
 		<div class="container-form">
 			<form class="form1" method="post">
 
-
-				<label for="email">Nouvel email</label>
-				<input type="email" name="email" id="email" class="" required>
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="password" class="" required>
+                <label for="email">Nouvel email</label>
+				<input type="email" name="newEmail" id="newEmail" class="" required>
+				<label for="email">Confirmer le nouvel email</label>
+				<input type="email" name="newEmailconfirm" id="newEmailconfirm" class="" required>
 				
 				<button type="submit">
 					ENVOYER
