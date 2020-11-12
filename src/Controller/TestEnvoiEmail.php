@@ -1,5 +1,4 @@
 <?php
-// src/Controller/MailerController.php
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

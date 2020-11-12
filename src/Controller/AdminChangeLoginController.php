@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 
 class AdminChangeLoginController extends AbstractController
@@ -27,7 +28,7 @@ class AdminChangeLoginController extends AbstractController
     /**
      * @Route("/admin/changeLogin", name="change_login")
      */
-    public function resetAuthenticationEmail(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function resetAuthenticationEmail(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         if ($request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
@@ -40,7 +41,7 @@ class AdminChangeLoginController extends AbstractController
 
             // On vérifie si le mot de passe actuel entré est correct
             if (!$passValide) {
-                $this->addFlash('error', 'Le mot de passe actuel n\'est pas valide');
+                $this->addFlash('error', 'Le mot de passe n\'est pas valide');
                 $err = true;
             }
             // On vérifie si les 2 emails entrés correspondent
@@ -54,7 +55,7 @@ class AdminChangeLoginController extends AbstractController
                 $err = true;
             }
 
-            // Si on a au moins une erreur, on retourne tout vers la vue de changement d'email, avec les messages d'erreurs
+            // Si on a au moins une erreur, on retourne la vue de changement d'email, avec les messages d'erreurs
             if ($err) {
                 return $this->render('admin_change_login/index.html.twig');
             }
@@ -62,16 +63,20 @@ class AdminChangeLoginController extends AbstractController
             // Si pas d'erreur
             else {
                 // On créé le token de reset de l'email
-                $user->setResetEmailToken(md5(uniqid()));
+                $token = md5(uniqid());
+                $user->setResetEmailToken($token);
                 // l'email candidat
                 $user->setEmailCandidat($nouvEmail);
                 // On sauvegarde dans la base
                 $em->persist($user);
                 $em->flush();
 
-                // TODO
                 // On envoie un email contenant le lien de validation de l'email candidat
-
+                $expediteur = "siteTattoKozak@toto.com";
+                $destinataire = $nouvEmail;
+                $objet = "Validation email de connexion";
+                $templateTwig = "admin_change_login/envoiMailLienValidation.html.twig";
+                $this->envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token);
                 // On affiche la vue notifiant l'envoi de l'email
                 return $this->render('admin_change_login/notificationEnvoiEmail.html.twig', [
                     'emailCandidat' => $nouvEmail
@@ -81,32 +86,29 @@ class AdminChangeLoginController extends AbstractController
         return $this->render('admin_change_login/index.html.twig');
     }
 
+
     /**
-     * @Route("/admin/validationEmail/{token}", name="validation_email")
+     * @Route("/admin/nouvelEmailActif/{token}", name="nouvel_email_actif")
      */
     public function validerEmailconnexion()
     {
-
+        return $this->render('admin_change_login/nouvelEmailActif.html.twig');
     }
 
-    /**
-     * @Route("/email")
-     */
-    private function envoiEmail(MailerInterface $mailer)
-    {
-        $email = (new Email())
-            ->from('hello@example.com')
-            ->to('you@example.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->html('<p>See Twig integration for better HTML integration!</p>');
 
+    /**
+     *
+     */
+    private function envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token)
+    {
+        $email = (new TemplatedEmail())
+            ->from($expediteur)
+            ->to($destinataire)
+            ->subject($objet)
+            ->htmlTemplate($templateTwig)
+            ->context([
+                'token' => $token
+            ]);
         $mailer->send($email);
-        return $this->render('tatoo-kozak/pages/testEnvoiEmail.html.twig');
-        
     }
 }
