@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,21 +15,10 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class AdminChangeLoginController extends AbstractController
 {
-    // /**
-    //  * @Route("/admin/changeLogin", name="change_login")
-    //  */
-    // public function index(): Response
-    // {
-    //     return $this->render('admin_change_login/index.html.twig', [
-    //         'controller_name' => 'AdminChangeLoginController',
-    //     ]);
-    // }
-
-
-    /**
+    /** ======== Envoi de la requête de changement d'email de connexion, via le lien de validation par email ========
      * @Route("/admin/changeLogin", name="change_login")
      */
-    public function resetAuthenticationEmail(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function resetAuthenticationEmailRequest(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         if ($request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
@@ -87,16 +77,37 @@ class AdminChangeLoginController extends AbstractController
     }
 
 
-    /**
-     * @Route("/admin/nouvelEmailActif/{token}", name="nouvel_email_actif")
+
+    /** ======== Récupère le clic du lien de validation de l'email, et sauvegarde l'email candidat dans la base ========
+     * @Route("admin/activerEmailCandidat/{token}", name="activer_email_candidat")
      */
-    public function validerEmailconnexion()
+    public function activerEmailCandidatConnexion($token, UserRepository $userRepo)
     {
-        return $this->render('admin_change_login/nouvelEmailActif.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        // On vérifie si un utilisateur a ce token
+        $user = $userRepo->findOneBy(['reset_email_token' => $token]);
+        // Si aucun utilisateur n'existe avec ce token
+        if (!$user) {
+            // Erreur 404
+            throw $this->createNotFoundException('Le token n\'existe pas dans la base');
+        }
+
+        // On copie emailCandidat dans email
+
+        $user->setEmail($user->getEmailCandidat());
+        $em->persist($user);
+        $em->flush();
+
+        // On supprime l'emailCandidat
+
+        // on supprime le token
+
+        return $this->render('admin_change_login/activerEmailCandidat.html.twig');
     }
 
 
-    /**
+    /** ======= Envoie l'email en html, dont le corps est cherché dans une page twig ========
      *
      */
     private function envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token)
