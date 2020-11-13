@@ -84,7 +84,6 @@ class AdminChangeLoginController extends AbstractController
     public function activerEmailCandidatConnexion($token, UserRepository $userRepo)
     {
         $em = $this->getDoctrine()->getManager();
-
         // On vérifie si un utilisateur a ce token
         $user = $userRepo->findOneBy(['reset_email_token' => $token]);
         // Si aucun utilisateur n'existe avec ce token
@@ -92,17 +91,14 @@ class AdminChangeLoginController extends AbstractController
             // Erreur 404
             throw $this->createNotFoundException('Le token n\'existe pas dans la base');
         }
-
         // On copie emailCandidat dans email
-
         $user->setEmail($user->getEmailCandidat());
+        // On supprime l'emailCandidat
+        $user->setEmailcandidat(NULL);
+        // on supprime le token
+        $user->setResetEmailToken(NULL);
         $em->persist($user);
         $em->flush();
-
-        // On supprime l'emailCandidat
-
-        // on supprime le token
-
         return $this->render('admin_change_login/activerEmailCandidat.html.twig');
     }
 
