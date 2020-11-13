@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/pagesDeReponsesAutomatiques.css') }}">
 {% endblock %}
 
 {# On arrive ici en cliquant sur le lien de validation du changement de l'email de connexion, reçu par email #}
@@ -12,7 +11,7 @@ Validation email
 
 {% block body %}
     <h2>Validation email</h2>
-    <div class="container0">
-        <p>L'email de connexion a été modifié avec succès.</p>
-	</div>
+    <p>L'email de connexion a été modifié avec succès.</p>
+	
+	
 {% endblock %}

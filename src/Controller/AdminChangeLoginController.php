@@ -52,7 +52,6 @@ class AdminChangeLoginController extends AbstractController
 
             // Si pas d'erreur
             else {
-                // TODO Faire un try catch de l'écriture en base, avant l'envoi du mail
                 // On créé le token de reset de l'email
                 $token = md5(uniqid());
                 $user->setResetEmailToken($token);

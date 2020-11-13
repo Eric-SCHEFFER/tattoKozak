@@ -15,7 +15,7 @@
 		<div class="container-form">
 			<form class="form1" method="post">
 				{% if error %}
-					<div class="messageFlash-alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					<div class="messageFlash">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 
 				{% if app.user %}

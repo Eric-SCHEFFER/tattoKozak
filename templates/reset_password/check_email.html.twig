@@ -1,22 +1,8 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/pagesDeReponsesAutomatiques.css') }}">
-{% endblock %}
 
 {% block title %}Password Reset Email Sent{% endblock %}
 
 {% block body %}
-<div class="container0">
-    <p>
-        Un lien de réititialisation vient de vous être envoyé à votre adresse email. Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).
-    </p>
-    <p>
-        Si vous ne recevez pas cet email, vérifiez s'il n'est pas dans les spams
-        
-    </p>
-    <p>
-        <a href="{{ path('app_forgot_password_request') }}">Réessayer</a>
-    </p>
-
-</div>    
+    <p>An email has been sent that contains a link that you can click to reset your password. This link will expire in {{ tokenLifetime|date('g') }} hour(s).</p>
+    <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
 {% endblock %}

@@ -1,9 +1,9 @@
-<h1>Réinitialisation du mot de passe</h1>
-<p>Vous avez demandé une réinitialisation de votre mot de passe sur notre site web.</p>
-<p>Veuillez s'il vous plait vous rendre sur ce lien pour valider cette réinitialisation:</p>
+<h1>Hi!</h1>
 
-<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">Réinitialiser mon mot de passe</a>
+<p>To reset your password, please visit the following link</p>
 
-<p>Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).</p>
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
 
-<p>Très cordialement</p>
+<p>This link will expire in {{ tokenLifetime|date('g') }} hour(s).</p>
+
+<p>Cheers!</p>
