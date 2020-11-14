@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 
-class ChangePasswordController extends AbstractController
+class AdminChangeMdpController extends AbstractController
 {
     /**
      * @Route("admin/changePassword", name="change_password")
