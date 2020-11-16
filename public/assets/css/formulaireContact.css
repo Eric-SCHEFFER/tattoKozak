@@ -1,37 +1,37 @@
+.container0 {
+   position: relative;
+   padding: 0 12px 50px 12px;
+}
+
 .form1 {
    position: relative;
-   display: flex;
-   margin: 20px 8px 8px 8px;
+   margin: auto;
    flex-direction: column;
    align-items: center;
+   max-width: 600px;
+   background-color: rgba(44, 44, 44, 0.8);
+   padding: 10px 30px 30px 30px;
 }
 
 .blocChamp {
-   border: chartreuse solid 1px;
    position: relative;
-   max-width: 600px;
-   display: flex;
-   justify-content: flex-end;
-   margin: 18px auto;
+   width: 100%;
+   margin: 22px auto;
    height: 70px;
 }
 
 .blocChamp2 {
    position: relative;
-   max-width: 600px;
-   display: flex;
-   justify-content: flex-start;
-   margin: 18px auto;
+   width: 100%;
+   margin: 22px auto;
    height: 250px;
 }
 
 .champ {
-   /* border: blueviolet solid 1px; */
-   background-color: crimson;
-   /* display: flex; */
-   /* width: 585px; */
-   /* min-width: 2px; */
-   
+   position: relative;
+   background-color: rgb(255, 255, 255);
+   width: 95%;
+   margin: auto;
 }
 
 .form1 input {
@@ -72,8 +72,11 @@
    color: #e0e0e0;
    font-size: 1.1em;
    cursor: pointer;
-   margin: 10px 0 10px 0;
+   margin: auto;
    padding: 0;
+   width: 97%;
+   position: relative;
+   right: 1%;
 }
 
 .form1 button:hover {
@@ -86,8 +89,10 @@
    color: #265735;
 } */
 
-/* @media screen and (max-width: 680px) {
-   .blocChamp, .blocChamp2, .champ {
-width: 93%;
+
+
+@media screen and (max-width: 500px) {
+   .container0, .form1 {
+      padding: 10px 4px 10px 4px;
    }
-} */
+}

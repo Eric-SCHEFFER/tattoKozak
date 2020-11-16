@@ -3,14 +3,14 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/formulaireContact.css') }}">
 {% endblock %}
 {% block title %}
-	Nous contacter
+	{{ SiteName }}: Nous contacter
 {% endblock %}
 
 {% block body %}
 
 	<h1>Nous contacter</h1>
-	<div class="form1">
-		{{ form_start(contactForm, {'attr':{'class':''}}) }}
+	<div class="container0">
+		{{ form_start(contactForm, {'attr':{'class':'form1'}}) }}
 
 		<div class="blocChamp">
 			{{ form_row(contactForm.prenom, {'attr':{'class':'champ'}}) }}
