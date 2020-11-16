@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/pagesDeReponsesAutomatiques.css') }}">
+{% endblock %}
+
+{% block title %}
+Test1
+{% endblock %}
+
+{% block body %}
+<h2>Test1</h2>
+<div class="block0">
+        <p>Ceci est un test pour tester ce qu'on veut.</p>
+        <p>{{ variable1 }}</p>
+        <p>
+                <a href="{{ '/var/www/site-2/tatoo-kozak/tattoKozak/src/Controller/Test1Controller.php'|file_link(0) }}">src/Controller/Test1Controller.php</a>
+        </p>
+        <p>
+                <a href="{{ '/var/www/site-2/tatoo-kozak/tattoKozak/templates/test1.html.twig'|file_link(0) }}">templates/test1.html.twig</a>
+        </p>
+</div>
+{% endblock %}

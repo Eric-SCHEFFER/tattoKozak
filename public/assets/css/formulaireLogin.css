@@ -22,7 +22,7 @@
    max-width: 400px;
 }
 
-.form1 input, .input {
+.form1 input, .input, input {
    font-family: 'Kodchasan', sans-serif;
    margin: 0 0 20px 0;
    height: 25px;
@@ -32,7 +32,7 @@
    color: rgb(78, 78, 78);
 }
 
-.form1 button {
+.form1 button, button {
    font-family: 'Kodchasan', sans-serif;
    text-align: center;
    border: unset;

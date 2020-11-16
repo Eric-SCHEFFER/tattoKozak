@@ -11,6 +11,14 @@
 {% block body %}
 
 	<h1>Connexion</h1>
+	{% for message in app.flashes('succes') %}
+		<div class="conteneurMessageFlash">
+			<div class="messageFlash">
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+	
 	<div class="container0">
 		<div class="container-form">
 			<form class="form1" method="post">
@@ -36,15 +44,15 @@
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{#
-				Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-				See https://symfony.com/doc/current/security/remember_me.html
-	
-				<div class="checkbox mb-3">
-					<label>
-							<input type="checkbox" name="_remember_me"> Remember me
-					</label>
-				</div>
-				#}
+								Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+								See https://symfony.com/doc/current/security/remember_me.html
+					
+								<div class="checkbox mb-3">
+									<label>
+											<input type="checkbox" name="_remember_me"> Remember me
+									</label>
+								</div>
+								#}
 
 				<button type="submit">
 					CONNEXION
