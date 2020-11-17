@@ -32,3 +32,31 @@
       top: 10px;
    }
 } */
+
+.center {
+   margin: auto;
+}
+
+.uppercase {
+   text-transform: uppercase;
+}
+
+.marge {
+   margin: 30px auto 60px auto;
+}
+
+.width-perso {
+   width: 200px;
+}
+
+#boutonFlecheVoirTout:hover .flecheVoirTout {
+   left: 25px;
+   transition: left .6s;
+}
+
+.flecheVoirTout {
+   position: relative;
+   left: 10px;
+   transition: left .6s;
+}
+

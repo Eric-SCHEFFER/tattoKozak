@@ -21,6 +21,7 @@ class AProposController extends AbstractController
     {
         $aPropos = $this->aProposEtInfosRepository->findAll();
         return $this->render('a_propos/index.html.twig', [
+            'menu_courant' => 'a_propos',
             'aPropos' => $aPropos
         ]);
     }

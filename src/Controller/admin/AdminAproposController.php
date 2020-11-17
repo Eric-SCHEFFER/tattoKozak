@@ -31,7 +31,7 @@ class AdminAproposController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($aProposEtInfos);
             $this->em->flush();
-            $this->addFlash('succes', 'Mis à jour avec succès');
+            $this->addFlash('succes', 'Coordonnées - À propos mis à jour avec succès');
             return $this->redirectToRoute('admin');
         }
         return $this->render('admin_apropos/index.html.twig', [

@@ -32,7 +32,7 @@ class AdminMentionsLegalesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($mentionsLegales1);
             $this->em->flush();
-            $this->addFlash('succes', 'Mis à jour avec succès');
+            $this->addFlash('succes', 'Mentions légales mises à jour avec succès');
             return $this->redirectToRoute('admin');
         }
 

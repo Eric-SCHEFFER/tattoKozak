@@ -18,14 +18,15 @@ html {
 }
 
 body {
-   padding: 0 0px 0 0px;
+   padding: 0 0 0 0;
    margin: 0;
    font-weight: 400;
    color: rgb(255, 255, 255);
-   background-image: url("/assets/images/background_abstrait.jpg");
+   background-image: url("/assets/images/tatouage_fille_tete_gros_plan_3.jpg");
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
+   background-position: center;
 }
 
 /* ======== IMAGE BACKGROUND BUG/ON ======== */
@@ -75,12 +76,16 @@ h5, h6 {
 /* ====== CONTENEUR GÉNÉRAL (ENTRE LA NAVBAR ET LE FOOTER) ======= */
 
 .contenu {
-   background-color: rgba(0, 0, 0, 0.4); /* Pour assombrir l'image de backround */
+   /* background-color: rgba(0, 0, 0, 0.4);*/ /* Pour assombrir l'image de backround */
    margin: 0;
    padding: 0;
    min-height: calc(100vh - 210px);
    /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrolL vertical */
 }
+
+/* ======================================== */
+
+
 
 /* ====== LIENS ET ICONES======= */
 
@@ -105,7 +110,11 @@ i {
    /* color: #FF4900; */
 }
 
-@media screen and (max-width: 870px) {
+.bouton, button {
+   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1000px) {
    /* div servant uniquement à assombrir l'affichage lors de l'ouverture du menu burger */
    #body2 {
       display: block;

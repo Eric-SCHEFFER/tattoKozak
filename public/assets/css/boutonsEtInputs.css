@@ -40,7 +40,7 @@
    font-size: 1.1em;
    cursor: pointer;
    margin: 20px 0 0 0;
-   padding: 3px 0 3px 0;
+   padding: 4px;
 }
 
 .bouton:hover {

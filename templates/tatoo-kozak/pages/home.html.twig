@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+	
 	<link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/carteApercuRealisation.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
 {% endblock %}
@@ -24,7 +25,7 @@
 
 	<!-- On affiche notre slogan -->
 	<h1>{{ slogan[0].slogan }}</h1>
-
+	<h2>Dernières réalisations</h2>
 	<div
 		class="container-apercuRealisations">
 
@@ -52,9 +53,10 @@
 				</div>
 				<div class="apercuRealisation-description">
 					<p>{{ realisation.description }}</p>
-					<a class="bouton1" href="{{ path('realisation', {id: realisation.id}) }}">Voir</a>
+					{# <a class="bouton1" href="{{ path('realisation', {id: realisation.id}) }}">Voir</a> #}
 				</div>
 			</div>
 		{% endfor %}
 	</div>
+	<a id="boutonFlecheVoirTout" class="bouton center marge width-perso" href="{{ path('realisations') }}">Voir tout <i id="idFlecheVoirTout" class="fas fa-arrow-right fa-lg flecheVoirTout"></i></a>
 {% endblock %}

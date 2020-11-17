@@ -58,12 +58,11 @@ class Realisations
 
 
 
-    // J'ai mis en public, car j'ai une erreur d'accès dans la vue, si je laisse en privé
     /**
      * @ORM\Column(type="datetime")
      */
 
-    public $updated_at;
+    private $updated_at;
 
 
 

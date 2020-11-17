@@ -57,6 +57,10 @@
    width: 100%;
 }
 
+.logoName {
+   font-size: .9em;
+}
+
 /* ====== MENU ET LIENS ======= */
 
 .menu {
@@ -220,7 +224,7 @@ padding: 0;
 
 /* ====== PETITS ÉCRANS ======= */
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 1000px) {
    /* ===== NAVBAR / MENU BURGER==== */
    .menu {
       /* On masque le style du menu dédié aux grands écrans */

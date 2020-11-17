@@ -25,14 +25,13 @@ class AdminSloganController extends AbstractController
         // On récupère la table apropos_et_infos
         $slogan = $this->getDoctrine()->getRepository(AProposEtInfos::class)->findAll();
         // Comme il n'y a qu'une seule ligne, ce sera l'index 0 du tableau
-        // dd($mentionsLegales);
         $slogan = $slogan[0];
         $form = $this->createForm(SloganType::class, $slogan);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($slogan);
             $this->em->flush();
-            $this->addFlash('succes', 'Mis à jour avec succès');
+            $this->addFlash('succes', 'Slogan mis à jour avec succès');
             return $this->redirectToRoute('admin');
         }
 
