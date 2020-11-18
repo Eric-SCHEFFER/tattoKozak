@@ -13,7 +13,7 @@
    color: black;
    max-width: 1000px;
    border-radius: 6px;
-   padding: 0px;
+   padding: 0;
    display: flex;
    flex-direction: column;
 }
@@ -30,18 +30,25 @@
    border-radius: 6px 6px 0px 0px;
 }
 
+.date {
+   color: rgb(100, 100, 100);
+   font-size: .9em;
+   font-style: italic;
+}
+
+.accroche {
+   margin-top: 40px;
+   margin-bottom: 40px;
+}
+
 .blocTextes {
-   padding: 16px;
+   padding: 25px;
    position: relative;
    bottom: 40px;
 }
 
 .realisation-description {
    color: rgb(92, 92, 92);
-}
-
-.date {
-   color: rgb(100, 100, 100);
 }
 
 .boutonsNav {

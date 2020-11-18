@@ -14,15 +14,18 @@
 .apercuRealisation {
    position: relative;
    border: solid white 10px;
+   border-bottom: white solid 20px;
    margin: 20px;
    color: black;
    width: 250px;
    border-radius: 6px;
 }
 
-.apercuRealisation-image img:hover {
+.apercuRealisation-image a:hover img {
    transform: scale(1.12);
 }
+
+
 
 /* Selecteur en test */
 .apercuRealisation .bouton1:hover h3 {
@@ -46,13 +49,33 @@
 }
 
 .apercuRealisation-titre {
+   bottom: 100px;
+   position: relative;
    height: 40px;
+   color: white;
+   text-shadow: 2px 2px 1px #000;
    /* border: 1px blue solid; */
+}
+
+.apercuRealisation-dateCreation {
+   color: gray;
+   font-size: .8em;
+   height: 30px;
+}
+
+.infos .date {
+   position: relative;
+   left: -2px;
+}
+
+.infos .nbreImages {
+   position: relative;
+   left: 102px;
 }
 
 .apercuRealisation-hook {
    color: gray;
-   height: 40px;
+   height: 30px;
    /* border: 1px blue solid; */
 }
 
@@ -61,15 +84,19 @@
    justify-content: space-between;
    align-items: center;
    color: gray;
-   height: 40px;
+   height: 30px;
    /* border: 1px blue solid; */
 }
 
-.apercuRealisation-titre, .apercuRealisation-hook, .apercuRealisation-description {
+.apercuRealisation-hook,
+.apercuRealisation-description,
+.apercuRealisation-dateCreation {
    background-color: white;
 }
 
-.apercuRealisation-description p, .apercuRealisation-hook h4, .apercuRealisation-titre h3 {
+.apercuRealisation-description p,
+.apercuRealisation-hook h4,
+.apercuRealisation-titre h3 {
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
@@ -88,14 +115,15 @@
 .apercuRealisation h4 {
    margin: 0;
    text-align: left;
-   padding: 7px 5px 7px 5px;
+   padding: 7px 8px 7px 8px;
 }
 
 .apercuRealisation p {
    margin: 0;
-   padding: 7px 5px 7px 5px;
-   font-size: .9em;
+   padding: 7px 8px 7px 8px;
+   font-size: 1em;
    /* border: 1px green solid; */
-   width: 120px;
+   width: auto;
+   height: auto;
 }
 
