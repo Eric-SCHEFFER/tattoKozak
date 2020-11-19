@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\AProposEtInfos;
-use App\Entity\Slogan;
 use App\Repository\RealisationsRepository;
 use App\Repository\AProposEtInfosRepository;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-   private $realisationsRepository;
+   // private $realisationsRepository;
 
    public function __construct(RealisationsRepository $realisationsRepository, AProposEtInfosRepository $aProposEtInfosRepository)
    {

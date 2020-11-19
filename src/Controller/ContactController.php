@@ -14,21 +14,24 @@ use App\Entity\AProposEtInfos;
 
 class ContactController extends AbstractController
 {
+
+    public function __construct(AProposEtInfosRepository $aProposEtInfosRepository)
+   {
+      $this->aProposEtInfosRepository = $aProposEtInfosRepository;
+   }
+
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request, MailerInterface $mailer)
+    public function index(Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
             $expediteur = $contact['email'];
-
-            $destinataire = $this->getDoctrine()->getRepository(AProposEtInfos::class)->findOneBy([
-                'email_envoi_formulaire'
-            ]);
-            
+            $destinataire = $this->aProposEtInfosRepository->findField("email_envoi_formulaire");
+            $destinataire = $destinataire[0]['email_envoi_formulaire'];
             $templateTwig = "emails/contact.html.twig";
 
             // Envoi du mail contenant les données du formulaire
