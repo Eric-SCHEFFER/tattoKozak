@@ -54,6 +54,7 @@ class ContactController extends AbstractController
             ->from($expediteur)
             ->to($destinataire)
             ->htmlTemplate($templateTwig)
+            // Envoi les paramètres à la page twig
             ->context([
                 'contact' => $contact
             ]);

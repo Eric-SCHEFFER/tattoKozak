@@ -3,7 +3,7 @@
    /* border: 1px yellow solid; */
    display: flex;
    justify-content: center;
-   margin: 0 8px 60px 8px;
+   margin: 0 14px 60px 18px;
 }
 
 .form1 {
@@ -21,7 +21,7 @@
    height: 25px;
    border: none;
    border-radius: 6px;
-   padding: 8px;
+   padding: 8px 14px 8px 14px;
    font-size: 1em;
    color: rgb(78, 78, 78);
    background-color: #ffffff;
