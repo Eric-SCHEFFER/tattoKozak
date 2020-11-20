@@ -10,6 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Validator\Constraints\DateTime;
+// use Symfony\Component\Form\Extension\Core\Type\DateTimeInterface;
+
 
 class RealisationType extends AbstractType
 {
@@ -40,8 +44,38 @@ class RealisationType extends AbstractType
                 ]
             ])
 
+
+
+
+
             ->add('updated_at')
-            // TODO: Contraints
+
+            //TODO: Constraints
+             ->add('updated_at', DateTimeType::class, [
+                 'required' => true,
+                 
+
+             ])
+
+
+            // ->add('updated_at', DateTimeType::class, [
+            //     'required' => true,
+            //     'widget' => 'single_text',
+            //     'html5' => false,
+            //     'constraints' => [
+            //         DateTimeInterface()
+                   
+                        
+                    
+            //     ]
+
+            // ])
+
+
+
+
+
+
 
 
             // On ajoute le champ image dans le formulaire

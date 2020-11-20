@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -55,13 +57,11 @@ class Realisations
     private $images;
 
 
-
-
-
+    
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\Type("\DateTimeInterface", message="date invalide")
      */
-
     private $updated_at;
 
 
