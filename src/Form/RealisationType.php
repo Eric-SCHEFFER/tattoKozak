@@ -48,14 +48,14 @@ class RealisationType extends AbstractType
 
 
 
-            ->add('updated_at')
+            // ->add('updated_at')
 
             //TODO: Constraints
-             ->add('updated_at', DateTimeType::class, [
-                 'required' => true,
-                 
+            ->add('updated_at', DateTimeType::class, [
+                'required' => true,
 
-             ])
+
+            ])
 
 
             // ->add('updated_at', DateTimeType::class, [
@@ -64,9 +64,9 @@ class RealisationType extends AbstractType
             //     'html5' => false,
             //     'constraints' => [
             //         DateTimeInterface()
-                   
-                        
-                    
+
+
+
             //     ]
 
             // ])

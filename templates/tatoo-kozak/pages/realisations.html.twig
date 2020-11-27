@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Réalisations</h1>
+	<h1>{{ realisations | length }} Réalisations</h1>
 	<div class="container-apercuRealisations">
 		{% for realisation in realisations %}
 			<div class="apercuRealisation">

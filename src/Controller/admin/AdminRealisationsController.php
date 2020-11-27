@@ -206,10 +206,10 @@ class AdminRealisationsController extends AbstractController
         // On stocke dans des variables les noms des fonctions à lancer plus tard, selon l'extension de l'image
         if ($ext == "jpg" || $ext == "jpeg") {
             $imagecreatefrom = "imagecreatefromjpeg";
-            $imageFabrique = "imagejpeg";
+            $imageSortie = "imagejpeg";
         } elseif ($ext == "png") {
             $imagecreatefrom = "imagecreatefrompng";
-            $imageFabrique = "imagepng";
+            $imageSortie = "imagepng";
         } else {
             // On retourne une erreur, car ce n'est ni une image jpg, ni png
             return "Image non valide (jpg ou png uniquement)";
@@ -222,7 +222,7 @@ class AdminRealisationsController extends AbstractController
         $imgIn = $imagecreatefrom($imageSource);
         $imgOut = imagecreatetruecolor($targetWidth, $targetHeight);
         imagecopyresampled($imgOut, $imgIn, 0, 0, 0, 0, $targetWidth, $targetHeight, $sourceWidth, $sourceHeight);
-        $imageFabrique($imgOut, $imageCible);
+        $imageSortie($imgOut, $imageCible);
         return $imageCible;
     }
 }

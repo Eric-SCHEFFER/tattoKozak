@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block body %}
-
 	<h1>{{ realisation.titre }}</h1>
 
 	<div class="container-realisation">
@@ -55,6 +54,7 @@
 			<div class="blocTextes">
 				<div class="date">
 					<i class="fas fa-clock fa-lg"></i> {{ realisation.getUpdatedAt|date("d-m-Y") }}
+					<span><a href="{{ path('contact', {titre: realisation.titre}) }}">Nous contacter à propos de cette réalisation</a></span>
 				</div>
 				<div class="realisation-hook">
 					<h4 class="accroche">{{ realisation.hook }}</h4>

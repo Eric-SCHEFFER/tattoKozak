@@ -21,7 +21,7 @@ class ContactController extends AbstractController
    }
 
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contact/{titre}", name="contact")
      */
     public function index(Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
     {
@@ -42,6 +42,7 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'menu_courant' => 'contact',
             'contactForm' => $form->createView(),
+            // 'toto' => $toto
         ]);
     }
 

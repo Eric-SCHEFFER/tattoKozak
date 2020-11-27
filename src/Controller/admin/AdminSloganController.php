@@ -26,6 +26,7 @@ class AdminSloganController extends AbstractController
         $slogan = $this->getDoctrine()->getRepository(AProposEtInfos::class)->findAll();
         // Comme il n'y a qu'une seule ligne, ce sera l'index 0 du tableau
         $slogan = $slogan[0];
+        // dd($slogan); 
         $form = $this->createForm(SloganType::class, $slogan);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -37,7 +38,7 @@ class AdminSloganController extends AbstractController
 
 
         return $this->render('admin/adminSlogan.html.twig', [
-            'slogan' => $slogan,
+            // 'slogan' => $slogan,
             'form' => $form->createView()
         ]);
     }

@@ -63,12 +63,14 @@ class ContactType extends AbstractType
                         'max' => 255,
                         'maxMessage' => 'Maximum 255 caractères'
                     ])
-                    
+
                 ]
             ])
 
             ->add('objet', TextType::class, [
-                'required' => true,
+                'attr' => [
+                    'value' => 'coucou'
+                ],
                 'constraints' => [
                     new Length([
                         'min' => 3,
@@ -78,6 +80,8 @@ class ContactType extends AbstractType
                     ])
                 ]
             ])
+
+
 
             ->add('message', TextareaType::class, [
                 'required' => true,
