@@ -30,22 +30,31 @@
    border-radius: 6px 6px 0px 0px;
 }
 
+.blocTextes {
+   padding: 25px;
+   position: relative;
+   bottom: 40px;
+}
+ .headInfos {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
 .date {
+   position: relative;
    color: rgb(100, 100, 100);
    font-size: .9em;
    font-style: italic;
 }
+
 
 .accroche {
    margin-top: 40px;
    margin-bottom: 40px;
 }
 
-.blocTextes {
-   padding: 25px;
-   position: relative;
-   bottom: 40px;
-}
+
 
 .realisation-description {
    color: rgb(92, 92, 92);

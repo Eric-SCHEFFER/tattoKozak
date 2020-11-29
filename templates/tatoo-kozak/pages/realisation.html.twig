@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/realisation.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/carteRealisation.css') }}">
 {% endblock %}
 {% block title %}
-{{ SiteName }}: {{ realisation.titre }}
+	{{ SiteName }}:
+	{{ realisation.titre }}
 {% endblock %}
 
 {% block body %}
@@ -13,28 +15,27 @@
 	<div class="container-realisation">
 		<div class="realisation">
 			{#
-			Pour afficher une image, 2 méthodes:
-			1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
-			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}">
-
-			2e méthode: On affiche explicitement le nom du champ: images[0].lien
-			<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
-			#}
+									Pour afficher une image, 2 méthodes:
+									1ère méthode: Il d'abord faut ajouter à la fin de l'Entity Images.php, la méthode magique public function __toString() {return $this->lien;}
+									<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0]) }}">
+						
+									2e méthode: On affiche explicitement le nom du champ: images[0].lien
+									<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ images[0].lien) }}"> </div>
+									#}
 
 			{# ============== CAROUSEL ============= #}
 			{# Si le tableau des images est vide, on affiche l'image par défaut de remplacement #}
-			{% if images is empty%}
-				<div class="realisation-image">
-					<img src="{{ asset('/assets/images/imageDefaut.jpg') }}">
+				{% if images is empty%}
+					<div class="realisation-image"> <img src="{{ asset('/assets/images/imageDefaut.jpg') }}">
 				</div>
-			{# Sinon, on affiche les images du tableau #}
+				{# Sinon, on affiche les images du tableau #}
 			{% else %}
 				{% for image in images %}
 					<div class="realisation-image">
 						<img src="{{ asset('/assets/uploads/imagesRealisations/' ~ image.lien) }}">
 					</div>
 				{% endfor %}
-			{% endif %}	
+			{% endif %}
 
 			{# Les boutons précédent et suivant #}
 			<div class="boutonsNav">
@@ -51,10 +52,16 @@
 				{% endfor %}
 			</div>
 
-			<div class="blocTextes">
-				<div class="date">
-					<i class="fas fa-clock fa-lg"></i> {{ realisation.getUpdatedAt|date("d-m-Y") }}
-					<span><a href="{{ path('contact', {titre: realisation.titre}) }}">Nous contacter à propos de cette réalisation</a></span>
+			<div
+				class="blocTextes">
+				{# En cours #}
+				<div class="headInfos">
+					<div class="date">
+						<i class="fas fa-clock fa-lg"></i>
+						{{ realisation.getUpdatedAt|date("d-m-Y") }}
+					</div>
+					<a class="contact boutonContactRealisation" href="{{ path('contact', {titre: realisation.titre}) }}">Contact</a>
+
 				</div>
 				<div class="realisation-hook">
 					<h4 class="accroche">{{ realisation.hook }}</h4>
