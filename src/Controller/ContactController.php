@@ -21,10 +21,11 @@ class ContactController extends AbstractController
    }
 
     /**
-     * @Route("/contact/{titre}", name="contact")
+     * @Route("/contact/{id}", name="contact")
      */
-    public function index(Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
+    public function index($id, Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
     {
+        // TODO: Envoyer l'id de la réalisation dans le ContactType.php
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,7 +43,8 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'menu_courant' => 'contact',
             'contactForm' => $form->createView(),
-            // 'toto' => $toto
+            'id' => $id
+            
         ]);
     }
 
