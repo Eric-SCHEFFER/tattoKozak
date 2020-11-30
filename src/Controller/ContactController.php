@@ -21,11 +21,11 @@ class ContactController extends AbstractController
    }
 
     /**
-     * @Route("/contact/{id}", name="contact")
+     * @Route("/contact/{id}", defaults={"id" = NULL}, name="contact")
      */
     public function index($id, Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
     {
-        // TODO: Envoyer l'id de la réalisation dans le ContactType.php
+        // TODO: Faire un find ou findOneBy pour récupérer le nom de la réalisation avec l'id
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
