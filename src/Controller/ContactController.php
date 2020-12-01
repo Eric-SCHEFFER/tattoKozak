@@ -9,23 +9,28 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use App\Repository\AProposEtInfosRepository;
-use App\Entity\AProposEtInfos;
+use App\Entity\Realisations;
 
 
 class ContactController extends AbstractController
 {
 
     public function __construct(AProposEtInfosRepository $aProposEtInfosRepository)
-   {
-      $this->aProposEtInfosRepository = $aProposEtInfosRepository;
-   }
+    {
+        $this->aProposEtInfosRepository = $aProposEtInfosRepository;
+    }
 
     /**
      * @Route("/contact/{id}", defaults={"id" = NULL}, name="contact")
      */
     public function index($id, Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
     {
-        // TODO: Faire un find ou findOneBy pour récupérer le nom de la réalisation avec l'id
+        $titre = NULL;
+        // Si l'id de la réalisation existe, on récupère le titre de la réalisation
+        if (isset($id)) {
+            $titre = $this->getDoctrine()->getRepository(Realisations::class)->find($id)->getTitre();
+        }
+
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,8 +48,8 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'menu_courant' => 'contact',
             'contactForm' => $form->createView(),
-            'id' => $id
-            
+            'titre' => $titre
+
         ]);
     }
 
