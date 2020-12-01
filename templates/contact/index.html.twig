@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body %}
-	{{ dump(titre) }}
 	<h1>Nous contacter</h1>
 	<div class="container0">
 		{{ form_start(contactForm, {'attr':{'class':'form1'}}) }}
@@ -25,11 +24,12 @@
 			{{ form_row(contactForm.email, {'attr':{'class':'champ'}}) }}
 		</div>
 		<div class="blocChamp">
-			{{ form_row(contactForm.objet, {'attr':{'class':'champ', 'value':titre}}) }}
+			{{ form_row(contactForm.objet, {'attr':{'class':'champ', 'value':champObjetPreRempli}}) }}
 		</div>
 		<div class="blocChamp2">
-			{# {{ form_row(contactForm.message, {'attr':{'class':'champ'}}, {'value':'toto'}) }} #}
-			{{ form_row(contactForm.message, {'value':'toto', 'attr':{'class':'champ'}}) }}
+			{# {{ form_row(contactForm.message, {'attr':{'class':'champ'}}) }} #}
+			{{ form_row(contactForm.message, {'value': champMessagePreRempli, 'attr':{'class':'champ'}}) }}
+			
 		</div>
 		<div class="blocChamp">
 			{{ form_row(contactForm.envoyer) }}

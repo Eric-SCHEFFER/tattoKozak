@@ -26,9 +26,12 @@ class ContactController extends AbstractController
     public function index($id, Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
     {
         $titre = NULL;
-        // Si l'id de la réalisation existe, on récupère le titre de la réalisation
+        // Si l'id de la réalisation existe, on hydrate les variables qui pré-rempliront les champs objet et message
         if (isset($id)) {
             $titre = $this->getDoctrine()->getRepository(Realisations::class)->find($id)->getTitre();
+            $referer = $request->headers->get('referer');
+            $champObjetPreRempli = 'A propos de la réalisation: '. $titre;
+            $champMessagePreRempli = "Lien de la réalisation: " . $referer . "\n\nBonjour,\n";
         }
 
         $form = $this->createForm(ContactType::class);
@@ -48,8 +51,8 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'menu_courant' => 'contact',
             'contactForm' => $form->createView(),
-            'titre' => $titre
-
+            'champObjetPreRempli' => $champObjetPreRempli,
+            'champMessagePreRempli' => $champMessagePreRempli,
         ]);
     }
 
