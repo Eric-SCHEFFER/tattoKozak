@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/changelogin.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/changelogin.css') }}">
 {% endblock %}
 
 {% block title %}
-Modifier l'email connexion
+	Modifier l'identifiant de connexion
 {% endblock %}
 
 {% block body %}
-    <h2>Modifier l'email de connexion {{ app.user.email }}</h2>
-    
+	<h2>Modifier l'identifiant de connexion
+		{{ app.user.email }}</h2>
+
 
 	{% for message in app.flashes('error') %}
 		<div class="conteneurMessageFlash">
@@ -20,18 +21,18 @@ Modifier l'email connexion
 		</div>
 	{% endfor %}
 	<div class="container0">
-        <p>Veuillez compléter les champs, et cliquer sur Envoyer.</p>
-        <p>Vous allez recevoir un lien de validation par email.</p>
+		<p>ATTENTION: Votre identifiant de connexion doit être une adresse email valide à laquelle vous avez accès.</p>
+		<p>Un lien de validation vous y sera envoyé.</p>
 		<div class="container-form">
 			<form class="form1" method="post">
 
-                <label for="inputPassword">Mot de passe</label>
-                <input type="password" name="password" id="password" class="" required>
-                <label for="email">Nouvel email</label>
+				<label for="inputPassword">Mot de passe</label>
+				<input type="password" name="password" id="password" class="" required>
+				<label for="email">Nouvel identifiant(une adresse email valide)</label>
 				<input type="email" name="newEmail" id="newEmail" class="" required>
-				<label for="email">Confirmer le nouvel email</label>
+				<label for="email">Confirmer le nouvel identifiant</label>
 				<input type="email" name="newEmailconfirm" id="newEmailconfirm" class="" required>
-				
+
 				<button type="submit">
 					ENVOYER
 				</button>

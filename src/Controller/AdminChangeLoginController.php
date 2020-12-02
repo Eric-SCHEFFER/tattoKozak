@@ -68,9 +68,8 @@ class AdminChangeLoginController extends AbstractController
                 $templateTwig = "admin_change_login/envoiMailLienValidation.html.twig";
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token);
                 // On affiche la vue notifiant l'envoi de l'email
-                return $this->render('admin_change_login/notificationEnvoiEmail.html.twig', [
-                    'emailCandidat' => $nouvEmail
-                ]);
+                $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter la première fois avec l\'identifiant actuel ' . $user->getEmail());
+                return $this->redirectToRoute('home');
             }
         }
         return $this->render('admin_change_login/index.html.twig');
@@ -99,7 +98,8 @@ class AdminChangeLoginController extends AbstractController
         $user->setResetEmailToken(NULL);
         $em->persist($user);
         $em->flush();
-        return $this->render('admin_change_login/activerEmailCandidat.html.twig');
+        $this->addFlash('succes', 'Lidentifiant de connexion a été modifié avec succès. Il s\'agit maintenant de: ' . $user->getEmail());
+        return $this->redirectToRoute('admin');
     }
 
 
