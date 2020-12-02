@@ -62,13 +62,13 @@ class AdminChangeLoginController extends AbstractController
                 $em->flush();
 
                 // On envoie un email contenant le lien de validation de l'email candidat
-                $expediteur = "siteTattoKozak@toto.com";
+                $expediteur = "siteTattooKozak@toto.com";
                 $destinataire = $nouvEmail;
                 $objet = "Validation email de connexion";
                 $templateTwig = "admin_change_login/envoiMailLienValidation.html.twig";
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token);
-                // On affiche la vue notifiant l'envoi de l'email
-                $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter la première fois avec l\'identifiant actuel ' . $user->getEmail());
+                // On ajoute dans un message flash le succès d'envoi de l'email, et on redirige vers la page d'accueil
+                $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter avec l\'identifiant actuel ' . $user->getEmail());
                 return $this->redirectToRoute('home');
             }
         }
@@ -98,7 +98,7 @@ class AdminChangeLoginController extends AbstractController
         $user->setResetEmailToken(NULL);
         $em->persist($user);
         $em->flush();
-        $this->addFlash('succes', 'Lidentifiant de connexion a été modifié avec succès. Il s\'agit maintenant de: ' . $user->getEmail());
+        $this->addFlash('succes', 'L\'identifiant de connexion a été modifié avec succès: ' . $user->getEmail());
         return $this->redirectToRoute('admin');
     }
 
