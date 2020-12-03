@@ -32,7 +32,7 @@ class ContactController extends AbstractController
         if (isset($id)) {
             $titre = $this->getDoctrine()->getRepository(Realisations::class)->find($id)->getTitre();
             $referer = $request->headers->get('referer');
-            $champObjetPreRempli = 'A propos: '. $titre;
+            $champObjetPreRempli = 'A propos: ' . $titre;
             $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
         }
 
@@ -40,15 +40,18 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
-            $expediteur = $contact['email'];
-            $destinataire = $this->aProposEtInfosRepository->findField("email_envoi_formulaire");
-            $destinataire = $destinataire[0]['email_envoi_formulaire'];
-            $templateTwig = "emails/contact.html.twig";
-
-            // Envoi du mail contenant les données du formulaire
-            $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $contact);
-            $this->addFlash('succes', 'Votre message à bien été envoyé, et sera traité dans les plus brefs délais. Merci');
-            return $this->redirectToRoute('home');
+            // On vérifie si le champ caché "motif" servant de "pôt de miel" aux robots spameurs est vide
+            // et si on vient d'une des pages du site
+            if (!isset($contact['motif']) && isset($_SERVER['HTTP_ORIGIN'])){
+                $expediteur = $contact['email'];
+                $destinataire = $this->aProposEtInfosRepository->findField("email_envoi_formulaire");
+                $destinataire = $destinataire[0]['email_envoi_formulaire'];
+                $templateTwig = "emails/contact.html.twig";
+                // Envoi du mail contenant les données du formulaire
+                $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $contact);
+                $this->addFlash('succes', 'Votre message à bien été envoyé, et sera traité dans les plus brefs délais. Merci');
+                return $this->redirectToRoute('home');
+            }
         }
         return $this->render('contact/index.html.twig', [
             'menu_courant' => 'contact',

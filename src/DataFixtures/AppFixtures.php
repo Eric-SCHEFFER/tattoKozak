@@ -16,8 +16,8 @@ class AppFixtures extends Fixture
 
         $aProposEtInfos = new AProposEtInfos();
 
-        $aProposEtInfos->setNomEntreprise("Mon entreprise");
-        $aProposEtInfos->setAdresse("12, rue des choux");
+        $aProposEtInfos->setNomEntreprise("TATTOOKOZAK");
+        $aProposEtInfos->setAdresse("12, rue des choux de bruxelles");
         $aProposEtInfos->setCodePostal("67000");
         $aProposEtInfos->setVille("Muckesturm-gare-sur-zinzel");
         $aProposEtInfos->setTelephone("0123456789");

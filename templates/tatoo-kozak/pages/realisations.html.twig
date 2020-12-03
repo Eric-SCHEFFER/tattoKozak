@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>{{ realisations | length }} Réalisations</h1>
+	<h1>{{ realisations | length }} Réalisation(s)</h1>
 	<div class="container-apercuRealisations">
 		{% for realisation in realisations %}
 			<div class="apercuRealisation">
@@ -33,7 +33,7 @@
 				<div class="apercuRealisation-dateCreation">
 					<p class="infos">
 						<span class="date" title="Réalisé le {{ realisation.getUpdatedAt|date("d-m-Y") }}">
-							<i class="fas fa-clock fa-lg"></i> {{ realisation.getUpdatedAt|date("d-m-Y") }}
+							<i class="fas fa-calendar fa-lg"></i> {{ realisation.getUpdatedAt|date("d-m-Y") }}
 						</span>  
 						<span class="nbreImages" title="Nombre de photos: {{ realisation.images | length }}">
 							<i class="fas fa-file-image fa-lg"></i> {{ realisation.images | length }}

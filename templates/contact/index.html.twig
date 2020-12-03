@@ -29,7 +29,9 @@
 		<div class="blocChamp2">
 			{# {{ form_row(contactForm.message, {'attr':{'class':'champ'}}) }} #}
 			{{ form_row(contactForm.message, {'value': champMessagePreRempli, 'attr':{'class':'champ'}}) }}
-			
+			<div class="blocChamp">
+				{{ form_row(contactForm.motif, {'attr':{'class':'champ'}}) }}
+			</div>
 		</div>
 		<div class="blocChamp">
 			{{ form_row(contactForm.envoyer) }}

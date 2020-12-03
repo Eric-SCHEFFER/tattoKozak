@@ -69,7 +69,7 @@ class AdminChangeLoginController extends AbstractController
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token);
                 // On ajoute dans un message flash le succès d'envoi de l'email, et on redirige vers la page d'accueil
                 $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter avec l\'identifiant actuel ' . $user->getEmail());
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('admin');
             }
         }
         return $this->render('admin_change_login/index.html.twig');
