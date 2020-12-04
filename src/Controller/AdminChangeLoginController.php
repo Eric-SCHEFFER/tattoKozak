@@ -16,7 +16,10 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class AdminChangeLoginController extends AbstractController
 {
-    /** ======== Envoi de la requête de changement d'email de connexion, via le lien de validation par email ========
+    // Ajuster la valeur de validité du token (en minutes)
+    private $validiteTokenEnMn = '60';
+
+    /** ======== Envoi par email de la requête de changement d'email de connexion (lien à cliquer) ========
      * @Route("/admin/changeLogin", name="change_login")
      */
     public function resetAuthenticationEmailRequest(MailerInterface $mailer, Request $request, UserPasswordEncoderInterface $passwordEncoder)
@@ -53,12 +56,10 @@ class AdminChangeLoginController extends AbstractController
 
             // Si pas d'erreur
             else {
-                // On créé le token de reset de l'email
+                // On créé le token de reset de l'email, sa date de creation, l'email candidat
                 $token = md5(uniqid());
                 $user->setResetEmailToken($token);
-                // Date de creation du token
                 $user->setResetEmailTokenCreatedAt(new DateTime());
-                // l'email candidat
                 $user->setEmailCandidat($nouvEmail);
                 // On sauvegarde dans la base
                 $em->persist($user);
@@ -71,7 +72,7 @@ class AdminChangeLoginController extends AbstractController
                 $templateTwig = "admin_change_login/envoiMailLienValidation.html.twig";
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $objet, $templateTwig, $token);
                 // On ajoute dans un message flash le succès d'envoi de l'email, et on redirige vers la page d'accueil
-                $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter avec l\'identifiant actuel ' . $user->getEmail());
+                $this->addFlash('succes', 'Nous venons de vous envoyer un lien de validation à l\'adresse: ' . $nouvEmail . '. Si vous n\'êtes plus connecté quand vous cliquez sur le lien, vous devrez vous reconnecter avec l\'identifiant actuel ' . $user->getEmail() . '. Ce lien est valable ' . $this->getValiditeTokenEnMn() . ' mn.');
                 return $this->redirectToRoute('admin');
             }
         }
@@ -93,18 +94,15 @@ class AdminChangeLoginController extends AbstractController
             // Erreur 404
             throw $this->createNotFoundException('Le token n\'existe pas dans la base');
         }
-        // On vérifie que la date de création du token est de moins d'une heure
-        if((new DateTime())->getTimestamp() - $user->getResetEmailTokenCreatedAt()->getTimestamp() > 3600) {
+        // Si la date de création du token est de plus d'une heure
+        if ((new DateTime())->getTimestamp() - $user->getResetEmailTokenCreatedAt()->getTimestamp() > $this->getValiditeTokenEnMn() * 60) {
             // Erreur 404
             throw $this->createNotFoundException('Le token est expiré');
         }
-        // On copie emailCandidat dans email
+        // On copie emailCandidat dans email, et on supprime l'emailCandidat, le token et sa date de création
         $user->setEmail($user->getEmailCandidat());
-        // On supprime l'emailCandidat
         $user->setEmailcandidat(NULL);
-        // On supprime le token
         $user->setResetEmailToken(NULL);
-        // On supprime la date de création du token
         $user->setResetEmailTokenCreatedAt(NULL);
         $em->persist($user);
         $em->flush();
@@ -124,8 +122,14 @@ class AdminChangeLoginController extends AbstractController
             ->subject($objet)
             ->htmlTemplate($templateTwig)
             ->context([
-                'token' => $token
+                'token' => $token,
+                'validiteTokenEnMn' => $this->getValiditeTokenEnMn(),
             ]);
         $mailer->send($email);
+    }
+
+    private function getValiditeTokenEnMn()
+    {
+        return $this->validiteTokenEnMn;
     }
 }
