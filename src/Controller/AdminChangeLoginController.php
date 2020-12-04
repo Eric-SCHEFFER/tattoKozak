@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,6 +56,8 @@ class AdminChangeLoginController extends AbstractController
                 // On créé le token de reset de l'email
                 $token = md5(uniqid());
                 $user->setResetEmailToken($token);
+                // Date de creation du token
+                $user->setResetEmailTokenCreatedAt(new DateTime());
                 // l'email candidat
                 $user->setEmailCandidat($nouvEmail);
                 // On sauvegarde dans la base
@@ -83,19 +86,26 @@ class AdminChangeLoginController extends AbstractController
     public function activerEmailCandidatConnexion($token, UserRepository $userRepo)
     {
         $em = $this->getDoctrine()->getManager();
-        // On vérifie si un utilisateur a ce token
+        // On vérifie si ce token existe
         $user = $userRepo->findOneBy(['reset_email_token' => $token]);
         // Si aucun utilisateur n'existe avec ce token
         if (!$user) {
             // Erreur 404
             throw $this->createNotFoundException('Le token n\'existe pas dans la base');
         }
+        // On vérifie que la date de création du token est de moins d'une heure
+        if((new DateTime())->getTimestamp() - $user->getResetEmailTokenCreatedAt()->getTimestamp() > 3600) {
+            // Erreur 404
+            throw $this->createNotFoundException('Le token est expiré');
+        }
         // On copie emailCandidat dans email
         $user->setEmail($user->getEmailCandidat());
         // On supprime l'emailCandidat
         $user->setEmailcandidat(NULL);
-        // on supprime le token
+        // On supprime le token
         $user->setResetEmailToken(NULL);
+        // On supprime la date de création du token
+        $user->setResetEmailTokenCreatedAt(NULL);
         $em->persist($user);
         $em->flush();
         $this->addFlash('succes', 'L\'identifiant de connexion a été modifié avec succès: ' . $user->getEmail());

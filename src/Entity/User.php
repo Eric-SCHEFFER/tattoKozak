@@ -44,6 +44,11 @@ class User implements UserInterface
      */
     private $email_candidat;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $reset_email_token_created_at;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -145,6 +150,18 @@ class User implements UserInterface
     public function setEmailCandidat(?string $email_candidat): self
     {
         $this->email_candidat = $email_candidat;
+
+        return $this;
+    }
+
+    public function getResetEmailTokenCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->reset_email_token_created_at;
+    }
+
+    public function setResetEmailTokenCreatedAt(?\DateTimeInterface $reset_email_token_created_at): self
+    {
+        $this->reset_email_token_created_at = $reset_email_token_created_at;
 
         return $this;
     }

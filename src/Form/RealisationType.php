@@ -34,6 +34,7 @@ class RealisationType extends AbstractType
 
             ->add('hook', TextType::class, [
                 'required' => true,
+                'label' => 'Phrase d\'accroche',
                 'constraints' => [
                     new Length([
                         'min' => 3,
@@ -44,40 +45,6 @@ class RealisationType extends AbstractType
                 ]
             ])
 
-
-
-
-
-            // ->add('updated_at')
-
-            //TODO: Constraints
-            ->add('updated_at', DateTimeType::class, [
-                'required' => true,
-
-
-            ])
-
-
-            // ->add('updated_at', DateTimeType::class, [
-            //     'required' => true,
-            //     'widget' => 'single_text',
-            //     'html5' => false,
-            //     'constraints' => [
-            //         DateTimeInterface()
-
-
-
-            //     ]
-
-            // ])
-
-
-
-
-
-
-
-
             // On ajoute le champ image dans le formulaire
             // Il n'est pas lié à la base de données (mapped à false)
             ->add('imageFile', FileType::class, [
@@ -86,6 +53,11 @@ class RealisationType extends AbstractType
                 'multiple' => true,
                 'mapped' => false
 
+            ])
+
+            ->add('updated_at', DateTimeType::class, [
+                'label' => 'Date de mise à jour',
+                'required' => true,
             ])
 
             ->add('description', TextareaType::class, [
