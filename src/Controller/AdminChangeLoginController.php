@@ -16,7 +16,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class AdminChangeLoginController extends AbstractController
 {
-    // Ajuster la valeur de validité du token (en minutes)
+    // Choisir la durée de validité du token (en minutes)
     private $validiteTokenEnMn = '60';
 
     /** ======== Envoi par email de la requête de changement d'email de connexion (lien à cliquer) ========

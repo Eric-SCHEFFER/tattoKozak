@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\File;
 // use Symfony\Component\Form\Extension\Core\Type\DateTimeInterface;
 
 
@@ -51,8 +54,21 @@ class RealisationType extends AbstractType
                 'required' => false,
                 'label' => false,
                 'multiple' => true,
-                'mapped' => false
-
+                'mapped' => false,
+                'constraints' => [
+                    new All([
+                        new Image([
+                            // maxSize: Par fichier
+                            'maxSize' => '8M',
+                            'maxSizeMessage' => 'Trop gros: 8M maxi par fichier',
+                            'mimeTypes' => [
+                                'image/jpeg',
+                                'image/png'
+                            ],
+                            'mimeTypesMessage' => 'Fichier non-valide: Uniquement jpeg et png'
+                        ])
+                    ])
+                ]
             ])
 
             ->add('updated_at', DateTimeType::class, [
