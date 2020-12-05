@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SloganType extends AbstractType
 {
@@ -17,6 +18,9 @@ class SloganType extends AbstractType
         ->add('slogan', TextType::class, [
             'required' => true,
             'constraints' => [
+                new NotBlank([
+                    'message' => 'Ce champ ne peut pas être vide',
+                ]),
                 new Length([
                     'min' => 3,
                     'minMessage' => 'Minimum 3 caractères',

@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactType extends AbstractType
 {
@@ -22,6 +23,7 @@ class ContactType extends AbstractType
             ->add('prenom', TextType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -34,6 +36,7 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -46,6 +49,7 @@ class ContactType extends AbstractType
             ->add('tel', textType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -58,6 +62,7 @@ class ContactType extends AbstractType
             ->add('email', EmailType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Email([
                         'message' => 'l\'adresse email n\'est pas valide'
                     ]),
@@ -74,6 +79,7 @@ class ContactType extends AbstractType
                     
                 ],
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -86,6 +92,7 @@ class ContactType extends AbstractType
             ->add('message', TextareaType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -97,8 +104,6 @@ class ContactType extends AbstractType
 
             ->add('motif', HiddenType::class, [
                 'attr' => [
-                    
-                    
                 ]])
 
                 

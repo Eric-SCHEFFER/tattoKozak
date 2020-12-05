@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AProposType extends AbstractType
 {
@@ -20,6 +21,7 @@ class AProposType extends AbstractType
             ->add('nom_entreprise', TextType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -42,7 +44,7 @@ class AProposType extends AbstractType
             ])
 
             ->add('complement_adresse', TextType::class, [
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new Length([
                         'min' => 3,
