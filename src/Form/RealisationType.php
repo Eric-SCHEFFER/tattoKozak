@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
+
 use Symfony\Component\Validator\Constraints\File;
 // use Symfony\Component\Form\Extension\Core\Type\DateTimeInterface;
 
@@ -26,6 +29,7 @@ class RealisationType extends AbstractType
             ->add('titre', TextType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -39,6 +43,7 @@ class RealisationType extends AbstractType
                 'required' => true,
                 'label' => 'Phrase d\'accroche',
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
@@ -79,6 +84,7 @@ class RealisationType extends AbstractType
             ->add('description', TextareaType::class, [
                 'required' => true,
                 'constraints' => [
+                    new NotBlank(),
                     new Length([
                         'min' => 3,
                         'minMessage' => 'Minimum 3 caractères',
