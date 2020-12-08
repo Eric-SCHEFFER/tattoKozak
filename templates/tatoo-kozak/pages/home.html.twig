@@ -39,12 +39,12 @@
 						{# ========= On affiche la première image du tableau realisations ========= #}
 						{# Si la clé du tableau correspondant à l'image existe, on affiche l'image #}
 							{% if realisation.images[0].lien is defined %}
-							<img title="{{ realisation.titre }}" src="{{ '/assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien }}"> <div class="apercuRealisation-titre">
+							<img title="{{ realisation.titre }}" src="{{ asset('assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien) }}"> <div class="apercuRealisation-titre">
 								<h3 title="{{ realisation.titre }}">{{ realisation.titre }}</h3>
 							</div>
 							{# Sinon, on affiche l'image par défaut #}
 						{% else %}
-							<img title="Aucune image de disponible" src="{{ '/assets/images/min_imageDefaut.jpg' }}">
+							<img title="Aucune image de disponible" src="{{ asset('assets/images/min_imageDefaut.jpg') }}">
 							<div class="apercuRealisation-titre">
 								<h3 title="{{ realisation.titre }}">{{ realisation.titre }}</h3>
 							</div>

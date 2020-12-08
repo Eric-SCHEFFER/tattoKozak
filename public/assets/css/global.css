@@ -22,7 +22,7 @@ body {
    margin: 0;
    font-weight: 400;
    color: rgb(255, 255, 255);
-   background-image: url("/assets/images/tatouage_fille_tete_gros_plan_3.jpg");
+   background-image: url("../../assets/images/tatouage_fille_tete_gros_plan_3.jpg");
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;

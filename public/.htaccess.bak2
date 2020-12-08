@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerName domain.tld
+    ServerAlias www.domain.tld
+
+    DocumentRoot /var/www/site-2/tatoo-kozak/tattoKozak/public/
+    <Directory /var/www/site-2/tatoo-kozak/tattoKozak/public/>
+        # enable the .htaccess rewrites
+        AllowOverride All
+        Order allow,deny
+        Allow from All
+    </Directory>
+
+    ErrorLog /var/log/apache2/project_error.log
+    CustomLog /var/log/apache2/project_access.log combined
+</VirtualHost>
