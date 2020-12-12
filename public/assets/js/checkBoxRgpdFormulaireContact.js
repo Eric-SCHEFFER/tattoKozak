@@ -5,7 +5,7 @@ window.onload = () => {
    caseACocher.checked = false;
    boutonSubmit.disabled = true;
 
-   // Bascule: Active/désactive le bouton submit selon que la case d'acceptation de collecte des données est cochée ou non.
+   // Bascule: Active/désactive le bouton submit selon que la case d'acceptation de collecte des données soit cochée ou non.
    caseACocher.addEventListener('change', function () {
       if (this.checked) {
          boutonSubmit.className = "buttonEnabled";
@@ -19,9 +19,4 @@ window.onload = () => {
 
       }
    });
-   boutonSubmit.addEventListener('click', function () {
-      alert("clic sur envoyer");
-
-   });
-
 }
