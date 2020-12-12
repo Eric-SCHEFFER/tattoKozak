@@ -84,6 +84,12 @@
    color: rgb(255, 255, 255);
 }
 
+.form1 .buttonDisabled, .form1 .buttonDisabled:hover {
+   background-color: rgb(85, 85, 85);
+   color: #e0e0e0;
+   cursor: not-allowed;
+}
+
 /* Surcharge le style de a qui est en blanc */
 
 /* .messageFlash a {
