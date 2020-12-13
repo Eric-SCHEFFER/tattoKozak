@@ -8,8 +8,8 @@
 # Utilisation:
 # Completer la partie "Variables à renseigner" en début de script
 # Placer ce script dans le dossier racine local de l'application que l'on veut déployer.
-# Tout ce qui se trouve dans ce dossier sera envoyé sur le serveur, en excluant ceux inclus dans le fichier .gitignore qui doit être présent à la racine.
 # Se placer dans le dossier du script, et le lancer avec la commande: ./deploy.sh
+# Tout ce qui se trouve dans ce dossier sera envoyé sur le serveur, en excluant ceux inclus dans le fichier .gitignore qui doit être présent à la racine.
 # Eric SCHEFFER 2020-12-11-18-33
 
 
