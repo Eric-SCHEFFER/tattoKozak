@@ -11,6 +11,9 @@
 	<div class="container-form">
 		<div class="form1">
 			{{ form_start(resetForm) }}
+			<p>Le nouveau mot de passe doit faire 8 caractères minimum, et contenir au moins:
+				1 minuscule, 1 majuscule, 1 chiffre, et au moins 1 caractère spécial: & ) = ( ?
+			</p>
 			{{ form_row(resetForm.plainPassword, {'attr':{'class':'input'}}) }}
 			<button>Réinitialiser le mot de passe</button>
 			{{ form_end(resetForm) }}
