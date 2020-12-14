@@ -44,11 +44,12 @@ class ContactController extends AbstractController
             // et si on vient d'une des pages du site
             if (!isset($contact['motif']) && isset($_SERVER['HTTP_ORIGIN'])){
                 $expediteur = $contact['email'];
+                $objet = $contact['objet'];
                 $destinataire = $this->aProposEtInfosRepository->findField("email_envoi_formulaire");
                 $destinataire = $destinataire[0]['email_envoi_formulaire'];
                 $templateTwig = "emails/contact.html.twig";
                 // Envoi du mail contenant les données du formulaire
-                $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $contact);
+                $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $objet, $contact);
                 $this->addFlash('succes', 'Le message à bien été envoyé');
                 return $this->redirectToRoute('home');
             }
@@ -64,11 +65,12 @@ class ContactController extends AbstractController
     /** ======= Méhode: Envoi d'email en html, dont le corps est cherché dans une page twig ========
      *
      */
-    private function envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $contact)
+    private function envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $objet, $contact)
     {
         $email = (new TemplatedEmail())
             ->from($expediteur)
             ->to($destinataire)
+            ->subject($objet)
             ->htmlTemplate($templateTwig)
             // Envoi les paramètres à la page twig
             ->context([
