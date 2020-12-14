@@ -19,8 +19,19 @@
    margin: 10px 0 10px 0;
 }
 
+.itemCoordonnes {
+   line-height: 1.8em;
+}
+
+#fb, #email {
+   max-width: 350px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
 .bloc4 {
-   margin: 10px 0 10px 0;
+   margin: 8px 0 8px 0;
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;

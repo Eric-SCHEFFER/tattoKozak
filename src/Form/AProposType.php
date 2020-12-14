@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Url;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AProposType extends AbstractType
@@ -151,6 +152,9 @@ class AProposType extends AbstractType
                         'minMessage' => 'Minimum 3 caractères',
                         'max' => 255,
                         'maxMessage' => 'Maximum 255 caractères'
+                    ]),
+                    new Url([
+                        'message' => 'Ce n\'est pas une adresse url valide' 
                     ])
                 ]
             ])

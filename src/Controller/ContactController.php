@@ -49,7 +49,7 @@ class ContactController extends AbstractController
                 $templateTwig = "emails/contact.html.twig";
                 // Envoi du mail contenant les données du formulaire
                 $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $contact);
-                $this->addFlash('succes', 'Votre message à bien été envoyé, et sera traité dans les plus brefs délais. Merci');
+                $this->addFlash('succes', 'Le message à bien été envoyé');
                 return $this->redirectToRoute('home');
             }
         }

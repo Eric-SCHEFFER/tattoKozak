@@ -35,19 +35,37 @@ class AdminChangeMdpController extends AbstractController
                 $err = true;
             }
             // Si les 2 nouveaux mots de passe entrés ne sont pas identiques
-            if ($request->request->get('newPassword') !== $request->request->get('newPasswordConfirm')) {
+            $nouvMotDePasse = $request->request->get('newPassword');
+            if ($nouvMotDePasse !== $request->request->get('newPasswordConfirm')) {
                 $this->addFlash('error', 'Les deux nouveaux mots de passe ne sont pas identiques');
                 $err = true;
             }
-            // TODO:
+            // Si le nouveau mdp fait moins de 8 caractères
+            $nbrCar = 8;
+            if (strlen($nouvMotDePasse) < $nbrCar) {
+                $this->addFlash('error', 'Le nouveau mot de passe doit avoir au moins ' . $nbrCar . ' caractères');
+                $err = true;
+            }
             // Si le nouveau mdp ne contient pas au moins une minuscule
-            // code...
+            if (!preg_match('#[a-z]+#', $nouvMotDePasse)) {
+                $this->addFlash('error', 'Doit contenir au moins 1 minuscule');
+                $err = true;
+            }
             // Si le nouveau mot de passe ne contient pas au moins une majuscule
-            // code...
+            if (!preg_match('#[A-Z]+#', $nouvMotDePasse)) {
+                $this->addFlash('error', 'Doit contenir au moins 1 majuscule');
+                $err = true;
+            }
             // Si le nouveau mot de passe ne contient pas au moins un chiffre
-            // code...
+            if (!preg_match('#[0-9]+#', $nouvMotDePasse)) {
+                $this->addFlash('error', 'Doit contenir au moins 1 chiffre');
+                $err = true;
+            }
             // Si le nouveau mot de passe ne contient pas au moins l'un des caractères spéciaux: & ) = ( ?
-            // code...
+            if (!preg_match('#[&)=(?]+#', $nouvMotDePasse)) {
+                $this->addFlash('error', 'Doit contenir au moins l\'un de ces caractères: & ) = ( ?');
+                $err = true;
+            }
 
 
             // ======== En cas d'erreur, on revient vers la page de changement de mot de passe, avec les messages d'erreurs ========
