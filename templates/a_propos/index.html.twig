@@ -38,17 +38,53 @@
 				<div class="bloc5 toUpper">{{ a.getVille }}</div>
 			</div>
 
-			<div class="bloc3">
-				<div class="itemCoordonnes"><i class="fas fa-mobile-alt"></i> {{ a.getTelephone }}</div>
-				<div class="itemCoordonnes"><i class="fas fa-mobile-alt"></i> {{ a.getTelephone2 }}</div>
-				<div class="itemCoordonnes" id="email"><i class="far fa-envelope"></i> <a href="mailto:{{ a.getEmailContact }}">{{ a.getEmailContact }}</a></div>
+			<dl class="bloc3">
+				<div class="moyencontact">
+					<dt>
+						<i class="fas fa-mobile-alt"></i>
+					</dt>
+
+					<dd>
+						{{ a.getTelephone }}
+					</dd>
+				</div>
+				<div class="moyencontact">
+					<dt>
+						<i class="fas fa-mobile-alt"></i>
+					</dt>
+					<dd>
+						{{ a.getTelephone2 }}
+					</dd>
+				</div>
+				<div class="moyencontact">
+					<dt id="email">
+						<i class="far fa-envelope"></i>
+					</dt>
+					<dd>
+						<a href="mailto:{{ a.getEmailContact }}">{{ a.getEmailContact }}</a>
+					</dd>
+				</div>
 				{% if not a.getFacebook is empty %}
-					<div class="itemCoordonnes" id="fb"><i class="fab fa-facebook-f"></i> <a href="{{ a.getFacebook }}">{{ a.getFacebook }}</a></div>
+					<div class="moyencontact">
+						<dt id="fb">
+							<i class="fab fa-facebook-f"></i>
+						</dt>
+						<dd>
+							<a href="{{ a.getFacebook }}">{{ a.getFacebook }}</a>
+						</dd>
+					</div>
 				{% endif %}
 				{% if not a.getAutre is empty %}
-					<div class="itemCoordonnes"><i class="fas fa-info"></i> {{ a.getAutre }}</div>
+					<div class="moyencontact">
+						<dt>
+							<i class="fas fa-info"></i>
+						</dt>
+						<dd>
+							{{ a.getAutre }}
+						</dd>
+					</div>
 				{% endif %}
-			</div>
+			</dl>
 		</div>
 	</div>
 {% endblock %}

@@ -19,8 +19,27 @@
    margin: 10px 0 10px 0;
 }
 
-.itemCoordonnes {
-   line-height: 1.8em;
+dl.bloc3 dt, dl.bloc3 i {
+   margin: 0;
+   padding: 0;
+}
+
+dl.bloc3 {
+   margin-top: 80px;
+   padding: 0;
+}
+
+dl.bloc3 dd {
+   position: relative;
+   bottom: 21px;
+   line-height: 1.1em;
+}
+
+.moyencontact {
+   position: relative;
+   padding: 0;
+   margin: -10px;
+   
 }
 
 #fb, #email {
