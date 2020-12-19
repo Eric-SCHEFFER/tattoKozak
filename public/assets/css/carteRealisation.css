@@ -20,6 +20,8 @@
 
 .realisation-image {
    display: none;
+   background-color: rgb(0, 0, 0);
+   /* TODO: Peut-être à modifier ou virer, pour affichage de toute l'image */
    max-height: 600px;
 }
 
