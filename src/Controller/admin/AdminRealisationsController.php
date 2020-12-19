@@ -214,12 +214,35 @@ class AdminRealisationsController extends AbstractController
             // On retourne une erreur, car ce n'est ni une image jpg, ni png
             return "Image non valide (jpg ou png uniquement)";
         }
-        // On lance les fonctions php de création de miniature
+
         $sourceSize = getimagesize($imageSource);
-        $sourceWidth = $sourceSize[0];
-        $sourceHeight = $sourceSize[1];
+        $portraitMalOriente = false;
+        // On détecte si une image jpg est en portrait, et si elle est mal orientée
+        if ($imageSortie == "imagejpeg") {
+            // dd(exif_read_data($imageSource, 'ANY_TAG'));
+            if (isset(exif_read_data($imageSource, 'ANY_TAG')['Orientation'])) {
+                $portraitMalOriente = exif_read_data($imageSource, 'ANY_TAG')['Orientation'];
+                if ($portraitMalOriente == 6 && $sourceSize[0] > $sourceSize[1]) {
+                    $portraitMalOriente = true;
+                } else {
+                    $portraitMalOriente = false;
+                }
+            }
+        }
+        if ($portraitMalOriente) {
+            $sourceWidth = $sourceSize[1];
+            $sourceHeight = $sourceSize[0];
+        } else {
+            $sourceWidth = $sourceSize[0];
+            $sourceHeight = $sourceSize[1];
+        }
+        // On calcule les dimensions de la miniature, et on lance les fonctions php de création de miniature
         $targetHeight = ($targetWidth / $sourceWidth) * $sourceHeight;
         $imgIn = $imagecreatefrom($imageSource);
+        // On pivote l'image de 90° dans le sens horaire, si nécéssaire
+        if ($portraitMalOriente) {
+            $imgIn = imagerotate($imgIn, -90, 0);
+        }
         $imgOut = imagecreatetruecolor($targetWidth, $targetHeight);
         imagecopyresampled($imgOut, $imgIn, 0, 0, 0, 0, $targetWidth, $targetHeight, $sourceWidth, $sourceHeight);
         $imageSortie($imgOut, $imageCible);
