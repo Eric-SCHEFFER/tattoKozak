@@ -31,7 +31,7 @@ html {
 body {
    padding: 0 0 0 0;
    margin: 0;
-   font-weight: 400;
+   font-weight: normal;
    color: rgb(255, 255, 255);
    background-image: url("../../assets/images/Sun-Tornado7.svg");
    background-repeat: no-repeat;
