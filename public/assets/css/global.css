@@ -2,7 +2,18 @@
 
 /* ====== CHAQUE PAGE A SON STYLE DÉDIÉ DANS UN CSS SÉPARÉ  ======= */
 
+/*
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+*/
+/*
+@import url("../../assets/fonts/ma_police_preferee.ttf");
+*/
+
+@font-face {
+   font-family: "Kodchasan";
+   src: url("../../assets/fonts/Kodchasan/Kodchasan-Regular.ttf");
+}
+
 /* =========== SURCHARGE CERTAINS STYLES UTILISÉS PAR BOOTSTRAP POUR ÉVITER 2-3 BUGS D'AFFICHAGE =========== */
 
 *, ::after, ::before {
@@ -14,7 +25,7 @@
 html {
    margin: 0;
    padding: 0;
-   font-family: 'Kodchasan', sans-serif;
+   font-family: 'Kodchasan';
 }
 
 body {

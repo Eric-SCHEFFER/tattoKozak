@@ -132,3 +132,16 @@
 .actif, .bullet:hover {
    background-color: #000000;
 }
+
+/* ========= Loupe ========== */
+.img-magnifier-glass {
+   position: relative;
+   border: 3px solid #000;
+   border-radius: 0;
+   cursor: none;
+   /*Set the size of the magnifier glass:*/
+   width: 100px;
+   height: 100px;
+ }
+
+ 
