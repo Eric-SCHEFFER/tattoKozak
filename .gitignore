@@ -16,3 +16,5 @@
 
 /public/assets/images/*
 /public/assets/uploads/*
+
+/.env
