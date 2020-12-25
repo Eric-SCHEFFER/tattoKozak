@@ -1,0 +1,9 @@
+.block0 {
+   position: relative;
+   display: block;
+   margin: auto;
+   padding: 25px;
+   max-width: 900px;
+   border-radius: 8px;
+   background-color: rgba(44, 44, 44, 0.8);
+}

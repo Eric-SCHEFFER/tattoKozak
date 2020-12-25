@@ -13,3 +13,8 @@
    color: #265735;
    bottom: 16px;
 }
+
+.messageFlash-alert {
+   background-color: #F8D7DA;
+   color: #742028;
+}

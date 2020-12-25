@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+
 	<link rel="stylesheet" href="{{ asset('assets/css/boutonsEtInputs.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/carteApercuRealisation.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/messagesEtAlertes.css') }}">
 {% endblock %}
 
+{% block title %}
+	{{ SiteName }}:
+	{{ slogan[0].slogan }}
+	- Accueil
+{% endblock %}
 
 {% block body %}
 	{# Ajsuter la position en css #}
@@ -16,31 +22,56 @@
 			</div>
 		</div>
 	{% endfor %}
+
+	<!-- On affiche notre slogan -->
+	<h1>{{ slogan[0].slogan }}</h1>
+	<h2>Dernières réalisations</h2>
 	<div
-		id="slogan">
+		class="container-apercuRealisations">
 
-		<!-- On récupère notre slogan, depuis le controlleur, avec la méthode find -->
-		{{ slogan[0].texte }}
-	</div>
-
-
-	<div class="container-apercuRealisations">
+		{# On parcours le tableau et on affiche chaque réalisation dans une carte #}
 		{% for realisation in last3Realisations %}
+
+
 			<div class="apercuRealisation">
 				<div class="apercuRealisation-image">
-					<a href="{{ path('realisation', {id: realisation.id}) }}"><img src="/assets/uploads/images/realisations/{{ realisation.filename }}"></a>
+					<a href="{{ path('realisation', {id: realisation.id}) }}">
+						{# ========= On affiche la première image du tableau realisations ========= #}
+						{# Si la clé du tableau correspondant à l'image existe, on affiche l'image #}
+							{% if realisation.images[0].lien is defined %}
+							<img title="{{ realisation.titre }}" src="{{ asset('assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien) }}"> <div class="apercuRealisation-titre">
+								<h3 title="{{ realisation.titre }}">{{ realisation.titre }}</h3>
+							</div>
+							{# Sinon, on affiche l'image par défaut #}
+						{% else %}
+							<img title="Aucune image de disponible" src="{{ asset('assets/images/min_imageDefaut.jpg') }}">
+							<div class="apercuRealisation-titre">
+								<h3 title="{{ realisation.titre }}">{{ realisation.titre }}</h3>
+							</div>
+						{% endif %}
+					</a>
 				</div>
-				<div class="apercuRealisation-titre">
-					<h3>{{ realisation.titre }}</h3>
+				<div class="apercuRealisation-dateCreation">
+					<p class="infos">
+						<span class="date" title="Réalisé le {{ realisation.getUpdatedAt|date("d-m-Y") }}">
+							<i class="fas fa-calendar fa-lg"></i> {{ realisation.getUpdatedAt|date("d-m-Y") }}
+						</span>  
+						<span class="nbreImages" title="Nombre de photos: {{ realisation.images | length }}">
+							<i class="fas fa-file-image fa-lg"></i> {{ realisation.images | length }}
+						</span>
+					</p>
 				</div>
 				<div class="apercuRealisation-hook">
 					<h4 class="accroche">{{ realisation.hook }}</h4>
 				</div>
 				<div class="apercuRealisation-description">
 					<p>{{ realisation.description }}</p>
-					<a class="bouton1" href="{{ path('realisation', {id: realisation.id}) }}">Voir</a>
+					{# <a class="bouton1" href="{{ path('realisation', {id: realisation.id}) }}">Voir</a> #}
 				</div>
 			</div>
 		{% endfor %}
 	</div>
+	<a title="Voir toutes les réalisations" id="boutonFlecheVoirTout" class="bouton center marge width-perso" href="{{ path('realisations') }}">Voir tout
+		<i id="idFlecheVoirTout" class="fas fa-arrow-right fa-lg flecheVoirTout"></i>
+	</a>
 {% endblock %}

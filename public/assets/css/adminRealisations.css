@@ -3,24 +3,47 @@
 .conteneur_table {
    margin: auto;
    max-width: 700px;
+   margin-bottom: 60px;
 }
 
 .table_1 {
    width: 99%;
+   background-color: #313131d2;
 }
 
 .table_1 tbody tr:nth-child(2n + 1) {
-   background-color: rgba(144, 144, 144, 0.075);
+   background-color: rgba(0, 0, 0, 0.562);
 }
 
-.table_1, .table_1 th, .table_1 td {
+.table_1, .table_1 tr, .table_1 td {
    border: 1px solid #ffffff;
    border-collapse: collapse;
-   padding: 14px;
+}
+
+.table_1 th {
+   padding: 12px;
+}
+
+.table_1 td {
+   padding: 6px 12px 6px 12px;
 }
 
 .table_1 td a i {
    margin: 0 10px 0 10px;
+}
+
+.blocTitreImage {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.blocTitreImage img {
+   border-radius: 4px;
+   width: 60px;
+   height: 60px;
+   object-fit: cover;
+   margin-left: 14px;
 }
 
 /* ========= FORMULAIRE COMPORTANT UN CHAMP INPUT CACHÉ DE SUPPRESSION D'UNE RÉALISATION ======== */
@@ -30,34 +53,39 @@
    margin-left: 6px;
 }
 
-/* ========== POUR STYLER LES ICONES DE FONTAWESOME ET LES BOUTONS =========== */
+/* ====== ICONES FONTAWESOME ======= */
 
-
-.bleu {
-   color: #469fff;
-   margin: 8px;
+.iconeEditer::before, .iconeSupprimer::before {
+   font-family: "Font Awesome 5 Free";
+   font-size: 1.6em;
+   font-weight: 500;
+   margin: 0;
    padding: 0;
-   width: 0;
-   height: 0;
 }
 
-.bleu:hover {
+.iconeEditer::before {
    color: #73b7ff;
+   content: "\f044";
 }
 
-.boutonSupprimerRealisation {
+.iconeEditer {
+   margin: 8px 12px 8px 12px;
+}
+
+.iconeSupprimer::before {
    color: #ec1127;
+   content: "\f2ed";
    cursor: pointer;
    border: none;
-   margin: 8px;
-   margin-left: 15px;
-   padding: 0;
-   width: 0;
 }
 
-.boutonSupprimerRealisation:hover {
-   color: #f05766;
+.iconeSupprimer {
+   background-color: transparent;
+   margin: 12px 0 8px 0;
+   border: none;
 }
+
+/* ====== BOUTONS ======= */
 
 .boutonNouvelleRealisation {
    text-align: center;
@@ -74,10 +102,5 @@
    text-shadow: 2px 2px 3px rgb(0, 0, 0);
 }
 
-
-
-
-
 /* ============================ */
 
-@media screen and (max-width: 362px) {}

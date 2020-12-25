@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/formulaireCrud.css') }}">
+{% endblock %}
+{% block title %}
+	Edition slogan
+{% endblock %}
+
+{% block body %}
+	<h1>Slogan</h1>
+	<h3>Slogan de la page d'accueil</h3>
+
+	<div class="container-form">
+		{{ form_start(form, {'attr':{'class':'form1'}}) }}
+		<div class="champ">
+			{{ form_row(form.slogan, {'attr':{'class':'titre'}}) }}
+		</div>
+		<button>Enregistrer</button>
+		{{ form_end(form) }}
+	</div>
+</div>{% endblock %}

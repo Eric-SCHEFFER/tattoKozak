@@ -11,7 +11,6 @@
 
 {% block body %}
 
-	
 
 	<h1>Gérer les réalisations</h1>
 
@@ -26,10 +25,14 @@
 				</div>
 			</div>
 		{% endfor %}
-{{ dump(realisations)}}
-		<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Créer</a>
-		<table class="table_1">
+		{# {{ dump(realisations)}} #}
 
+	
+
+
+		<a class="boutonNouvelleRealisation" href="{{ path('admin.realisation.new') }}" title="Créer une nouvelle réalisation">Nouvelle</a>
+
+		<table class="table_1">
 			<thead>
 				<tr>
 					<th>Titre</th>
@@ -37,29 +40,36 @@
 				</tr>
 			</thead>
 			<tbody>
-				{# {% for realisation in realisations %}
+				{% for realisation in realisations %}
 					<tr>
 						<td>
-							{{ realisation.titre }}
+							<div class="blocTitreImage">
+								{{ realisation.titre }}
+								{# ========= On affiche la première image du tableau realisations ========= #}
+						{# Si la clé du tableau correspondant à l'image existe, on affiche l'image #}
+							{% if realisation.images[0].lien is defined %}
+							<img
+							src="{{ asset('assets/uploads/imagesRealisations/' ~ 'min_' ~ realisation.images[0].lien) }}">
+						{# Sinon, on affiche l'image par défaut #}
+						{% else %}
+							<img src="{{ asset('assets/images/min_imageDefaut.jpg') }}">
+						{% endif %}
+							</div>
 						</td>
 						<td>
-							<a class="bleu" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer">
-								<i class="fas fa-edit fa-2x"></i>
-							</a> #}
+							<a class="iconeEditer" href="{{ path('admin.realisations.edit', {id: realisation.id}) }}" title="Éditer"></a>
 							{# formulaire avec champ caché (passer la valeur delete) pour supprimmer une réalisation #}
-							{# <form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
-								<input type="hidden" name="_method" value="DELETE"> #}
-								{# TODO: Ajouter un token pour sécuriser la suppression d'une réalisation - (pour l'instant, marche pas, erreur "csrf token invalid method override") #}
-								{# <input type="hidden" name="_method" value="{{ csrf_token('delete' ~ realisation.id) }}"> #}
-
-									{# <button class="boutonSupprimerRealisation" title="Supprimer"> <i class="fas fa-trash-alt fa-2x"></i>
-								</button>
+							<form class="deleteForm" method="post" action="{{ path('admin.realisations.delete', {id: realisation.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer {{ realisation.titre }} ?')">
+								<input
+								type="hidden" name="_method" value="DELETE"/>
+								{# On créé un token #}
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ realisation.id) }}"/>
+								<button class="iconeSupprimer" title="Supprimer"></button>
 							</form>
 						</td>
 					</tr>
-				{% endfor %} #}
+				{% endfor %}
 			</tbody>
 		</table>
-
 	</div>
 {% endblock %}

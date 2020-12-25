@@ -6,46 +6,76 @@ use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
+use App\Repository\AProposEtInfosRepository;
+use App\Entity\Realisations;
+
 
 class ContactController extends AbstractController
 {
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function index(Request $request, \Swift_Mailer $mailer)
+
+    public function __construct(AProposEtInfosRepository $aProposEtInfosRepository)
     {
+        $this->aProposEtInfosRepository = $aProposEtInfosRepository;
+    }
+
+    /**
+     * @Route("/contact/{id}", defaults={"id" = NULL}, name="contact")
+     */
+    public function index($id, Request $request, MailerInterface $mailer, AProposEtInfosRepository $aProposEtInfosRepository)
+    {
+        $titre = NULL;
+        $champObjetPreRempli = NULL;
+        $champMessagePreRempli = NULL;
+        // Si l'id de la réalisation existe, on hydrate les variables qui pré-rempliront les champs objet et message
+        if (isset($id)) {
+            $titre = $this->getDoctrine()->getRepository(Realisations::class)->find($id)->getTitre();
+            $referer = $request->headers->get('referer');
+            $champObjetPreRempli = 'A propos: ' . $titre;
+            $champMessagePreRempli = "Lien: " . $referer . "\n\nBonjour,\n";
+        }
+
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
-
-            // Envoi du mail
-            // dd($contact);
-            $message = (new \Swift_Message('Nouveau Contact'))
-
-                // On attribue l'expéditeur
-                ->setFrom($contact['email'])
-
-                // On attribue le destinataire
-                ->setTo('adresse@toto.com')
-
-                // On créé le msg avec la vue twig
-                ->setBody(
-                    $this->renderView(
-                        'emails/contact.html.twig',
-                        compact('contact')
-                    ),
-                    'text/html'
-                )
-            ;
-            // On envoie le msg
-            $mailer->send($message);
-            $this->addFlash('succes', 'Le message à bien été envoyé');
-            return $this->redirectToRoute('home');
+            // On vérifie si le champ caché "motif" servant de "pôt de miel" aux robots spameurs est vide
+            // et si on vient d'une des pages du site
+            if (!isset($contact['motif']) && isset($_SERVER['HTTP_ORIGIN'])){
+                $expediteur = $contact['email'];
+                $objet = $contact['objet'];
+                $destinataire = $this->aProposEtInfosRepository->findField("email_envoi_formulaire");
+                $destinataire = $destinataire[0]['email_envoi_formulaire'];
+                $templateTwig = "emails/contact.html.twig";
+                // Envoi du mail contenant les données du formulaire
+                $this->envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $objet, $contact);
+                $this->addFlash('succes', 'Le message à bien été envoyé');
+                return $this->redirectToRoute('home');
+            }
         }
         return $this->render('contact/index.html.twig', [
             'menu_courant' => 'contact',
             'contactForm' => $form->createView(),
+            'champObjetPreRempli' => $champObjetPreRempli,
+            'champMessagePreRempli' => $champMessagePreRempli,
         ]);
+    }
+
+    /** ======= Méhode: Envoi d'email en html, dont le corps est cherché dans une page twig ========
+     *
+     */
+    private function envoiEmail($mailer, $expediteur, $destinataire, $templateTwig, $objet, $contact)
+    {
+        $email = (new TemplatedEmail())
+            ->from($expediteur)
+            ->to($destinataire)
+            ->subject($objet)
+            ->htmlTemplate($templateTwig)
+            // Envoi les paramètres à la page twig
+            ->context([
+                'contact' => $contact
+            ]);
+        $mailer->send($email);
     }
 }

@@ -2,7 +2,21 @@
 
 /* ====== CHAQUE PAGE A SON STYLE DÉDIÉ DANS UN CSS SÉPARÉ  ======= */
 
+/*
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+*/
+/*
+@import url("../../assets/fonts/ma_police_preferee.ttf");
+*/
+
+@font-face {
+   font-family: "Kodchasan";
+   src: url("../../assets/fonts/Kodchasan/Kodchasan-Regular.ttf");
+}
+@font-face {
+   font-family: "Kodchasan-Medium";
+   src: url("../../assets/fonts/Kodchasan/Kodchasan-Medium.ttf");
+}
 
 /* =========== SURCHARGE CERTAINS STYLES UTILISÉS PAR BOOTSTRAP POUR ÉVITER 2-3 BUGS D'AFFICHAGE =========== */
 
@@ -12,31 +26,52 @@
 
 /* ================================== */
 
-
 html {
    margin: 0;
    padding: 0;
-   font-family: 'Kodchasan', sans-serif;
+   font-family: 'Kodchasan';
 }
 
-
 body {
-   padding: 0 0px 0 0px;
+   padding: 0 0 0 0;
    margin: 0;
-   
    font-weight: 400;
    color: rgb(255, 255, 255);
-   background-image: url("/assets/images/background.jpg");
+   background-image: url("../../assets/images/Sun-Tornado7.svg");
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
+   background-position: center;
+   /*background-image: url("../../assets/images/tatouage_fille_tete_gros_plan_3.jpg");
+   */
+   
+   
 }
 
+/* ======== IMAGE BACKGROUND BUG/ON ======== */
+/* J'ai tenté un background avec une image dans la balise body du html (twig), pour pouvoir le gérer via la bdd, mais j'avais des bugs sur mobile.*/
+/* Je suis revenu à un background-image dans le css du body */
+/* .background {
+   position: fixed;
+   background-color: black;
+   z-index: -10;
+} */
+
+/* .background img {
+   object-fit: cover;
+   width: 100vw;
+   height: 100vh;
+   object-position: center;
+   opacity: .7;
+} */
+/* ======== IMAGE BACKGROUND BUG/OFF ======== */
+
 h1 {
+   position: relative;
    font-size: 1.8em;
    margin-bottom: 30px;
-   margin-top: 30px;
-
+   margin: 20px 4px 60px 4px;
+   top: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,10 +95,16 @@ h5, h6 {
 /* ====== CONTENEUR GÉNÉRAL (ENTRE LA NAVBAR ET LE FOOTER) ======= */
 
 .contenu {
+   /* background-color: rgba(0, 0, 0, 0.4);*/ /* Pour assombrir l'image de backround */
    margin: 0;
    padding: 0;
-   min-height: calc(100vh - 210px); /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrol vertical */
+   min-height: calc(100vh - 210px);
+   /* Ajuster les px si le footer flotte trop haut, et pour éviter l'apparition du scrolL vertical */
 }
+
+/* ======================================== */
+
+
 
 /* ====== LIENS ET ICONES======= */
 
@@ -88,8 +129,11 @@ i {
    /* color: #FF4900; */
 }
 
+.bouton, button {
+   text-transform: uppercase;
+}
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 1000px) {
    /* div servant uniquement à assombrir l'affichage lors de l'ouverture du menu burger */
    #body2 {
       display: block;

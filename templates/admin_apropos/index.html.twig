@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/formulaireCrud.css') }}">
+{% endblock %}
+{% block title %}
+	Edition à propos
+{% endblock %}
+
+
+{% block body %}
+
+	<h1>Coordonnées - À propos</h1>
+
+	<div class="container-form">
+		{{ form_start(form, {'attr':{'class':'form1'}}) }}
+		<div class="champ">
+			{{ form_row(form.nom_entreprise, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.adresse, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="champ">
+			{{ form_row(form.complement_adresse, {'attr':{'class':'titre'}}) }}
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.code_postal, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.ville, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.telephone, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.telephone2, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.email_contact, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.facebook, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="ligne1">
+			<div class="champ">
+				{{ form_row(form.autre, {'attr':{'class':'titre'}}) }}
+			</div>
+			<div class="champ">
+				{{ form_row(form.email_envoi_formulaire, {'attr':{'class':'titre'}}) }}
+			</div>
+		</div>
+		<div class="champ">
+			{{ form_row(form.presentation_a_propos, {'attr':{'class':'description'}}) }}
+		</div>
+
+
+		<button>Enregistrer</button>
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

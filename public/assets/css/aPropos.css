@@ -1,0 +1,68 @@
+.blocPrincipal {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+.blocSecondaire {
+   display: flex;
+   align-items: baseline;
+   flex-direction: column;
+   max-width: 750px;
+   margin: 20px 20px 40px 20px;
+   background-color: rgba(44, 44, 44, 0.8);
+   border-radius: 8px;
+   padding: 20px;
+}
+
+.bloc3 {
+   margin: 10px 0 10px 0;
+}
+
+dl.bloc3 {
+   margin-top: 80px;
+}
+
+dl.bloc3 dd {
+   position: relative;
+   bottom: 20px; /* On aligne les données avec les icones */
+   line-height: 1.1em;
+}
+
+.moyencontact {
+   position: relative;
+   margin: -10px auto auto auto;
+}
+
+#fb, #email {
+   max-width: 350px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.bloc4 {
+   margin: 8px 0 8px 0;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+.bloc5 {
+   margin-right: 15px;
+}
+
+.gras {
+   font-size: 1.3em;
+   font-weight: bold;
+}
+
+.toUpper {
+   text-transform: uppercase;
+}
+
+@media screen and (max-width: 708px) {
+   .blocCoordonnees {
+      flex-wrap: wrap;
+   }
+}

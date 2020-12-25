@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/aPropos.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ SiteName }}: À propos
+{% endblock %}
+
+{% block body %}
+	<h1>À Propos</h1>
+
+	<div class="blocPrincipal">
+
+		<div class="blocSecondaire">
+			<h2>Qui sommes nous ?</h2>
+			<p>{{ aPropos[0].getPresentationAPropos | nl2br }}</p>
+		</div>
+
+		{% set a = aPropos[0] %}
+		<div class="blocSecondaire">
+			<h2>Nos coordonnées</h2>
+
+			<div class="bloc3">
+				<div class="gras toUpper">{{ a.getNomEntreprise }}</div>
+			</div>
+
+			<div class="bloc3">
+				<div>{{ a.getAdresse }}</div>
+			</div>
+
+			<div class="bloc3">
+				<div>{{ a.getComplementAdresse }}</div>
+			</div>
+
+			<div class="bloc4">
+				<div class="bloc5">{{ a.getCodePostal }}</div>
+				<div class="bloc5 toUpper">{{ a.getVille }}</div>
+			</div>
+
+			<dl class="bloc3">
+				<div class="moyencontact">
+					<dt>
+						<i class="fas fa-phone"></i>
+					</dt>
+					<dd>
+						{{ a.getTelephone }}
+					</dd>
+				</div>
+				<div class="moyencontact">
+					<dt>
+						<i class="fas fa-phone"></i>
+					</dt>
+					<dd>
+						{{ a.getTelephone2 }}
+					</dd>
+				</div>
+				<div class="moyencontact">
+					<dt id="email">
+						<i class="far fa-envelope"></i>
+					</dt>
+					<dd>
+						<a href="mailto:{{ a.getEmailContact }}">{{ a.getEmailContact }}</a>
+					</dd>
+				</div>
+				{% if not a.getFacebook is empty %}
+					<div class="moyencontact">
+						<dt id="fb">
+							<i class="fab fa-facebook-f"></i>
+						</dt>
+						<dd>
+							<a href="{{ a.getFacebook }}">{{ a.getFacebook }}</a>
+						</dd>
+					</div>
+				{% endif %}
+				{% if not a.getAutre is empty %}
+					<div class="moyencontact">
+						<dt>
+							<i class="fas fa-info"></i>
+						</dt>
+						<dd>
+							{{ a.getAutre }}
+						</dd>
+					</div>
+				{% endif %}
+			</dl>
+		</div>
+	</div>
+{% endblock %}

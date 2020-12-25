@@ -3,7 +3,7 @@
    /* border: 1px yellow solid; */
    display: flex;
    justify-content: center;
-   margin: 0 8px 0 8px;
+   margin: 0 14px 60px 18px;
 }
 
 .form1 {
@@ -21,14 +21,18 @@
    height: 25px;
    border: none;
    border-radius: 6px;
-   padding: 8px;
+   padding: 8px 14px 8px 14px;
    font-size: 1em;
    color: rgb(78, 78, 78);
+   background-color: #ffffff;
 }
 
 .champ {
    margin: 0 20px 20px 20px;
+}
 
+.date {
+   font-size: 1.6em;
 }
 
 .form1 .description {
@@ -36,10 +40,45 @@
    width: 100%;
 }
 
+.images {
+   display: flex;
+   justify-content: left;
+}
+
+.images img {
+   border-radius: 6px 6px 0 0;
+   width: 80px;
+   height: 60px;
+   object-fit: cover;
+
+}
+
+.form1 h3 {
+   text-align: left;
+   margin: 0 20px 0 20px;
+}
+
+.blocVignettes {
+   display: flex;
+   flex-wrap: wrap;
+   margin-left: 10px;
+
+}
+
+.vignette {
+   display: flex;
+   position: relative;
+   flex-direction: column;
+   margin: 10px;
+   bottom: 12px;
+}
+
 .ligne1 {
+   margin: 20px 0 40px 0;
    display: flex;
    justify-content: left;
    flex-wrap: wrap;
+   align-items: baseline;
 }
 
 .ligne2 {
@@ -47,7 +86,8 @@
    justify-content: left;
 }
 
-.form1 button {
+
+.form1 button, .form1 .bouton{
    font-family: 'Kodchasan', sans-serif;
    text-align: center;
    border: unset;
@@ -68,8 +108,21 @@
    margin-top: 20px;
 }
 
-.form1 button:hover {
+.form1 button:hover, .form1 .petitBouton:hover {
    color: rgb(255, 255, 255);
+}
+
+.form1 .petitBouton {
+   position: relative;
+   height: 25px;
+   width: 80px;
+   font-size: .8em;
+   font-weight: normal;
+   margin-top: 8px;
+   background-color: #ec1127;
+   bottom: 8px;
+   border-radius: 0 0 6px 6px;
+
 }
 
 /* Surcharge le style de a qui est en blanc */
