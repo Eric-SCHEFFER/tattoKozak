@@ -29,9 +29,11 @@
 				<div>{{ a.getAdresse }}</div>
 			</div>
 
-			<div class="bloc3">
-				<div>{{ a.getComplementAdresse }}</div>
-			</div>
+			{% if not a.getComplementAdresse is empty %}
+				<div class="bloc3">
+					<div>{{ a.getComplementAdresse }}</div>
+				</div>
+			{% endif %}
 
 			<div class="bloc4">
 				<div class="bloc5">{{ a.getCodePostal }}</div>
@@ -47,14 +49,18 @@
 						{{ a.getTelephone }}
 					</dd>
 				</div>
-				<div class="moyencontact">
-					<dt>
-						<i class="fas fa-phone"></i>
-					</dt>
-					<dd>
-						{{ a.getTelephone2 }}
-					</dd>
-				</div>
+
+				{% if not a.getTelephone2 is empty %}
+					<div class="moyencontact">
+						<dt>
+							<i class="fas fa-phone"></i>
+						</dt>
+						<dd>
+							{{ a.getTelephone2 }}
+						</dd>
+					</div>
+				{% endif %}
+
 				<div class="moyencontact">
 					<dt id="email">
 						<i class="far fa-envelope"></i>
