@@ -8,14 +8,14 @@
 # Utilisation:
 # Completer la partie "Variables à renseigner" en début de script
 # Placer ce script dans le dossier racine local de l'application que l'on veut déployer.
-# Se placer dans le dossier du script, et le lancer avec la commande: ./deploy.sh
 # Tout ce qui se trouve dans ce dossier sera envoyé sur le serveur, en excluant ceux inclus dans le fichier .gitignore qui doit être présent à la racine.
+# Se placer dans le dossier du script, et le lancer avec la commande: ./deploy.sh
 # Eric SCHEFFER 2020-12-11-18-33
 
 
 # ====== Variables à renseigner ======
-utilisateur="u99899174"
-serveur="access815370728.webspace-data.io"
+utilisateur="u103439756"
+serveur="access856992905.webspace-data.io"
 racineProjetDistant="~/tattookozak"
 php="php7.4-cli"
 
