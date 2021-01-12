@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 10
+Disallow: /tattookozak/bin/
+Disallow: /tattookozak/config/
+Disallow: /tattookozak/src/
+Disallow: /tattookozak/tests/
+Disallow: /tattookozak/var/
+Disallow: /tattookozak/vendor/
